@@ -1,0 +1,479 @@
+{
+  "brand": {
+    "name": "KrishiSetu",
+    "tagline": "Practical Decision Support for Indian Farmers"
+  },
+  "common": {
+    "back": "Back",
+    "backToDashboard": "Back to Dashboard",
+    "continue": "Continue",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "close": "Close",
+    "loading": "Loading...",
+    "retry": "Try Again",
+    "logout": "Log out",
+    "language": "Language",
+    "unknown": "Unknown",
+    "notProvided": "Not provided",
+    "optional": "Optional",
+    "required": "Required",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Farmer Profile",
+    "notifications": "Notifications",
+    "search": "Search",
+    "clearSearch": "Clear search",
+    "all": "All",
+    "submit": "Submit",
+    "yes": "Yes",
+    "no": "No",
+    "acres": "Acres",
+    "hectares": "Hectares",
+    "guntas": "Guntas",
+    "landArea": "Land Area",
+    "kgPerHa": "kg/ha",
+    "phUnit": "pH"
+  },
+  "nav": {
+    "capabilities": "Capabilities",
+    "onboarding": "Onboarding",
+    "languages": "Languages",
+    "architecture": "Architecture",
+    "farmerLogin": "Farmer Login",
+    "openDashboard": "Open Dashboard",
+    "adminPortal": "Administrator Portal"
+  },
+  "landing": {
+    "heroKicker": "Built for Indian Agriculture · English & Kannada",
+    "heroTitle": "Clear crop, soil, and field decisions for every growing season.",
+    "heroSubtitle": "KrishiSetu brings soil guidance, crop protection, weather and market updates, and agricultural services into one simple, bilingual workspace.",
+    "primaryCta": "Start Farmer Setup",
+    "secondaryCta": "Sign In to Field Desk",
+    "heroImageAlt": "Green terraced Indian farmland with drip irrigation lines in morning sunlight",
+    "proofStrip": {
+      "soilInputs": "Works With or Without Soil Card",
+      "soilInputsDetail": "Enter soil test numbers or simple land and crop details",
+      "bilingual": "English & Kannada",
+      "bilingualDetail": "Switch languages anytime without losing entered data",
+      "modularApi": "Saved Farm Profile",
+      "modularApiDetail": "Your acres, crop, and soil details stay saved safely",
+      "roleSecurity": "Protected Access",
+      "roleSecurityDetail": "Separate farmer workspace and administrator portal"
+    },
+    "capabilitiesSection": {
+      "title": "Five clear modules for everyday farm decisions",
+      "subtitle": "Every tool is organized into five simple areas so you can find what you need quickly.",
+      "items": {
+        "cropSoil": {
+          "index": "01.",
+          "title": "Crop & Soil Intelligence",
+          "description": "Review your soil or land details, choose suited crops, and plan balanced fertilizer."
+        },
+        "plantHealth": {
+          "index": "02.",
+          "title": "Plant Health & Protection",
+          "description": "Check leaf or pest symptoms step by step and follow safe crop care steps."
+        },
+        "marketWeather": {
+          "index": "03.",
+          "title": "Market & Weather",
+          "description": "Check village weather outlooks and nearby market crop prices."
+        },
+        "agriServices": {
+          "index": "04.",
+          "title": "Agricultural Services",
+          "description": "Explore government farm schemes and find nearby soil testing centers."
+        },
+        "aiAssistant": {
+          "index": "05.",
+          "title": "AI Farmer Assistant",
+          "description": "Ask practical farming questions and get clear answers in English or Kannada."
+        }
+      }
+    },
+    "onboardingSection": {
+      "title": "Two simple ways to set up your farm",
+      "subtitle": "Whether you have a printed soil test card or not, you can get started in under two minutes.",
+      "pathYesTitle": "I have a Soil Test Report",
+      "pathYesBody": "Type the Nitrogen, Phosphorus, Potassium, or pH numbers from your card. Leave any missing value as Unknown.",
+      "pathNoTitle": "I do not have a Soil Report",
+      "pathNoBody": "Enter your village, district, acres, soil type, water source, and crop to use all features right away."
+    },
+    "languageSection": {
+      "title": "Easy to use in English and Kannada",
+      "subtitle": "Switch between English and Kannada on any screen without losing what you typed."
+    },
+    "footer": {
+      "copyright": "KrishiSetu Agricultural Decision Support",
+      "phaseLabel": "Phase 1 Foundation",
+      "adminLink": "Admin Console"
+    }
+  },
+  "auth": {
+    "farmerPortalTitle": "Farmer Workspace Access",
+    "farmerPortalSubtitle": "Sign in to your field profile or create a new farmer account.",
+    "signInTab": "Sign In",
+    "registerTab": "Create Account",
+    "fullNameLabel": "Farmer Full Name",
+    "fullNamePlaceholder": "e.g., Ramesh Gowda",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Minimum 8 characters",
+    "signInButton": "Sign In",
+    "signingIn": "Signing in...",
+    "registerButton": "Create Farmer Account",
+    "registering": "Creating account...",
+    "devNoticeTitle": "Login Information",
+    "devNoticeBody": "Currently uses email and password login. Mobile SMS OTP and WhatsApp login will be added in a later update.",
+    "demoAccountTitle": "Demo Farmer Account",
+    "demoAccountDetails": "Email: ramesh.farmer@krishisetu.in · Password: Farmer@123",
+    "useDemoFarmer": "Sign in as Demo Farmer",
+    "adminLoginTitle": "KrishiSetu Administrator Console",
+    "adminLoginSubtitle": "Restricted access for agricultural program administrators.",
+    "adminEmailPlaceholder": "admin@krishisetu.in",
+    "adminSignInButton": "Sign In to Admin Console",
+    "adminDemoNote": "Demo Admin: admin@krishisetu.in · Password: Admin@123",
+    "useDemoAdmin": "Fill Admin Credentials",
+    "backToPublic": "Back to KrishiSetu Home"
+  },
+  "onboarding": {
+    "pageTitle": "Farm & Soil Setup",
+    "pageSubtitle": "Share your field details once so every tool on your dashboard matches your land.",
+    "stepIndicator": "Step {{current}} of {{total}}",
+    "progressStep1": "1. Soil Report Check",
+    "progressStep2": "2. Field & Soil Details",
+    "stepATitle": "Do you have a Soil Health Card or soil test report?",
+    "stepASubtitle": "Choose Yes or No below. Both choices open the same farmer dashboard.",
+    "choiceYesTitle": "Yes, I have a soil test report",
+    "choiceYesDesc": "Enter available soil readings (you can mark missing items as Unknown).",
+    "choiceNoTitle": "No, I do not have a soil report",
+    "choiceNoDesc": "Enter your village, acres, soil type, water source, and crop instead.",
+    "stepBTitle": "Enter Soil Test Report Values",
+    "stepBSubtitle": "Type only the numbers printed on your report. Tick 'Unknown' if a value is not listed.",
+    "stepBContextTitle": "Your Farm & Land Area",
+    "stepBContextSubtitle": "Add your district, land size in acres, and crop.",
+    "nitrogenLabel": "Nitrogen (N)",
+    "nitrogenHint": "0 – 1000 kg/ha",
+    "phosphorusLabel": "Phosphorus (P)",
+    "phosphorusHint": "0 – 400 kg/ha",
+    "potassiumLabel": "Potassium (K)",
+    "potassiumHint": "0 – 1200 kg/ha",
+    "phLabel": "Soil pH",
+    "phHint": "3.5 – 10.0 pH",
+    "markUnknown": "Unknown / Not listed",
+    "labNameLabel": "Testing Lab Name",
+    "labNamePlaceholder": "e.g., Mandya Krishi Vigyan Kendra",
+    "sampleDateLabel": "Sample Test Date",
+    "stepCTitle": "Enter Basic Field Details",
+    "stepCSubtitle": "Tell us your location, land size in acres, soil type, water source, and crop.",
+    "farmerNameLabel": "Farmer Name",
+    "farmerNamePlaceholder": "Enter your full name",
+    "stateLabel": "State",
+    "districtLabel": "District",
+    "districtPlaceholder": "Select or type district",
+    "villageLabel": "Village or Area",
+    "villagePlaceholder": "e.g., Maddur",
+    "landSizeLabel": "Land Area",
+    "landSizePlaceholder": "e.g., 2.5",
+    "landSizeHint": "Type a number like 2 or 2.5",
+    "landUnitLabel": "Unit",
+    "soilTypeLabel": "Soil Type",
+    "irrigationLabel": "Water / Irrigation Source",
+    "cropLabel": "Current or Previous Crop",
+    "cropPlaceholder": "e.g., Ragi, Paddy, Sugarcane, Tur Dal",
+    "seasonLabel": "Growing Season",
+    "changeChoice": "Change Choice",
+    "saveAndContinue": "Save & Open Dashboard",
+    "selectOption": "Select an option",
+    "soilTypes": {
+      "BLACK": "Black Soil",
+      "RED": "Red Soil",
+      "ALLUVIAL": "Alluvial Soil",
+      "LATERITE": "Laterite Soil",
+      "SANDY_LOAM": "Sandy Loam Soil",
+      "UNKNOWN": "Unknown / Not Sure"
+    },
+    "irrigationSources": {
+      "RAINFED": "Rainfed",
+      "BOREWELL": "Borewell",
+      "CANAL": "Canal",
+      "DRIP_SPRINKLER": "Drip / Sprinkler",
+      "OPEN_WELL": "Open Well",
+      "TANK_POND": "Tank / Village Pond",
+      "UNKNOWN": "Unknown / Not Sure"
+    },
+    "seasons": {
+      "KHARIF": "Kharif (Monsoon)",
+      "RABI": "Rabi (Winter)",
+      "ZAID": "Zaid (Summer)",
+      "PERENNIAL": "Year-round",
+      "UNKNOWN": "Not Decided"
+    }
+  },
+  "dashboard": {
+    "welcomeHeading": "Namaskara, {{name}}",
+    "fieldSummaryPrefix": "My Farm",
+    "soilReportBadge": "Soil Report Saved",
+    "fieldSurveyBadge": "Field Details Saved (No Soil Report)",
+    "editProfileButton": "Edit Farm Details",
+    "hubTitle": "Farm Tools & Services",
+    "hubSubtitle": "Choose a card below to view its tools.",
+    "openModule": "Open",
+    "subFeatureCount": "{{count}} tools",
+    "soilSummaryValue": "Soil Report Recorded",
+    "categories": {
+      "crop-soil": {
+        "title": "Crop & Soil Intelligence",
+        "subtitle": "Crop advisory, soil health analysis, nutrient planning, and crop rotation.",
+        "subFeatures": {
+          "crop-advisory": {
+            "title": "Crop Advisory",
+            "description": "Seasonal crop selection and stage-by-stage field guidance tailored to your soil, irrigation, and district.",
+            "status": "Works with or without soil report",
+            "integrationNote": "Uses your saved district, season, irrigation source, land area, and soil profile to frame seasonal crop advisory.",
+            "steps": [
+              "Review your active growing season, land area in acres, and irrigation source.",
+              "Compare recommended crop options suited to your soil class and water availability.",
+              "Follow sowing spacing, weed control, and irrigation timing for your selected crop."
+            ]
+          },
+          "soil-health-analysis": {
+            "title": "Soil Health Analysis",
+            "description": "Review your saved Soil Health Card readings or field soil baseline in plain language.",
+            "status": "Profile Grounded",
+            "integrationNote": "Displays your saved soil test values or field baseline. Regional lab thresholds will connect in the next update.",
+            "steps": [
+              "Review recorded soil test readings or basic soil type from your profile.",
+              "Note any parameters marked as Unknown for future testing.",
+              "Use organic compost and balanced soil care before sowing."
+            ]
+          },
+          "fertilizer-planner": {
+            "title": "Fertilizer & Nutrient Planner",
+            "description": "Plan basal compost and split fertilizer dosages adjusted for your farm area.",
+            "status": "Nutrient Planning",
+            "integrationNote": "Tailors fertilizer and organic manure planning to your saved acres and crop.",
+            "steps": [
+              "Verify your saved land size in acres before estimating fertilizer bags.",
+              "Apply nitrogen in split doses across growth stages instead of a single application.",
+              "Combine chemical nutrients with farmyard manure or green manure."
+            ]
+          },
+          "crop-rotation": {
+            "title": "Crop Rotation Guide",
+            "description": "Alternate cereals, pulses, and oilseeds to restore soil fertility and reduce pests.",
+            "status": "Seasonal Planning",
+            "integrationNote": "Uses your recorded current or previous crop to suggest soil-restoring next-season sequences.",
+            "steps": [
+              "Review the current or previous crop saved in your farm profile.",
+              "Follow heavy-feeding cereals with nitrogen-fixing pulse crops such as Tur, Moong, or Bengal Gram.",
+              "Incorporate crop residues cleanly between seasons."
+            ]
+          }
+        }
+      },
+      "plant-health": {
+        "title": "Plant Health & Protection",
+        "subtitle": "Pest & disease diagnosis and safe crop protection practices.",
+        "subFeatures": {
+          "pest-disease-diagnosis": {
+            "title": "Pest & Disease Diagnosis",
+            "description": "Check leaf spots, yellowing, wilting, and pest symptoms systematically.",
+            "status": "Symptom Assessment",
+            "integrationNote": "Leaf photo analysis will connect in a future update alongside this structured symptom checklist.",
+            "steps": [
+              "Inspect affected plant parts (young leaves, older leaves, stems, or roots).",
+              "Check undersides of leaves for aphids, mites, caterpillars, or fungal spots.",
+              "Assess whether damage is uniform across the field or confined to patches."
+            ]
+          },
+          "crop-protection-guide": {
+            "title": "Crop Protection & Spray Guide",
+            "description": "Integrated pest controls, safe dosage preparation, and spray timing precautions.",
+            "status": "Protection Standard",
+            "integrationNote": "Will link with live wind and rain spray windows in the weather update.",
+            "steps": [
+              "Use yellow sticky traps, pheromone traps, and clean field borders first.",
+              "Avoid spraying during peak afternoon heat or ahead of forecasted rainfall.",
+              "Follow label dilution ratios and pre-harvest waiting periods."
+            ]
+          }
+        }
+      },
+      "market-weather": {
+        "title": "Market & Weather",
+        "subtitle": "Local weather forecasts and nearby APMC mandi market prices.",
+        "subFeatures": {
+          "weather-forecast": {
+            "title": "Weather Forecast",
+            "description": "Track rain, temperature, humidity, and wind windows for sowing and harvesting.",
+            "status": "Weather Planning",
+            "integrationNote": "Live 7-day forecast from Open-Meteo will connect to your saved village and district.",
+            "steps": [
+              "Check upcoming rainfall before sowing, top-dressing, or spraying.",
+              "Monitor high-humidity periods that favor fungal diseases.",
+              "Plan harvesting and grain drying during clear dry spells."
+            ]
+          },
+          "mandi-prices": {
+            "title": "Mandi Market Prices",
+            "description": "Compare crop prices across nearby regulated markets before selling.",
+            "status": "Market Intelligence",
+            "integrationNote": "Live Agmarknet mandi prices and nearby market maps will connect in an upcoming update.",
+            "steps": [
+              "Select your harvested crop and review rates in nearby district mandis.",
+              "Factor transport costs when comparing modal prices across markets.",
+              "Grade and dry produce properly before market arrival."
+            ]
+          }
+        }
+      },
+      "agri-services": {
+        "title": "Agricultural Services",
+        "subtitle": "Government farm schemes, crop insurance, and soil testing laboratories.",
+        "subFeatures": {
+          "govt-schemes": {
+            "title": "Government Schemes & Subsidies",
+            "description": "Check eligibility and required documents for farm support, micro-irrigation, and crop insurance.",
+            "status": "Farmer Services",
+            "integrationNote": "Aligned with your saved state, land area in acres, and irrigation source.",
+            "steps": [
+              "Keep land records (RTC / Pahani), Aadhaar, and bank passbook updated.",
+              "Verify seasonal crop insurance enrollment deadlines for your taluk.",
+              "Submit applications at your nearest Raitha Samparka Kendra (RSK) or CSC."
+            ]
+          },
+          "soil-testing-labs": {
+            "title": "Soil Testing Laboratories",
+            "description": "Locate soil testing labs and follow standard sample collection steps.",
+            "status": "Lab Directory",
+            "integrationNote": "Especially useful for farmers who onboarded without a Soil Health Card.",
+            "steps": [
+              "Collect composite soil samples from 6 to 8 spots at 15 cm depth.",
+              "Air-dry in shade, mix evenly, and label with plot and farmer details.",
+              "Submit at your district Krishi Vigyan Kendra or soil testing lab and update your profile."
+            ]
+          }
+        }
+      },
+      "ai-assistant": {
+        "title": "AI Farmer Assistant",
+        "subtitle": "Bilingual crop and soil advisory assistant in English and Kannada.",
+        "subFeatures": {
+          "ai-crop-assistant": {
+            "title": "AI Crop & Soil Assistant",
+            "description": "Ask practical questions about crops, soil, pests, and seasons in English or Kannada.",
+            "status": "Bilingual Advisory",
+            "integrationNote": "Will connect to the Gemini API via the backend server using your saved farm profile and chosen language.",
+            "steps": [
+              "Your saved district, acres, crop, and language frame every question automatically.",
+              "Responses are explicitly requested in English or Kannada.",
+              "Cross-check chemical recommendations with local agricultural officers."
+            ]
+          },
+          "soil-report-explainer": {
+            "title": "Soil Report Explainer",
+            "description": "Translate technical soil test values into simple field actions.",
+            "status": "Report Guidance",
+            "integrationNote": "Connects your stored soil readings or field baseline to plain-language explanations.",
+            "steps": [
+              "Review your saved nutrient and pH readings (or field details).",
+              "Request plain-language explanations for low or high values.",
+              "Update your profile whenever new lab test results arrive."
+            ]
+          }
+        }
+      }
+    }
+  },
+  "subFeature": {
+    "farmerContextTitle": "Your Saved Farm Details",
+    "noSoilCardNote": "You do not have a soil report saved yet. You can still use this tool, and update your soil values anytime after testing.",
+    "integrationStatusTitle": "About This Tool",
+    "workflowTitle": "Simple Steps to Follow",
+    "goToProfile": "Update Farm / Soil Details",
+    "backToCategory": "Back to {{category}}"
+  },
+  "profile": {
+    "pageTitle": "Farmer & Field Profile",
+    "pageSubtitle": "Review or update your saved farm details, acres, and soil readings.",
+    "accountSection": "Account Information",
+    "fieldSection": "Field & Crop Details",
+    "soilSection": "Soil Test Readings",
+    "email": "Email",
+    "role": "Role",
+    "preferredLanguage": "Preferred Language",
+    "onboardingStatus": "Setup Status",
+    "completed": "Completed",
+    "updateSuccess": "Farmer profile saved.",
+    "reopenWizard": "Edit Setup Details"
+  },
+  "notifications": {
+    "title": "Notification Centre",
+    "unreadCount": "{{count}} unread",
+    "markAllRead": "Mark all read",
+    "markRead": "Mark read",
+    "emptyTitle": "You are all caught up",
+    "emptyBody": "Profile updates, seasonal reminders, and alerts will appear here.",
+    "items": {
+      "accountCreatedTitle": "Welcome to KrishiSetu",
+      "accountCreatedMessage": "Your farmer account is active. Complete your farm setup to unlock your dashboard.",
+      "welcomeTitle": "Field Profile Ready",
+      "welcomeMessage": "Your Mandya plot and soil details are saved and ready across all five modules.",
+      "soilSavedTitle": "Soil Report Saved",
+      "soilSavedMessage": "Your soil test readings have been saved to your farmer profile.",
+      "fieldSavedTitle": "Field Details Saved",
+      "fieldSavedMessage": "Your village, acres, soil type, water source, and crop details are saved."
+    }
+  },
+  "admin": {
+    "consoleTitle": "KrishiSetu Administration Console",
+    "consoleSubtitle": "Protected oversight of farmer onboarding, soil test coverage, and language preference.",
+    "totalFarmers": "Registered Farmers",
+    "onboardedFarmers": "Completed Profiles",
+    "withSoilReport": "With Soil Report",
+    "withoutSoilReport": "Field Details Only",
+    "farmersTableTitle": "Registered Farmer Profiles",
+    "searchPlaceholder": "Search by farmer name, district, or crop...",
+    "columns": {
+      "farmer": "Farmer",
+      "location": "Location",
+      "land": "Land Area",
+      "onboardingPath": "Soil Report",
+      "cropSeason": "Crop & Season",
+      "updated": "Last Updated"
+    },
+    "hasReportYes": "Yes",
+    "hasReportNo": "No",
+    "emptyFarmers": "No matching farmer profiles found.",
+    "languageSplit": "Language Preference Distribution"
+  },
+  "validation": {
+    "fullNameRequired": "Please enter your full name (at least 2 characters).",
+    "emailInvalid": "Please enter a valid email address.",
+    "passwordMin": "Password must be at least 8 characters long.",
+    "nitrogenRange": "Nitrogen must be between 0 and 1000 kg/ha.",
+    "phosphorusRange": "Phosphorus must be between 0 and 400 kg/ha.",
+    "potassiumRange": "Potassium must be between 0 and 1200 kg/ha.",
+    "phRange": "Soil pH must be between 3.5 and 10.0.",
+    "soilAtLeastOne": "Enter at least one soil value or mark the fields as unknown.",
+    "stateRequired": "Please select a state.",
+    "districtRequired": "Please enter or select your district.",
+    "villageRequired": "Please enter your village or area.",
+    "landSizeInvalid": "Please type a valid land size greater than 0.",
+    "soilTypeRequired": "Please select a soil type (or choose Unknown).",
+    "irrigationRequired": "Please select a water / irrigation source.",
+    "cropRequired": "Please enter your current or previous crop.",
+    "seasonRequired": "Please select the growing season.",
+    "fixHighlighted": "Please check the highlighted fields before continuing."
+  },
+  "errors": {
+    "generic": "Something went wrong while connecting to the server.",
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "forbidden": "You do not have permission to access this area."
+  }
+}

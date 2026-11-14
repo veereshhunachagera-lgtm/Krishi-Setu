@@ -1,0 +1,8 @@
+{
+  "name": "KrishiSetu",
+  "description": "Agricultural decision-support platform for Indian farmers with soil intelligence, multilingual English and Kannada support, and modular Spring Boot architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

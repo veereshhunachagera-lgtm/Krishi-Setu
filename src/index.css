@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Noto Sans Kannada", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", "Noto Sans Kannada", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-ivory: #FAF8F4;
+  --color-ivory-muted: #F2EFE8;
+  --color-forest-950: #0F291E;
+  --color-forest-900: #1B4332;
+  --color-forest-800: #23533D;
+  --color-leaf-700: #2D6A4F;
+  --color-leaf-600: #3A7D5E;
+  --color-leaf-100: #E7F1EC;
+  --color-earth-700: #8C5A2B;
+  --color-earth-100: #F5ECE3;
+  --color-border-hairline: #E5E1D8;
+  --color-ink-900: #17221B;
+  --color-ink-600: #4A5A50;
+  --color-ink-400: #748379;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FAF8F4;
+    color: #17221B;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

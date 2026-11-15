@@ -4,6 +4,15 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createServer as createViteServer } from 'vite';
+import {
+  analyzeSoilHealth,
+  compareAlternatives,
+  filterKnowledgeBank,
+  generateRecommendations,
+  loadSeedCrops,
+  type CropKnowledgeRecord,
+  type SavedCropPlanRecord,
+} from './server/cropEngine.ts';
 
 interface SoilReportRecord {
   nitrogenKgPerHa: number | null;
@@ -63,6 +72,8 @@ interface DatabaseSchema {
   users: UserRecord[];
   profiles: FarmerProfileRecord[];
   notifications: NotificationRecord[];
+  crops: CropKnowledgeRecord[];
+  savedCropPlans: SavedCropPlanRecord[];
 }
 
 interface AuthenticatedRequest extends Request {
@@ -223,6 +234,8 @@ function seedInitialDatabase(): DatabaseSchema {
         createdAt: now,
       },
     ],
+    crops: loadSeedCrops(),
+    savedCropPlans: [],
   };
 }
 
@@ -237,7 +250,21 @@ function readDb(): DatabaseSchema {
   }
   try {
     const raw = fs.readFileSync(DB_FILE, 'utf8');
-    return JSON.parse(raw) as DatabaseSchema;
+    const parsed = JSON.parse(raw) as Partial<DatabaseSchema>;
+    let changed = false;
+    if (!Array.isArray(parsed.crops) || parsed.crops.length === 0) {
+      parsed.crops = loadSeedCrops();
+      changed = true;
+    }
+    if (!Array.isArray(parsed.savedCropPlans)) {
+      parsed.savedCropPlans = [];
+      changed = true;
+    }
+    const db = parsed as DatabaseSchema;
+    if (changed) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+    }
+    return db;
   } catch {
     const fallback = seedInitialDatabase();
     fs.writeFileSync(DB_FILE, JSON.stringify(fallback, null, 2), 'utf8');
@@ -707,6 +734,342 @@ async function startServer() {
       languageBreakdown,
       farmers: farmerSummaries,
     });
+  });
+
+  // --- Phase 2: Crop & Soil Intelligence Routes ---
+  app.get('/api/v1/crop-intelligence/crops', requireAuth, (req, res) => {
+    const db = readDb();
+    const list = filterKnowledgeBank(db.crops, {
+      q: typeof req.query.q === 'string' ? req.query.q : undefined,
+      season: typeof req.query.season === 'string' ? req.query.season : undefined,
+      soilType: typeof req.query.soilType === 'string' ? req.query.soilType : undefined,
+      waterRequirement:
+        typeof req.query.waterRequirement === 'string' ? req.query.waterRequirement : undefined,
+      category: typeof req.query.category === 'string' ? req.query.category : undefined,
+    });
+    res.json(list);
+  });
+
+  app.get('/api/v1/crop-intelligence/crops/:cropCode', requireAuth, (req, res) => {
+    const db = readDb();
+    const crop = db.crops.find(
+      (c) => c.cropCode.toLowerCase() === String(req.params.cropCode).toLowerCase(),
+    );
+    if (!crop) {
+      sendError(res, 404, 'NOT_FOUND', 'Crop not found in knowledge bank.');
+      return;
+    }
+    res.json(crop);
+  });
+
+  app.get('/api/v1/crop-intelligence/recommendations', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required for personalized recommendations.');
+      return;
+    }
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+    if (!profile) {
+      sendError(res, 404, 'NOT_FOUND', 'Complete farmer onboarding before requesting recommendations.');
+      return;
+    }
+    const result = generateRecommendations(db.crops, profile, {
+      season: typeof req.query.season === 'string' ? req.query.season : undefined,
+      irrigation: typeof req.query.irrigation === 'string' ? req.query.irrigation : undefined,
+      soilType: typeof req.query.soilType === 'string' ? req.query.soilType : undefined,
+    });
+    res.json(result);
+  });
+
+  app.get('/api/v1/crop-intelligence/compare', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required for crop comparison.');
+      return;
+    }
+    const rawCrops = typeof req.query.crops === 'string' ? req.query.crops : '';
+    const cropCodes = rawCrops
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (cropCodes.length < 2 || cropCodes.length > 4) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Select between 2 and 4 crops to compare side-by-side.');
+      return;
+    }
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+    if (!profile) {
+      sendError(res, 404, 'NOT_FOUND', 'Farmer profile not found.');
+      return;
+    }
+    try {
+      const comparison = compareAlternatives(db.crops, cropCodes, profile, {
+        season: typeof req.query.season === 'string' ? req.query.season : undefined,
+        irrigation: typeof req.query.irrigation === 'string' ? req.query.irrigation : undefined,
+      });
+      res.json(comparison);
+    } catch (err) {
+      if (err instanceof Error && err.message.startsWith('NOT_FOUND:')) {
+        sendError(res, 404, 'NOT_FOUND', `Crop not found: ${err.message.slice(10)}`);
+        return;
+      }
+      throw err;
+    }
+  });
+
+  app.get('/api/v1/crop-intelligence/soil-analysis', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required for soil analysis.');
+      return;
+    }
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+    if (!profile) {
+      sendError(res, 404, 'NOT_FOUND', 'Farmer profile not found.');
+      return;
+    }
+    res.json(analyzeSoilHealth(profile));
+  });
+
+  app.get('/api/v1/crop-intelligence/plans', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required.');
+      return;
+    }
+    const db = readDb();
+    const plans = db.savedCropPlans
+      .filter((p) => p.userId === req.authUser?.id)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .map((p) => {
+        const primary = db.crops.find(
+          (c) => c.cropCode.toLowerCase() === p.primaryCropCode.toLowerCase(),
+        );
+        return {
+          ...p,
+          primaryCropNameEn: primary?.nameEn || p.primaryCropCode,
+          primaryCropNameKn: primary?.nameKn || p.primaryCropCode,
+        };
+      });
+    res.json(plans);
+  });
+
+  app.post('/api/v1/crop-intelligence/plans', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required.');
+      return;
+    }
+    const body = req.body ?? {};
+    if (typeof body.primaryCropCode !== 'string' || !body.primaryCropCode.trim()) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Primary crop selection is required.', {
+        primaryCropCode: 'Primary crop selection is required.',
+      });
+      return;
+    }
+    const db = readDb();
+    const primary = db.crops.find(
+      (c) => c.cropCode.toLowerCase() === body.primaryCropCode.trim().toLowerCase(),
+    );
+    if (!primary) {
+      sendError(res, 400, 'BAD_REQUEST', 'Selected primary crop does not exist in dataset.');
+      return;
+    }
+    const altList: string[] = [];
+    if (Array.isArray(body.alternativeCropCodes)) {
+      for (const rawCode of body.alternativeCropCodes) {
+        if (typeof rawCode === 'string' && rawCode.trim()) {
+          const found = db.crops.find(
+            (c) =>
+              c.cropCode.toLowerCase() === rawCode.trim().toLowerCase() &&
+              c.cropCode !== primary.cropCode,
+          );
+          if (found && !altList.includes(found.cropCode)) {
+            altList.push(found.cropCode);
+          }
+        }
+      }
+    }
+
+    const created: SavedCropPlanRecord = {
+      id: crypto.randomUUID(),
+      userId: req.authUser.id,
+      primaryCropCode: primary.cropCode,
+      alternativeCropCodes: altList,
+      plannedSeason:
+        typeof body.plannedSeason === 'string' && body.plannedSeason.trim()
+          ? body.plannedSeason.trim().slice(0, 30)
+          : null,
+      farmerNotes:
+        typeof body.farmerNotes === 'string' && body.farmerNotes.trim()
+          ? body.farmerNotes.trim().slice(0, 500)
+          : null,
+      createdAt: new Date().toISOString(),
+    };
+    db.savedCropPlans.unshift(created);
+    writeDb(db);
+
+    res.status(201).json({
+      ...created,
+      primaryCropNameEn: primary.nameEn,
+      primaryCropNameKn: primary.nameKn,
+    });
+  });
+
+  app.delete('/api/v1/crop-intelligence/plans/:id', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required.');
+      return;
+    }
+    const db = readDb();
+    const idx = db.savedCropPlans.findIndex(
+      (p) => p.id === req.params.id && p.userId === req.authUser?.id,
+    );
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Saved advisory plan not found.');
+      return;
+    }
+    db.savedCropPlans.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  // --- Admin Crop Dataset Management ---
+  app.get('/api/v1/admin/crops', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const sorted = [...db.crops].sort((a, b) => a.nameEn.localeCompare(b.nameEn));
+    res.json(sorted);
+  });
+
+  app.post('/api/v1/admin/crops', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    if (typeof body.cropCode !== 'string' || !body.cropCode.trim()) {
+      fieldErrors.cropCode = 'Crop code is required.';
+    }
+    if (typeof body.nameEn !== 'string' || !body.nameEn.trim()) {
+      fieldErrors.nameEn = 'English crop name is required.';
+    }
+    if (typeof body.nameKn !== 'string' || !body.nameKn.trim()) {
+      fieldErrors.nameKn = 'Kannada crop name is required.';
+    }
+    if (!Array.isArray(body.suitableSoils) || body.suitableSoils.length === 0) {
+      fieldErrors.suitableSoils = 'At least one suitable soil type is required.';
+    }
+    if (!Array.isArray(body.seasons) || body.seasons.length === 0) {
+      fieldErrors.seasons = 'At least one season is required.';
+    }
+    const minDays = Number(body.durationMinDays);
+    const maxDays = Number(body.durationMaxDays);
+    if (Number.isNaN(minDays) || minDays < 30 || Number.isNaN(maxDays) || maxDays < minDays) {
+      fieldErrors.durationMinDays = 'Valid duration day range (min <= max, >= 30) is required.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const db = readDb();
+    const normalizedCode = body.cropCode.trim().toLowerCase();
+    if (db.crops.some((c) => c.cropCode.toLowerCase() === normalizedCode)) {
+      sendError(res, 400, 'BAD_REQUEST', `A crop with code '${normalizedCode}' already exists.`);
+      return;
+    }
+
+    const newCrop: CropKnowledgeRecord = {
+      id: crypto.randomUUID(),
+      cropCode: normalizedCode,
+      nameEn: body.nameEn.trim(),
+      nameKn: body.nameKn.trim(),
+      scientificName: typeof body.scientificName === 'string' ? body.scientificName.trim() || null : null,
+      cropCategory:
+        typeof body.cropCategory === 'string' && body.cropCategory.trim()
+          ? body.cropCategory.trim().toUpperCase()
+          : 'PULSE',
+      suitableSoils: body.suitableSoils,
+      seasons: body.seasons,
+      waterRequirement:
+        body.waterRequirement === 'HIGH' || body.waterRequirement === 'LOW'
+          ? body.waterRequirement
+          : 'MEDIUM',
+      waterNotesEn: typeof body.waterNotesEn === 'string' ? body.waterNotesEn : '',
+      waterNotesKn: typeof body.waterNotesKn === 'string' ? body.waterNotesKn : '',
+      minPh: body.minPh !== undefined && body.minPh !== null && body.minPh !== '' ? Number(body.minPh) : 5.5,
+      maxPh: body.maxPh !== undefined && body.maxPh !== null && body.maxPh !== '' ? Number(body.maxPh) : 7.5,
+      nitrogenDemand: typeof body.nitrogenDemand === 'string' ? body.nitrogenDemand : 'MEDIUM',
+      phosphorusDemand: typeof body.phosphorusDemand === 'string' ? body.phosphorusDemand : 'MEDIUM',
+      potassiumDemand: typeof body.potassiumDemand === 'string' ? body.potassiumDemand : 'MEDIUM',
+      nitrogenFixing: Boolean(body.nitrogenFixing),
+      durationMinDays: minDays,
+      durationMaxDays: maxDays,
+      tempMinC: body.tempMinC ? Number(body.tempMinC) : null,
+      tempMaxC: body.tempMaxC ? Number(body.tempMaxC) : null,
+      rainfallMinMm: body.rainfallMinMm ? Number(body.rainfallMinMm) : null,
+      rainfallMaxMm: body.rainfallMaxMm ? Number(body.rainfallMaxMm) : null,
+      climateNoteEn: typeof body.climateNoteEn === 'string' ? body.climateNoteEn : null,
+      climateNoteKn: typeof body.climateNoteKn === 'string' ? body.climateNoteKn : null,
+      supportedStates: Array.isArray(body.supportedStates) ? body.supportedStates : ['Karnataka'],
+      supportedDistricts: Array.isArray(body.supportedDistricts) ? body.supportedDistricts : [],
+      advantagesEn: Array.isArray(body.advantagesEn) ? body.advantagesEn : [],
+      advantagesKn: Array.isArray(body.advantagesKn) ? body.advantagesKn : [],
+      risksEn: Array.isArray(body.risksEn) ? body.risksEn : [],
+      risksKn: Array.isArray(body.risksKn) ? body.risksKn : [],
+      rotationalBenefitsEn: typeof body.rotationalBenefitsEn === 'string' ? body.rotationalBenefitsEn : null,
+      rotationalBenefitsKn: typeof body.rotationalBenefitsKn === 'string' ? body.rotationalBenefitsKn : null,
+      growingGuidanceEn: body.growingGuidanceEn || {
+        landPreparation: '',
+        sowingAndSpacing: '',
+        irrigationSchedule: '',
+        nutrientPractice: '',
+      },
+      growingGuidanceKn: body.growingGuidanceKn || {
+        landPreparation: '',
+        sowingAndSpacing: '',
+        irrigationSchedule: '',
+        nutrientPractice: '',
+      },
+      commonPests: Array.isArray(body.commonPests) ? body.commonPests : [],
+      dataReliability:
+        body.dataReliability === 'CURATED_REFERENCE'
+          ? 'CURATED_REFERENCE'
+          : 'SAMPLE_REGIONAL_REFERENCE',
+      sourceReference:
+        typeof body.sourceReference === 'string'
+          ? body.sourceReference
+          : 'Admin added crop record',
+    };
+
+    db.crops.push(newCrop);
+    writeDb(db);
+    res.status(201).json(newCrop);
+  });
+
+  app.delete('/api/v1/admin/crops/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.crops.findIndex((c) => c.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Crop entry not found.');
+      return;
+    }
+    db.crops.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  app.post('/api/v1/admin/crops/sync-seed', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const seed = loadSeedCrops();
+    let importedCount = 0;
+    for (const item of seed) {
+      const existingIdx = db.crops.findIndex(
+        (c) => c.cropCode.toLowerCase() === item.cropCode.toLowerCase(),
+      );
+      if (existingIdx >= 0) {
+        db.crops[existingIdx] = { ...item, id: db.crops[existingIdx].id };
+      } else {
+        db.crops.push(item);
+      }
+      importedCount++;
+    }
+    writeDb(db);
+    res.json({ importedCount });
   });
 
   // Catch unmatched /api routes with JSON 404

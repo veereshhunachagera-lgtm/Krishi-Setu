@@ -1,0 +1,1277 @@
+[
+  {
+    "cropCode": "ragi",
+    "nameEn": "Ragi (Finger Millet)",
+    "nameKn": "ರಾಗಿ",
+    "scientificName": "Eleusine coracana",
+    "cropCategory": "MILLET",
+    "suitableSoils": ["RED", "SANDY_LOAM", "LATERITE"],
+    "seasons": ["KHARIF", "RABI"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low to moderate (350–500 mm seasonal crop water requirement; tolerates dry spells)",
+    "waterNotesKn": "ಕಡಿಮೆ ಯಿಂದ ಮಧ್ಯಮ (ಋತುವಿಗೆ 350–500 ಮಿ.ಮೀ ನೀರು; ಒಣ ಹವೆ ತಾಳಿಕೊಳ್ಳುತ್ತದೆ)",
+    "minPh": 5.0,
+    "maxPh": 7.5,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "LOW",
+    "nitrogenFixing": false,
+    "durationMinDays": 100,
+    "durationMaxDays": 120,
+    "tempMinC": 20,
+    "tempMaxC": 34,
+    "rainfallMinMm": 450,
+    "rainfallMaxMm": 900,
+    "climateNoteEn": "Warm semi-arid to sub-humid climate; thrives in Karnataka red soil belt.",
+    "climateNoteKn": "ಬೆಚ್ಚಗಿನ ಅರೆ-ಶುಷ್ಕದಿಂದ ಉಪ-ಆರ್ದ್ರ ಹವಾಮಾನ; ಕರ್ನಾಟಕದ ಕೆಂಪು ಮಣ್ಣು ಪ್ರದೇಶಕ್ಕೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Tamil Nadu", "Andhra Pradesh"],
+    "supportedDistricts": [
+      "Mandya",
+      "Mysuru",
+      "Tumakuru",
+      "Hassan",
+      "Kolar",
+      "Ramanagara",
+      "Bengaluru Rural",
+      "Chikkaballapur",
+      "Chamarajanagar",
+      "Chitradurga"
+    ],
+    "advantagesEn": [
+      "Strong drought resilience compared to paddy or sugarcane",
+      "Lower fertilizer and irrigation input requirement",
+      "Grain stores well at farm level with minimal storage pest loss"
+    ],
+    "advantagesKn": [
+      "ಭತ್ತ ಅಥವಾ ಕಬ್ಬಿಗೆ ಹೋಲಿಸಿದರೆ ಬರ ಸಹಿಷ್ಣುತೆ ಹೆಚ್ಚು",
+      "ಕಡಿಮೆ ಗೊಬ್ಬರ ಮತ್ತು ನೀರಾವರಿ ವೆಚ್ಚ ಸಾಕು",
+      "ಧಾನ್ಯವನ್ನು ಜಮೀನಿನಲ್ಲೇ ಹೆಚ್ಚು ಕಾಲ ಸುರಕ್ಷಿತವಾಗಿ ಸಂಗ್ರಹಿಸಬಹುದು"
+    ],
+    "risksEn": [
+      "Sensitive to prolonged waterlogging in heavy poorly drained soils",
+      "Blast disease risk increases under continuous high humidity",
+      "Early weed competition during first 30 days after sowing"
+    ],
+    "risksKn": [
+      "ನೀರು ನಿಲ್ಲುವ ಭಾರಿ ಮಣ್ಣಿನಲ್ಲಿ ಬೇರು ಕೊಳೆಯುವ ಅಪಾಯ",
+      "ನಿರಂತರ ಹೆಚ್ಚಿನ ತೇವಾಂಶದಲ್ಲಿ ಬೆಂಕಿ ರೋಗ (Blast) ಕಾಣಿಸಬಹುದು",
+      "ಬಿತ್ತನೆಯ ಮೊದಲ 30 ದಿನಗಳಲ್ಲಿ ಕಳೆ ಪೈಪೋಟಿ ಹೆಚ್ಚು"
+    ],
+    "rotationalBenefitsEn": "Works well after pulses (Tur, Green Gram) or intercropped in 8:2 ratio with Tur Dal.",
+    "rotationalBenefitsKn": "ತೊಗರಿ ಅಥವಾ ಹೆಸರು ಬೆಳೆಯ ನಂತರ ಅಥವಾ ತೊಗರಿಯೊಂದಿಗೆ 8:2 ಅಂತರ ಬೆಳೆಯಾಗಿ ಉತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Plough 2–3 times to obtain fine tilth and incorporate 5–7.5 tonnes/ha well-decomposed farmyard manure 2–3 weeks before sowing.",
+      "sowingAndSpacing": "Sow in rows 22.5–30 cm apart with 10 cm plant spacing (or transplant 21-day seedlings in irrigated plots).",
+      "irrigationSchedule": "Primarily rainfed; provide 1–2 protective irrigations during tillering and grain-filling if a dry spell exceeds 15 days.",
+      "nutrientPractice": "Apply nitrogen in 2 splits (basal and 30 days after sowing); combine with Azospirillum and PSB biofertilizers where available."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "2–3 ಬಾರಿ ಉಳುಮೆ ಮಾಡಿ ಮೃದು ಮಣ್ಣು ತಯಾರಿಸಿ, ಬಿತ್ತನೆಗೆ 2–3 ವಾರ ಮೊದಲು ಹೆಕ್ಟೇರಿಗೆ 5–7.5 ಟನ್ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ ಸೇರಿಸಿ.",
+      "sowingAndSpacing": "ಸಾಲುಗಳ ನಡುವೆ 22.5–30 ಸೆಂ.ಮೀ ಮತ್ತು ಸಸಿಗಳ ನಡುವೆ 10 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ (ಅಥವಾ 21 ದಿನದ ಸಸಿ ನಾಟಿ ಮಾಡಿ).",
+      "irrigationSchedule": "ಮುಖ್ಯವಾಗಿ ಮಳೆಯಾಶ್ರಿತ; 15 ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಮಳೆ ಕೊರತೆ ಇದ್ದರೆ ಕವಲೊಡೆಯುವ ಮತ್ತು ಕಾಳು ತುಂಬುವ ಹಂತದಲ್ಲಿ 1–2 ರಕ್ಷಣಾತ್ಮಕ ನೀರು ಕೊಡಿ.",
+      "nutrientPractice": "ಸಾರಜನಕವನ್ನು 2 ಹಂತಗಳಲ್ಲಿ (ಬಿತ್ತನೆ ಸಮಯ ಮತ್ತು 30 ದಿನಗಳ ನಂತರ) ನೀಡಿ; ಅಜೋಸ್ಪೈರಿಲಮ್ ಮತ್ತು PSB ಜೈವಿಕ ಗೊಬ್ಬರ ಬಳಸಬಹುದು."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Finger Millet Blast (Pyricularia grisea)",
+        "pestNameKn": "ಬೆಂಕಿ ರೋಗ (ಬ್ಲಾಸ್ಟ್)",
+        "symptomsEn": "Spindle-shaped grey-centered lesions on leaves, neck, and finger panicles causing broken ears.",
+        "symptomsKn": "ಎಲೆ, ಕತ್ತು ಮತ್ತು ತೆನೆ ಭಾಗದಲ್ಲಿ ಬೂದು ಮಧ್ಯದ ಕಂದು ಚುಕ್ಕೆಗಳು ಕಾಣಿಸಿ ತೆನೆ ಮುರಿಯುತ್ತದೆ.",
+        "managementEn": "Use resistant varieties, treat seed before sowing, avoid excess nitrogen, and consult RSK/KVK for recommended fungicide if neck blast appears.",
+        "managementKn": "ರೋಗ ನಿರೋಧಕ ತಳಿ ಬಳಸಿ, ಬಿತ್ತನೆ ಪೂರ್ವ ಬೀಜೋಪಚಾರ ಮಾಡಿ, ಹೆಚ್ಚುವರಿ ಸಾರಜನಕ ತಪ್ಪಿಸಿ ಹಾಗೂ ರೋಗ ಕಂಡರೆ RSK/KVK ಸಲಹೆ ಪಡೆಯಿರಿ."
+      },
+      {
+        "pestNameEn": "Pink Stem Borer",
+        "pestNameKn": "ಗುಲಾಬಿ ಕಾಂಡ ಕೊರಕ",
+        "symptomsEn": "Dead hearts in young shoots and drying of central leaf whorl.",
+        "symptomsKn": "ಎಳೆಯ ಸಸಿಗಳ ಮಧ್ಯದ ಸುಳಿ ಒಣಗುವುದು (ಡೆಡ್ ಹಾರ್ಟ್).",
+        "managementEn": "Remove and destroy affected dead-heart tillers early and maintain clean bunds.",
+        "managementKn": "ಬಾಧಿತ ಸಸಿಗಳನ್ನು ಆರಂಭದಲ್ಲೇ ಕಿತ್ತು ನಾಶಪಡಿಸಿ ಮತ್ತು ಬದುಗಳನ್ನು ಸ್ವಚ್ಛವಾಗಿಡಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR / UAS Bengaluru Package of Practices Reference Summary (Non-yield agronomic rules)"
+  },
+  {
+    "cropCode": "tur-dal",
+    "nameEn": "Tur Dal (Pigeon Pea)",
+    "nameKn": "ತೊಗರಿ",
+    "scientificName": "Cajanus cajan",
+    "cropCategory": "PULSE",
+    "suitableSoils": ["RED", "BLACK", "SANDY_LOAM"],
+    "seasons": ["KHARIF"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low water need (400–600 mm); deep taproot accesses subsoil moisture during dry spells.",
+    "waterNotesKn": "ಕಡಿಮೆ ನೀರಿನ ಅವಶ್ಯಕತೆ (400–600 ಮಿ.ಮೀ); ಆಳವಾದ ಬೇರು ಒಣ ಹವಾಮಾನದಲ್ಲೂ ತೇವಾಂಶ ಪಡೆಯುತ್ತದೆ.",
+    "minPh": 5.5,
+    "maxPh": 8.0,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": true,
+    "durationMinDays": 150,
+    "durationMaxDays": 180,
+    "tempMinC": 20,
+    "tempMaxC": 36,
+    "rainfallMinMm": 500,
+    "rainfallMaxMm": 1000,
+    "climateNoteEn": "Semi-arid tropics with warm growing season and dry weather during pod maturity.",
+    "climateNoteKn": "ಬೆಚ್ಚಗಿನ ಬೆಳವಣಿಗೆಯ ಋತು ಮತ್ತು ಕಾಯಿ ಪಕ್ವವಾಗುವಾಗ ಒಣ ಹವಾಮಾನವಿರುವ ಪ್ರದೇಶಗಳಿಗೆ ಉತ್ತಮ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Telangana", "Andhra Pradesh"],
+    "supportedDistricts": [
+      "Kalaburagi",
+      "Bidar",
+      "Yadgir",
+      "Raichur",
+      "Vijayapura",
+      "Chitradurga",
+      "Tumakuru",
+      "Mandya",
+      "Koppal",
+      "Bagalkot"
+    ],
+    "advantagesEn": [
+      "Fixes atmospheric nitrogen and improves soil organic matter through leaf fall",
+      "Very strong drought tolerance once established",
+      "Ideal intercrop with Ragi, Jowar, or Soybean to diversify field risk"
+    ],
+    "advantagesKn": [
+      "ವಾತಾವರಣದ ಸಾರಜನಕವನ್ನು ಮಣ್ಣಿನಲ್ಲಿ ಸ್ಥಿರೀಕರಿಸುತ್ತದೆ ಮತ್ತು ಎಲೆ ಉದುರುವಿಕೆಯಿಂದ ಮಣ್ಣಿನ ಫಲವತ್ತತೆ ಹೆಚ್ಚಿಸುತ್ತದೆ",
+      "ಒಮ್ಮೆ ಬೆಳೆದ ನಂತರ ಬರಗಾಲವನ್ನು ತಾಳಿಕೊಳ್ಳುವ ಶಕ್ತಿ ಹೆಚ್ಚು",
+      "ರಾಗಿ, ಜೋಳ ಅಥವಾ ಸೋಯಾಬೀನ್ ಜೊತೆ ಅಂತರ ಬೆಳೆಯಾಗಿ ಜಮೀನಿನ ಅಪಾಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Long field duration (5–6 months) limits second crop in rainfed lands",
+      "Susceptible to Wilt and Pod Borer during flowering and podding",
+      "Poor tolerance to standing water or frost"
+    ],
+    "risksKn": [
+      "5–6 ತಿಂಗಳ ದೀರ್ಘ ಅವಧಿಯಿಂದ ಮಳೆಯಾಶ್ರಿತ ಜಮೀನಿನಲ್ಲಿ ಎರಡನೇ ಬೆಳೆ ಕಷ್ಟವಾಗಬಹುದು",
+      "ಹೂವು ಮತ್ತು ಕಾಯಿ ಹಂತದಲ್ಲಿ ಸೊರಗು ರೋಗ ಹಾಗೂ ಕಾಯಿ ಕೊರಕದ ಅಪಾಯ ಹೆಚ್ಚು",
+      "ನೀರು ನಿಲ್ಲುವುದು ಅಥವಾ ಹಿಮವನ್ನು ಸಹಿಸುವುದಿಲ್ಲ"
+    ],
+    "rotationalBenefitsEn": "Strongly recommended after cereals (Ragi, Maize, Paddy, Jowar) to restore soil nitrogen.",
+    "rotationalBenefitsKn": "ಧಾನ್ಯ ಬೆಳೆಗಳ (ರಾಗಿ, ಮೆಕ್ಕೆಜೋಳ, ಭತ್ತ, ಜೋಳ) ನಂತರ ಮಣ್ಣಿನ ಸಾರಜನಕ ಮರುಸ್ಥಾಪಿಸಲು ಅತ್ಯುತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "One deep summer ploughing followed by 2 harrowings; ensure surface drainage channels.",
+      "sowingAndSpacing": "Sow at onset of monsoon with 90–120 cm row spacing and 20–30 cm plant spacing depending on duration group.",
+      "irrigationSchedule": "Usually rainfed; 1 protective irrigation at flower initiation and 1 at pod filling improves pod retention if soil is dry.",
+      "nutrientPractice": "Treat seed with Rhizobium culture and Trichoderma viride; modest starter nitrogen and basal phosphorus are sufficient."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಬೇಸಿಗೆಯಲ್ಲಿ ಒಂದು ಆಳವಾದ ಉಳುಮೆ ಮತ್ತು 2 ಕುಂಟೆ ಹೊಡೆಯಿರಿ; ಮಳೆನೀರು ಹರಿದುಹೋಗಲು ಬಸಿಗಾಲುವೆ ನಿರ್ಮಿಸಿ.",
+      "sowingAndSpacing": "ಮುಂಗಾರು ಆರಂಭದಲ್ಲಿ ತಳಿಯ ಅವಧಿಗೆ ಅನುಗುಣವಾಗಿ 90–120 ಸೆಂ.ಮೀ ಸಾಲು ಮತ್ತು 20–30 ಸೆಂ.ಮೀ ಸಸಿ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "irrigationSchedule": "ಸಾಮಾನ್ಯವಾಗಿ ಮಳೆಯಾಶ್ರಿತ; ಮಣ್ಣು ಒಣಗಿದ್ದರೆ ಹೂವು ಬಿಡುವ ಮತ್ತು ಕಾಯಿ ತುಂಬುವ ಹಂತದಲ್ಲಿ ತಲಾ 1 ರಕ್ಷಣಾತ್ಮಕ ನೀರು ಸಹಕಾರಿ.",
+      "nutrientPractice": "ರೈಜೋಬಿಯಂ ಮತ್ತು ಟ್ರೈಕೋಡರ್ಮಾ ಜೈವಿಕ ಬೀಜೋಪಚಾರ ಮಾಡಿ; ಆರಂಭಿಕ ಕಡಿಮೆ ಸಾರಜನಕ ಮತ್ತು ಬುಡಗೊಬ್ಬರ ರಂಜಕ ಸಾಕು."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Gram Pod Borer (Helicoverpa armigera)",
+        "pestNameKn": "ಕಾಯಿ ಕೊರಕ ಹುಳು",
+        "symptomsEn": "Circular bore holes in green pods with larvae feeding inside developing seeds.",
+        "symptomsKn": "ಹಸಿರು ಕಾಯಿಗಳಲ್ಲಿ ದುಂಡಾದ ರಂಧ್ರಗಳು ಮತ್ತು ಒಳಗಿನ ಬೀಜ ತಿನ್ನುವ ಹುಳುಗಳು.",
+        "managementEn": "Install pheromone traps (5/acre) and bird perches; monitor weekly from bud initiation and start neem-based (NSKE 5%) spray at egg stage.",
+        "managementKn": "ಎಕರೆಗೆ 5 ಫೆರೋಮೋನ್ ಬಲೆಗಳು ಮತ್ತು ಪಕ್ಷಿ ಕುಳಿತುಕೊಳ್ಳುವ ಕಂಬಗಳನ್ನು ಅಳವಡಿಸಿ; ಮೊಗ್ಗು ಹಂತದಿಂದ ವಾರಕ್ಕೊಮ್ಮೆ ಪರಿಶೀಲಿಸಿ ಬೇವಿನ ಕಷಾಯ (NSKE 5%) ಸಿಂಪಡಿಸಿ."
+      },
+      {
+        "pestNameEn": "Fusarium Wilt",
+        "pestNameKn": "ಸೊರಗು ರೋಗ (ವಿಲ್ಟ್)",
+        "symptomsEn": "Sudden yellowing and drooping of leaves in patches; brown vascular discoloration when stem is split.",
+        "symptomsKn": "ಅಲ್ಲಲ್ಲಿ ಗಿಡಗಳ ಎಲೆ ಹಳದಿಯಾಗಿ ಬಾಡುವುದು; ಕಾಂಡ ಸೀಳಿದಾಗ ಒಳಗೆ ಕಂದು ಬಣ್ಣದ ಗೆರೆ ಕಾಣುವುದು.",
+        "managementEn": "Grow wilt-tolerant varieties, treat seeds with Trichoderma, and rotate away from Tur for 2–3 seasons in infested patches.",
+        "managementKn": "ರೋಗ ನಿರೋಧಕ ತಳಿ ಬೆಳೆಯಿರಿ, ಟ್ರೈಕೋಡರ್ಮಾ ಬೀಜೋಪಚಾರ ಮಾಡಿ ಮತ್ತು ಬಾಧಿತ ಜಮೀನಿನಲ್ಲಿ 2–3 ಋತು ಬೆಳೆ ಪರಿವರ್ತನೆ ಅನುಸರಿಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIPR & UAS Kalaburagi Tur Cultivation Reference"
+  },
+  {
+    "cropCode": "green-gram",
+    "nameEn": "Green Gram (Moong)",
+    "nameKn": "ಹೆಸರು ಕಾಳು",
+    "scientificName": "Vigna radiata",
+    "cropCategory": "PULSE",
+    "suitableSoils": ["RED", "BLACK", "SANDY_LOAM", "ALLUVIAL"],
+    "seasons": ["KHARIF", "ZAID", "RABI"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low water need (300–400 mm); well suited to short-window rainfed or light summer irrigation.",
+    "waterNotesKn": "ಕಡಿಮೆ ನೀರು ಸಾಕು (300–400 ಮಿ.ಮೀ); ಕಡಿಮೆ ಅವಧಿಯ ಮಳೆಯಾಶ್ರಿತ ಅಥವಾ ಬೇಸಿಗೆ ಲಘು ನೀರಾವರಿಗೆ ಸೂಕ್ತ.",
+    "minPh": 6.0,
+    "maxPh": 7.8,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "LOW",
+    "nitrogenFixing": true,
+    "durationMinDays": 60,
+    "durationMaxDays": 75,
+    "tempMinC": 22,
+    "tempMaxC": 38,
+    "rainfallMinMm": 350,
+    "rainfallMaxMm": 750,
+    "climateNoteEn": "Warm season short-duration pulse; prefers dry weather at pod picking.",
+    "climateNoteKn": "ಬೆಚ್ಚಗಿನ ಋತುವಿನ ಅಲ್ಪಾವಧಿ ದ್ವಿದಳ ಧಾನ್ಯ; ಕಾಯಿ ಕೊಯ್ಲು ಸಮಯದಲ್ಲಿ ಒಣ ಹವೆ ಉತ್ತಮ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Telangana", "Andhra Pradesh", "Rajasthan"],
+    "supportedDistricts": [
+      "Gadag",
+      "Dharwad",
+      "Bidar",
+      "Kalaburagi",
+      "Hassan",
+      "Mysuru",
+      "Chamarajanagar",
+      "Mandya",
+      "Belagavi"
+    ],
+    "advantagesEn": [
+      "Very short growing cycle (60–75 days) leaves time for a second Rabi crop",
+      "Fixes soil nitrogen and acts as a living mulch to suppress weeds",
+      "Low water requirement makes it a safer alternative to high-water summer crops"
+    ],
+    "advantagesKn": [
+      "60–75 ದಿನಗಳ ಅಲ್ಪಾವಧಿ ಬೆಳೆಯಾದ್ದರಿಂದ ಹಿಂಗಾರು ಬೆಳೆಗೆ ಸಮಯ ಉಳಿಯುತ್ತದೆ",
+      "ಮಣ್ಣಿನಲ್ಲಿ ಸಾರಜನಕ ಸ್ಥಿರೀಕರಿಸುತ್ತದೆ ಮತ್ತು ಕಳೆ ಬೆಳವಣಿಗೆ ತಡೆಯುತ್ತದೆ",
+      "ಕಡಿಮೆ ನೀರಿನ ಅವಶ್ಯಕತೆಯಿಂದ ಬೇಸಿಗೆಯಲ್ಲಿ ಹೆಚ್ಚು ನೀರು ಬಯಸುವ ಬೆಳೆಗಳಿಗೆ ಸುರಕ್ಷಿತ ಪರ್ಯಾಯ"
+    ],
+    "risksEn": [
+      "Mungbean Yellow Mosaic Virus (spread by whiteflies) can reduce pod formation",
+      "Unseasonal rain at harvest causes pod shattering or grain sprouting",
+      "Requires well-drained soils; avoid alkaline or waterlogged pockets"
+    ],
+    "risksKn": [
+      "ಬಿಳಿ ನೊಣದಿಂದ ಹರಡುವ ಹಳದಿ ನಂಜು ರೋಗ (YMV) ಕಾಯಿ ಕಟ್ಟುವುದನ್ನು ಕಡಿಮೆ ಮಾಡಬಹುದು",
+      "ಕೊಯ್ಲು ಸಮಯದಲ್ಲಿ ಅಕಾಲಿಕ ಮಳೆ ಬಂದರೆ ಕಾಯಿ ಸಿಡಿಯುವ ಅಥವಾ ಕಾಳು ಮೊಳಕೆಯೊಡೆಯುವ ಅಪಾಯ",
+      "ನೀರು ನಿಲ್ಲದ ಉತ್ತಮ ಬಸಿದು ಹೋಗುವ ಮಣ್ಣು ಅಗತ್ಯ"
+    ],
+    "rotationalBenefitsEn": "Excellent pre-Rabi Kharif crop or post-Paddy summer catch crop to replenish nitrogen.",
+    "rotationalBenefitsKn": "ಹಿಂಗಾರು ಪೂರ್ವ ಮುಂಗಾರು ಬೆಳೆಯಾಗಿ ಅಥವಾ ಭತ್ತದ ಕೊಯ್ಲಿನ ನಂತರ ಬೇಸಿಗೆ ಮಧ್ಯಂತರ ಬೆಳೆಯಾಗಿ ಅತ್ಯುತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Light ploughing and planking after initial rains to remove weeds.",
+      "sowingAndSpacing": "Sow in lines 30 cm apart with 10 cm between plants; seed treatment with Rhizobium.",
+      "irrigationSchedule": "Rainfed in Kharif; 3–4 light irrigations at 12–15 day intervals if grown in Zaid/summer.",
+      "nutrientPractice": "Low nitrogen starter plus basal phosphorus; foliar 2% DAP spray at flowering aids pod setting if moisture is adequate."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಮೊದಲ ಮಳೆಯ ನಂತರ ಲಘು ಉಳುಮೆ ಮತ್ತು ಹಲಗೆ ಹೊಡೆದು ಕಳೆ ತೆಗೆಯಿರಿ.",
+      "sowingAndSpacing": "30 ಸೆಂ.ಮೀ ಸಾಲು ಮತ್ತು 10 ಸೆಂ.ಮೀ ಸಸಿ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ; ರೈಜೋಬಿಯಂ ಬೀಜೋಪಚಾರ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮುಂಗಾರಿನಲ್ಲಿ ಮಳೆಯಾಶ್ರಿತ; ಬೇಸಿಗೆಯಲ್ಲಿ 12–15 ದಿನಕ್ಕೊಮ್ಮೆ 3–4 ಲಘು ನೀರಾವರಿ ನೀಡಿ.",
+      "nutrientPractice": "ಕಡಿಮೆ ಆರಂಭಿಕ ಸಾರಜನಕ ಮತ್ತು ಬುಡಗೊಬ್ಬರ ರಂಜಕ ಸಾಕು; ತೇವಾಂಶವಿದ್ದರೆ ಹೂವು ಬಿಡುವಾಗ ಶೇ.2 DAP ಸಿಂಪಡಣೆ ನೆರವಾಗುತ್ತದೆ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Whitefly & Yellow Mosaic Virus (YMV)",
+        "pestNameKn": "ಬಿಳಿ ನೊಣ ಮತ್ತು ಹಳದಿ ನಂಜು ರೋಗ",
+        "symptomsEn": "Bright yellow mosaic mottling on young leaves and stunted plants.",
+        "symptomsKn": "ಎಳೆಯ ಎಲೆಗಳ ಮೇಲೆ ಹಳದಿ ಮಚ್ಚೆಗಳು ಮತ್ತು ಗಿಡಗಳ ಬೆಳವಣಿಗೆ ಕುಂಠಿತವಾಗುವುದು.",
+        "managementEn": "Use YMV-tolerant varieties, place yellow sticky traps, and uproot early infected plants.",
+        "managementKn": "ರೋಗ ನಿರೋಧಕ ತಳಿ ಬಳಸಿ, ಹಳದಿ ಅಂಟು ಬಲೆಗಳನ್ನು ಇಡಿ ಮತ್ತು ಆರಂಭದಲ್ಲೇ ಬಾಧಿತ ಗಿಡಗಳನ್ನು ಕಿತ್ತುಹಾಕಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIPR Pulse Advisory Reference"
+  },
+  {
+    "cropCode": "bengal-gram",
+    "nameEn": "Bengal Gram (Chickpea)",
+    "nameKn": "ಕಡಲೆ",
+    "scientificName": "Cicer arietinum",
+    "cropCategory": "PULSE",
+    "suitableSoils": ["BLACK", "RED", "ALLUVIAL"],
+    "seasons": ["RABI"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low water need (250–350 mm); grows largely on conserved post-monsoon soil moisture.",
+    "waterNotesKn": "ಕಡಿಮೆ ನೀರು ಸಾಕು (250–350 ಮಿ.ಮೀ); ಮಳೆಗಾಲದ ನಂತರ ಮಣ್ಣಿನಲ್ಲಿ ಉಳಿದ ತೇವಾಂಶದಲ್ಲೇ ಬೆಳೆಯುತ್ತದೆ.",
+    "minPh": 6.0,
+    "maxPh": 8.0,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "LOW",
+    "nitrogenFixing": true,
+    "durationMinDays": 95,
+    "durationMaxDays": 110,
+    "tempMinC": 14,
+    "tempMaxC": 30,
+    "rainfallMinMm": 300,
+    "rainfallMaxMm": 650,
+    "climateNoteEn": "Cool, dry Rabi winter season crop; sensitive to excessive rain or frost.",
+    "climateNoteKn": "ತಂಪಾದ ಮತ್ತು ಒಣ ಹಿಂಗಾರು (ರಬಿ) ಹವಾಮಾನದ ಬೆಳೆ; ಅಧಿಕ ಮಳೆಗೆ ಸೂಕ್ಷ್ಮ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Madhya Pradesh", "Andhra Pradesh", "Telangana"],
+    "supportedDistricts": [
+      "Kalaburagi",
+      "Vijayapura",
+      "Bidar",
+      "Gadag",
+      "Dharwad",
+      "Belagavi",
+      "Ballari",
+      "Bagalkot",
+      "Koppal",
+      "Raichur"
+    ],
+    "advantagesEn": [
+      "Thrives on residual soil moisture in Rabi without heavy irrigation",
+      "Fixes atmospheric nitrogen for the subsequent Kharif cereal crop",
+      "Lower cultivation risk in cool dry winter months"
+    ],
+    "advantagesKn": [
+      "ಹೆಚ್ಚಿನ ನೀರಾವರಿ ಇಲ್ಲದೆ ಹಿಂಗಾರಿನಲ್ಲಿ ಮಣ್ಣಿನ ಉಳಿಕೆ ತೇವಾಂಶದಲ್ಲೇ ಬೆಳೆಯುತ್ತದೆ",
+      "ಮುಂದಿನ ಮುಂಗಾರು ಧಾನ್ಯ ಬೆಳೆಗೆ ಮಣ್ಣಿನಲ್ಲಿ ಸಾರಜನಕ ಉಳಿಸುತ್ತದೆ",
+      "ತಂಪು ಒಣ ಚಳಿಗಾಲದಲ್ಲಿ ಕೃಷಿ ಅಪಾಯ ಕಡಿಮೆ"
+    ],
+    "risksEn": [
+      "Heavy irrigation or late winter rain triggers Wilt and Ascochyta blight",
+      "Pod borer damage increases if monitoring is missed at flowering",
+      "Unsuitable for strongly acidic soils (pH below 5.5)"
+    ],
+    "risksKn": [
+      "ಹೆಚ್ಚು ನೀರು ಹಾಯಿಸಿದರೆ ಸೊರಗು ರೋಗ ಬರುವ ಸಾಧ್ಯತೆ ಹೆಚ್ಚು",
+      "ಹೂವು ಹಂತದಲ್ಲಿ ಗಮನ ಹರಿಸದಿದ್ದರೆ ಕಾಯಿ ಕೊರಕ ಹಾನಿ ಹೆಚ್ಚಾಗುತ್ತದೆ",
+      "ಹೆಚ್ಚು ಆಮ್ಲೀಯ ಮಣ್ಣಿಗೆ (pH 5.5 ಕ್ಕಿಂತ ಕಡಿಮೆ) ಸೂಕ್ತವಲ್ಲ"
+    ],
+    "rotationalBenefitsEn": "Classic Rabi partner after Kharif Jowar, Maize, Green Gram, or Soybean.",
+    "rotationalBenefitsKn": "ಮುಂಗಾರು ಜೋಳ, ಮೆಕ್ಕೆಜೋಳ, ಹೆಸರು ಅಥವಾ ಸೋಯಾಬೀನ್ ನಂತರ ಹಿಂಗಾರಿಗೆ ಉತ್ತಮ ಬೆಳೆ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Prepare soil immediately after Kharif harvest to conserve moisture; avoid excessive deep tillage in dry zones.",
+      "sowingAndSpacing": "Sow at 30 cm row spacing and 10 cm plant spacing in October–November.",
+      "irrigationSchedule": "Often rainfed on black soils; 1 light irrigation at pre-flowering (40–45 DAS) and 1 at pod development if soil cracks.",
+      "nutrientPractice": "Use Rhizobium and PSB seed inoculation; avoid heavy nitrogen doses that cause excessive vegetative growth."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ತೇವಾಂಶ ಉಳಿಸಲು ಮುಂಗಾರು ಕೊಯ್ಲಿನ ತಕ್ಷಣ ಜಮೀನು ಸಿದ್ಧಪಡಿಸಿ.",
+      "sowingAndSpacing": "ಅಕ್ಟೋಬರ್–ನವೆಂಬರ್‌ನಲ್ಲಿ 30 ಸೆಂ.ಮೀ ಸಾಲು ಮತ್ತು 10 ಸೆಂ.ಮೀ ಸಸಿ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "irrigationSchedule": "ಕಪ್ಪು ಮಣ್ಣಿನಲ್ಲಿ ಹೆಚ್ಚಾಗಿ ಉಳಿಕೆ ತೇವಾಂಶ ಸಾಕು; ಮಣ್ಣು ಬಿರುಕು ಬಿಟ್ಟರೆ ಹೂವು ಮತ್ತು ಕಾಯಿ ಹಂತದಲ್ಲಿ ತಲಾ 1 ಲಘು ನೀರು ನೀಡಿ.",
+      "nutrientPractice": "ರೈಜೋಬಿಯಂ ಮತ್ತು PSB ಬೀಜೋಪಚಾರ ಬಳಸಿ; ಹೆಚ್ಚು ಸಾರಜನಕ ಹಾಕುವುದನ್ನು ತಪ್ಪಿಸಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Chickpea Pod Borer",
+        "pestNameKn": "ಕಡಲೆ ಕಾಯಿ ಕೊರಕ",
+        "symptomsEn": "Young larvae feed on leaves and later bore into pods.",
+        "symptomsKn": "ಎಳೆಯ ಹುಳುಗಳು ಎಲೆ ತಿಂದು ನಂತರ ಕಾಯಿಗಳನ್ನು ಕೊರೆಯುತ್ತವೆ.",
+        "managementEn": "Nip apical buds lightly if vegetative growth is excessive (district practice check), set pheromone traps, and use neem formulations early.",
+        "managementKn": "ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಅಳವಡಿಸಿ ಮತ್ತು ಆರಂಭದಲ್ಲೇ ಬೇವಿನ ದ್ರಾವಣ ಬಳಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIPR & UAS Dharwad Rabi Chickpea Reference"
+  },
+  {
+    "cropCode": "groundnut",
+    "nameEn": "Groundnut",
+    "nameKn": "ಶೇಂಗಾ (ನೆಲಗಡಲೆ)",
+    "scientificName": "Arachis hypogaea",
+    "cropCategory": "OILSEED",
+    "suitableSoils": ["RED", "SANDY_LOAM", "ALLUVIAL"],
+    "seasons": ["KHARIF", "RABI", "ZAID"],
+    "waterRequirement": "MEDIUM",
+    "waterNotesEn": "Moderate water need (450–600 mm); critical moisture needed at pegging and pod filling.",
+    "waterNotesKn": "ಮಧ್ಯಮ ನೀರಿನ ಅವಶ್ಯಕತೆ (450–600 ಮಿ.ಮೀ); ಕಾಯಿ ಇಳಿಯುವ ಮತ್ತು ತುಂಬುವ ಹಂತದಲ್ಲಿ ತೇವಾಂಶ ಮುಖ್ಯ.",
+    "minPh": 5.8,
+    "maxPh": 7.5,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": true,
+    "durationMinDays": 105,
+    "durationMaxDays": 125,
+    "tempMinC": 22,
+    "tempMaxC": 35,
+    "rainfallMinMm": 450,
+    "rainfallMaxMm": 900,
+    "climateNoteEn": "Thrives in friable well-drained red and sandy loam soils with warm sunshine.",
+    "climateNoteKn": "ಬೆಚ್ಚಗಿನ ಬಿಸಿಲು ಮತ್ತು ಮೃದುವಾದ ಕೆಂಪು ಹಾಗೂ ಮರಳು ಮಿಶ್ರಿತ ಗೋಡು ಮಣ್ಣಿನಲ್ಲಿ ಚೆನ್ನಾಗಿ ಬೆಳೆಯುತ್ತದೆ.",
+    "supportedStates": ["Karnataka", "Andhra Pradesh", "Gujarat", "Tamil Nadu", "Telangana"],
+    "supportedDistricts": [
+      "Tumakuru",
+      "Chitradurga",
+      "Ballari",
+      "Koppal",
+      "Raichur",
+      "Kolar",
+      "Gadag",
+      "Dharwad",
+      "Belagavi"
+    ],
+    "advantagesEn": [
+      "Legume oilseed that fixes nitrogen while producing oil-rich pods",
+      "Well suited to light red and sandy loam soils where paddy struggles",
+      "Haulm (vine residue) provides nutritious cattle fodder"
+    ],
+    "advantagesKn": [
+      "ಮಣ್ಣಿನಲ್ಲಿ ಸಾರಜನಕ ಸ್ಥಿರೀಕರಿಸುವ ದ್ವಿದಳ ಎಣ್ಣೆಕಾಳು ಬೆಳೆ",
+      "ಭತ್ತ ಬೆಳೆಯಲಾಗದ ಹಗುರ ಕೆಂಪು ಮತ್ತು ಮರಳು ಮಿಶ್ರಿತ ಮಣ್ಣಿಗೆ ಉತ್ತಮ",
+      "ಬಳ್ಳಿಯು ಜಾನುವಾರುಗಳಿಗೆ ಪೌಷ್ಟಿಕ ಮೇವಾಗಿ ಉಪಯೋಗವಾಗುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Hard crusting or heavy black clay soils restrict peg penetration and pod lifting",
+      "Moisture stress at pegging leads to empty pods (pops)",
+      "Late leaf spot and rust can cause premature defoliation"
+    ],
+    "risksKn": [
+      "ಗಟ್ಟಿ ಅಥವಾ ಭಾರಿ ಕಪ್ಪು ಜೇಡಿ ಮಣ್ಣಿನಲ್ಲಿ ಕಾಯಿ ಇಳಿಯುವುದು ಮತ್ತು ಕೀಳುವುದು ಕಷ್ಟ",
+      "ಕಾಯಿ ಇಳಿಯುವ ಹಂತದಲ್ಲಿ ತೇವಾಂಶ ಕೊರತೆಯಾದರೆ ಜೊಳ್ಳು ಕಾಯಿಗಳು ಹೆಚ್ಚಾಗುತ್ತವೆ",
+      "ಎಲೆ ಚುಕ್ಕೆ ಮತ್ತು ತುಕ್ಕು ರೋಗ ಎಲೆ ಉದುರುವಂತೆ ಮಾಡಬಹುದು"
+    ],
+    "rotationalBenefitsEn": "Rotates very cleanly with Maize, Ragi, or Jowar to break cereal pest cycles.",
+    "rotationalBenefitsKn": "ಮೆಕ್ಕೆಜೋಳ, ರಾಗಿ ಅಥವಾ ಜೋಳದೊಂದಿಗೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಮಾಡುವುದರಿಂದ ಕೀಟ ಸರಪಳಿ ಮುರಿಯುತ್ತದೆ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Deep ploughing followed by fine tilth; loose soil is essential for gynophore (peg) entry.",
+      "sowingAndSpacing": "Sow bold kernels at 30 x 10 cm spacing; apply gypsum (calcium/sulphur source) at flowering/pegging as locally advised.",
+      "irrigationSchedule": "Irrigate lightly at flowering, peg penetration, and pod filling; avoid standing water.",
+      "nutrientPractice": "Basal phosphorus and gypsum at 40 days support kernel development; treat seed against collar rot."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಆಳವಾಗಿ ಉಳುಮೆ ಮಾಡಿ ಮೃದುವಾದ ಮಣ್ಣು ತಯಾರಿಸಿ; ಕಾಯಿ ಮಣ್ಣಿನಲ್ಲಿ ಇಳಿಯಲು ಸಡಿಲ ಮಣ್ಣು ಅತ್ಯಗತ್ಯ.",
+      "sowingAndSpacing": "30 x 10 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ದಪ್ಪ ಬೀಜ ಬಿತ್ತನೆ ಮಾಡಿ; ಹೂವು ಬಿಡುವ ಹಂತದಲ್ಲಿ ಸ್ಥಳೀಯ ಸಲಹೆಯಂತೆ ಜಿಪ್ಸಮ್ ನೀಡಿ.",
+      "irrigationSchedule": "ಹೂವು ಬಿಡುವ, ಕಾಯಿ ಇಳಿಯುವ ಮತ್ತು ಕಾಳು ತುಂಬುವ ಹಂತದಲ್ಲಿ ಲಘು ನೀರು ನೀಡಿ; ನೀರು ನಿಲ್ಲದಂತೆ ನೋಡಿಕೊಳ್ಳಿ.",
+      "nutrientPractice": "ಬುಡಗೊಬ್ಬರ ರಂಜಕ ಮತ್ತು 40 ದಿನದಲ್ಲಿ ಜಿಪ್ಸಮ್ ಬೀಜ ತುಂಬಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ; ಬೇರು ಕೊಳೆ ತಡೆಗೆ ಬೀಜೋಪಚಾರ ಮಾಡಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Tikka Leaf Spot & Collar Rot",
+        "pestNameKn": "ಟಿಕ್ಕಾ ಎಲೆ ಚುಕ್ಕೆ ಮತ್ತು ಬೇರು ಕೊಳೆ ರೋಗ",
+        "symptomsEn": "Dark brown circular spots with yellow halo on leaves; wilting seedlings with black fungal mass near collar.",
+        "symptomsKn": "ಎಲೆಗಳ ಮೇಲೆ ಹಳದಿ ಅಂಚಿನ ಕಪ್ಪು-ಕಂದು ಚುಕ್ಕೆಗಳು; ಬುಡದ ಬಳಿ ಸಸಿ ಕೊಳೆಯುವುದು.",
+        "managementEn": "Seed treatment before sowing, wider intercropping with Tur/Bajra, and remove volunteer groundnut plants.",
+        "managementKn": "ಬಿತ್ತನೆ ಪೂರ್ವ ಬೀಜೋಪಚಾರ, ತೊಗರಿ ಜೊತೆ ಅಂತರ ಬೆಳೆ ಮತ್ತು ಸ್ವಚ್ಛ ಜಮೀನು ನಿರ್ವಹಣೆ."
+      },
+      {
+        "pestNameEn": "Leaf Miner & Spodoptera",
+        "pestNameKn": "ಎಲೆ ಸುರಂಗ ಹುಳು ಮತ್ತು ತಂಬಾಕು ಹುಳು",
+        "symptomsEn": "Blistered folded leaflets and skeletonized foliage.",
+        "symptomsKn": "ಎಲೆಗಳು ಮಡಚಿ ಒಣಗಿದಂತೆ ಕಾಣುವುದು.",
+        "managementEn": "Use pheromone traps and early neem sprays; avoid unnecessary broad-spectrum insecticides.",
+        "managementKn": "ಫೆರೋಮೋನ್ ಬಲೆಗಳು ಮತ್ತು ಆರಂಭಿಕ ಬೇವಿನ ಸಿಂಪಡಣೆ ಬಳಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-DGR & UAS Karnataka Groundnut Advisory Reference"
+  },
+  {
+    "cropCode": "maize",
+    "nameEn": "Maize",
+    "nameKn": "ಮೆಕ್ಕೆಜೋಳ",
+    "scientificName": "Zea mays",
+    "cropCategory": "CEREAL",
+    "suitableSoils": ["RED", "BLACK", "ALLUVIAL", "SANDY_LOAM"],
+    "seasons": ["KHARIF", "RABI"],
+    "waterRequirement": "MEDIUM",
+    "waterNotesEn": "Moderate water need (500–700 mm); sensitive to drought during tasseling and silking.",
+    "waterNotesKn": "ಮಧ್ಯಮ ನೀರು (500–700 ಮಿ.ಮೀ); ಗಂಡು ಹೂವು ಮತ್ತು ಹೆಣ್ಣು ಜುಟ್ಟು ಬರುವ ಹಂತದಲ್ಲಿ ನೀರಿನ ಕೊರತೆ ಹಾನಿಕರ.",
+    "minPh": 5.5,
+    "maxPh": 7.8,
+    "nitrogenDemand": "HIGH",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": false,
+    "durationMinDays": 95,
+    "durationMaxDays": 115,
+    "tempMinC": 18,
+    "tempMaxC": 35,
+    "rainfallMinMm": 500,
+    "rainfallMaxMm": 1000,
+    "climateNoteEn": "Adaptable across well-drained Karnataka transition and central zones.",
+    "climateNoteKn": "ನೀರು ಬಸಿದು ಹೋಗುವ ಕರ್ನಾಟಕದ ಮಧ್ಯಮ ಮತ್ತು ಸಂಕ್ರಮಣ ವಲಯಗಳಿಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Madhya Pradesh", "Telangana", "Andhra Pradesh"],
+    "supportedDistricts": [
+      "Davanagere",
+      "Haveri",
+      "Belagavi",
+      "Hassan",
+      "Mysuru",
+      "Shivamogga",
+      "Chitradurga",
+      "Bagalkot",
+      "Koppal",
+      "Ballari"
+    ],
+    "advantagesEn": [
+      "Adaptable across multiple well-drained soil types",
+      "Shorter cycle than sugarcane or long-duration paddy",
+      "Strong stalk biomass suitable for silage/fodder use"
+    ],
+    "advantagesKn": [
+      "ವಿವಿಧ ಬಗೆಯ ನೀರು ಬಸಿದು ಹೋಗುವ ಮಣ್ಣುಗಳಿಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ",
+      "ಕಬ್ಬು ಅಥವಾ ದೀರ್ಘಾವಧಿ ಭತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ ಬೆಳೆಯುತ್ತದೆ",
+      "ತೆನೆ ಕೊಯ್ಲಿನ ನಂತರ ಜಾನುವಾರು ಮೇವಿಗೂ ಉಪಯುಕ್ತ"
+    ],
+    "risksEn": [
+      "High nitrogen feeder — depletes soil nitrogen if planted repeatedly without pulses",
+      "Fall Armyworm (FAW) infestation requires vigilant scouting in early whorls",
+      "Waterlogging in early vegetative stage stunts roots severely"
+    ],
+    "risksKn": [
+      "ಹೆಚ್ಚು ಸಾರಜನಕ ಹೀರುವ ಬೆಳೆ — ದ್ವಿದಳ ಬೆಳೆಗಳಿಲ್ಲದೆ ಸತತವಾಗಿ ಬೆಳೆದರೆ ಮಣ್ಣು ದುರ್ಬಲವಾಗುತ್ತದೆ",
+      "ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಸೈನಿಕ ಹುಳು (Fall Armyworm) ಬಾಧೆ ತಪಾಸಣೆ ಅತ್ಯಗತ್ಯ",
+      "ಆರಂಭದಲ್ಲಿ ನೀರು ನಿಂತರೆ ಬೇರಿನ ಬೆಳವಣಿಗೆ ತೀವ್ರವಾಗಿ ಕುಂಠಿತವಾಗುತ್ತದೆ"
+    ],
+    "rotationalBenefitsEn": "Best rotated with pulses (Bengal Gram, Soybean, Green Gram) rather than continuous Maize-after-Maize.",
+    "rotationalBenefitsKn": "ಸತತ ಮೆಕ್ಕೆಜೋಳದ ಬದಲು ಕಡಲೆ, ಸೋಯಾಬೀನ್ ಅಥವಾ ಹೆಸರು ಜೊತೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಸೂಕ್ತ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Plough deeply and form ridges/furrows to ensure drainage during heavy Kharif showers.",
+      "sowingAndSpacing": "60 cm row spacing and 20 cm plant spacing on ridges.",
+      "irrigationSchedule": "Critical stages are knee-high, tasseling, silking, and grain filling.",
+      "nutrientPractice": "Split nitrogen across basal, 25–30 DAS, and pre-tasseling stages; verify zinc deficiency if white streaks appear on young leaves."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಆಳ ಉಳುಮೆ ಮಾಡಿ ಬೋದು ಮತ್ತು ಸಾಲುಗಳನ್ನು ನಿರ್ಮಿಸಿ ಮಳೆನೀರು ನಿಲ್ಲದಂತೆ ನೋಡಿಕೊಳ್ಳಿ.",
+      "sowingAndSpacing": "ಬೋದುಗಳ ಮೇಲೆ 60 ಸೆಂ.ಮೀ ಸಾಲು ಮತ್ತು 20 ಸೆಂ.ಮೀ ಸಸಿ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮೊಳಕಾಲೆತ್ತರ, ಗಂಡು ಹೂವು, ಜುಟ್ಟು ಮತ್ತು ಕಾಳು ತುಂಬುವ ಹಂತಗಳಲ್ಲಿ ನೀರು ಅತ್ಯಗತ್ಯ.",
+      "nutrientPractice": "ಸಾರಜನಕವನ್ನು ಬುಡ, 25–30 ದಿನ ಮತ್ತು ಹೂವು ಮುಂಚಿನ 3 ಹಂತಗಳಲ್ಲಿ ನೀಡಿ; ಎಲೆ ಮೇಲೆ ಬಿಳಿ ಪಟ್ಟಿ ಕಂಡರೆ ಸತು (Zinc) ಪರಿಶೀಲಿಸಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Fall Armyworm (Spodoptera frugiperda)",
+        "pestNameKn": "ಲದ್ದಿ / ಸೈನಿಕ ಹುಳು (FAW)",
+        "symptomsEn": "Ragged window-pane holes in whorl leaves with sawdust-like frass.",
+        "symptomsKn": "ಸುಳಿಯ ಎಲೆಗಳಲ್ಲಿ ಹರಿದ ರಂಧ್ರಗಳು ಮತ್ತು ಮರದ ಪುಡಿಯಂತಹ ಹುಳುಗಳ ಮಲ.",
+        "managementEn": "Apply sand + lime or dry soil-ash mix cautiously per local KVK guidance, install pheromone traps (5/acre), and spray neem-based azadirachtin early.",
+        "managementKn": "ಎಕರೆಗೆ 5 ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಇಡಿ, ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಬೇವಿನ ದ್ರಾವಣ (Azadirachtin) ಸಿಂಪಡಿಸಿ ಮತ್ತು KVK ಮಾರ್ಗದರ್ಶನ ಪಾಲಿಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIMR Maize Production Reference"
+  },
+  {
+    "cropCode": "paddy",
+    "nameEn": "Paddy (Rice)",
+    "nameKn": "ಭತ್ತ",
+    "scientificName": "Oryza sativa",
+    "cropCategory": "CEREAL",
+    "suitableSoils": ["ALLUVIAL", "BLACK", "RED"],
+    "seasons": ["KHARIF", "RABI"],
+    "waterRequirement": "HIGH",
+    "waterNotesEn": "High water requirement (1,100–1,400 mm); requires assured canal, tank, borewell, or high coastal rainfall.",
+    "waterNotesKn": "ಹೆಚ್ಚು ನೀರಿನ ಅವಶ್ಯಕತೆ (1,100–1,400 ಮಿ.ಮೀ); ಖಚಿತ ಕಾಲುವೆ, ಕೆರೆ, ಕೊಳವೆಬಾವಿ ಅಥವಾ ಅಧಿಕ ಮಳೆ ಅಗತ್ಯ.",
+    "minPh": 5.5,
+    "maxPh": 7.5,
+    "nitrogenDemand": "HIGH",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": false,
+    "durationMinDays": 120,
+    "durationMaxDays": 145,
+    "tempMinC": 20,
+    "tempMaxC": 36,
+    "rainfallMinMm": 900,
+    "rainfallMaxMm": 2200,
+    "climateNoteEn": "Suited to irrigated canal command areas and high-rainfall Malnad/Coastal zones.",
+    "climateNoteKn": "ನೀರಾವರಿ ಕಾಲುವೆ ಪ್ರದೇಶಗಳು ಹಾಗೂ ಮಲೆನಾಡು/ಕರಾವಳಿಯ ಅಧಿಕ ಮಳೆ ಪ್ರದೇಶಗಳಿಗೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Andhra Pradesh", "Telangana", "Tamil Nadu", "Kerala", "Punjab"],
+    "supportedDistricts": [
+      "Mandya",
+      "Mysuru",
+      "Raichur",
+      "Ballari",
+      "Koppal",
+      "Davanagere",
+      "Shivamogga",
+      "Udupi",
+      "Dakshina Kannada",
+      "Uttara Kannada",
+      "Hassan"
+    ],
+    "advantagesEn": [
+      "Well-established procurement and storage chain in irrigated belts",
+      "Tolerates standing water where upland crops fail",
+      "Straw provides dry fodder base in dairy-mixed farms"
+    ],
+    "advantagesKn": [
+      "ನೀರಾವರಿ ಪ್ರದೇಶಗಳಲ್ಲಿ ಸಂಗ್ರಹಣೆ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ವ್ಯವಸ್ಥೆ ಸುಲಭವಾಗಿ ಲಭ್ಯವಿದೆ",
+      "ನೀರು ನಿಲ್ಲುವ ಜಮೀನುಗಳಲ್ಲಿ ಇತರ ಬೆಳೆಗಳಿಗಿಂತ ಉತ್ತಮವಾಗಿ ಬೆಳೆಯುತ್ತದೆ",
+      "ಹುಲ್ಲು ಹೈನುಗಾರಿಕೆಗೆ ಒಣ ಮೇವಾಗಿ ಬಳಕೆಯಾಗುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "High vulnerability to canal water cut-offs or dropping borewell water tables",
+      "High labor demand during transplanting and weeding",
+      "Brown Planthopper and Blast outbreaks under excessive nitrogen"
+    ],
+    "risksKn": [
+      "ಕಾಲುವೆ ನೀರು ನಿಂತರೆ ಅಥವಾ ಬೋರ್‌ವೆಲ್ ನೀರು ಕಡಿಮೆಯಾದರೆ ಬೆಳೆಗೆ ತೀವ್ರ ತೊಂದರೆ",
+      "ನಾಟಿ ಮತ್ತು ಕಳೆ ನಿರ್ವಹಣೆಗೆ ಕಾರ್ಮಿಕರ ಅವಶ್ಯಕತೆ ಹೆಚ್ಚು",
+      "ಹೆಚ್ಚು ಸಾರಜನಕ ಹಾಕಿದರೆ ಕಂದು ಜಿಗಿ ಹುಳು ಮತ್ತು ಬೆಂಕಿ ರೋಗ ಹೆಚ್ಚಾಗಬಹುದು"
+    ],
+    "rotationalBenefitsEn": "Follow Kharif Paddy with a short-duration pulse (Green Gram / Black Gram) in Rabi/Summer to save water and break pest cycles.",
+    "rotationalBenefitsKn": "ಮುಂಗಾರು ಭತ್ತದ ನಂತರ ಹಿಂಗಾರು/ಬೇಸಿಗೆಯಲ್ಲಿ ಹೆಸರು ಅಥವಾ ಉದ್ದು ಬೆಳೆಯುವುದರಿಂದ ನೀರು ಉಳಿಯುತ್ತದೆ ಮತ್ತು ಮಣ್ಣು ಚೇತರಿಸಿಕೊಳ್ಳುತ್ತದೆ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Puddle cleanly (or prepare level beds for direct-seeded rice) and maintain leveled bunds.",
+      "sowingAndSpacing": "Transplant 21–25 day seedlings at 20 x 15 cm (or 25 x 25 cm under SRI) with 2–3 seedlings/hill.",
+      "irrigationSchedule": "Adopt Alternate Wetting and Drying (AWD) after crop establishment to conserve water rather than continuous deep flooding.",
+      "nutrientPractice": "Split nitrogen in 3 doses (basal, active tillering, panicle initiation); use leaf color chart where available."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಬದುಗಳನ್ನು ಸರಿಪಡಿಸಿ ಸಮತಟ್ಟಾಗಿ ಕೆಸರು ಗದ್ದೆ ತಯಾರಿಸಿ.",
+      "sowingAndSpacing": "21–25 ದಿನದ ಸಸಿಗಳನ್ನು 20 x 15 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಗುಣಿಗೆ 2–3 ಸಸಿಗಳಂತೆ ನಾಟಿ ಮಾಡಿ.",
+      "irrigationSchedule": "ಸದಾ ಆಳವಾಗಿ ನೀರು ನಿಲ್ಲಿಸುವ ಬದಲು, ಸಸಿ ನೆಟ್ಟ ನಂತರ ಪರ್ಯಾಯ ಒಣಗಿಸುವಿಕೆ ಮತ್ತು ತೇವಗೊಳಿಸುವಿಕೆ (AWD) ಅನುಸರಿಸಿ ನೀರು ಉಳಿಸಿ.",
+      "nutrientPractice": "ಸಾರಜನಕವನ್ನು ಬುಡ, ಕವಲೊಡೆಯುವ ಮತ್ತು ತೆನೆ ಹೊರಡುವ 3 ಹಂತಗಳಲ್ಲಿ ಹಂಚಿ ನೀಡಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Brown Planthopper (BPH)",
+        "pestNameKn": "ಕಂದು ಜಿಗಿ ಹುಳು",
+        "symptomsEn": "Circular patches of dried plants ('hopperburn') with insects clustered at stem base.",
+        "symptomsKn": "ಗದ್ದೆಯಲ್ಲಿ ಅಲ್ಲಲ್ಲಿ ವೃತ್ತಾಕಾರದಲ್ಲಿ ಪೈರು ಒಣಗುವುದು (ಹಾಪರ್ ಬರ್ನ್).",
+        "managementEn": "Leave 30 cm alleyways every 2 meters during transplanting, drain standing water for 3–4 days, and avoid excess urea.",
+        "managementKn": "ನಾಟಿ ಸಮಯದಲ್ಲಿ ಪ್ರತಿ 2 ಮೀಟರಿಗೆ 30 ಸೆಂ.ಮೀ ದಾರಿ ಬಿಡಿ, ನೀರು ಬಸಿದುಹೋಗಲು ಬಿಡಿ ಮತ್ತು ಹೆಚ್ಚುವರಿ ಯೂರಿಯಾ ತಪ್ಪಿಸಿ."
+      },
+      {
+        "pestNameEn": "Yellow Stem Borer & Blast",
+        "pestNameKn": "ಹಳದಿ ಕಾಂಡ ಕೊರಕ ಮತ್ತು ಬೆಂಕಿ ರೋಗ",
+        "symptomsEn": "Dead hearts in vegetative stage, white empty panicles at flowering, or spindle leaf lesions.",
+        "symptomsKn": "ಸಸಿ ಹಂತದಲ್ಲಿ ಸುಳಿ ಒಣಗುವುದು ಅಥವಾ ತೆನೆ ಬಿಡುವಾಗ ಬಿಳಿ ಜೊಳ್ಳು ತೆನೆ.",
+        "managementEn": "Clip seedling leaf tips before transplanting, avoid late heavy nitrogen, and consult RSK for targeted IPM.",
+        "managementKn": "ನಾಟಿಗೂ ಮುನ್ನ ಸಸಿ ತುದಿ ಕತ್ತರಿಸಿ, ಸಮತೋಲಿತ ಗೊಬ್ಬರ ಬಳಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIRR & UAS Mandya Paddy Advisory Reference"
+  },
+  {
+    "cropCode": "jowar",
+    "nameEn": "Jowar (Sorghum)",
+    "nameKn": "ಜೋಳ",
+    "scientificName": "Sorghum bicolor",
+    "cropCategory": "MILLET",
+    "suitableSoils": ["BLACK", "RED"],
+    "seasons": ["KHARIF", "RABI"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low water need (350–450 mm); classic drought-hardy crop for North Karnataka black soils.",
+    "waterNotesKn": "ಕಡಿಮೆ ನೀರು (350–450 ಮಿ.ಮೀ); ಉತ್ತರ ಕರ್ನಾಟಕದ ಕಪ್ಪು ಮಣ್ಣಿಗೆ ಬರ ಸಹಿಷ್ಣು ಬೆಳೆ.",
+    "minPh": 6.0,
+    "maxPh": 8.2,
+    "nitrogenDemand": "MEDIUM",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "LOW",
+    "nitrogenFixing": false,
+    "durationMinDays": 105,
+    "durationMaxDays": 125,
+    "tempMinC": 18,
+    "tempMaxC": 36,
+    "rainfallMinMm": 400,
+    "rainfallMaxMm": 850,
+    "climateNoteEn": "Suited to dry Kharif and conserved-moisture Rabi zones in semi-arid districts.",
+    "climateNoteKn": "ಅರೆ-ಶುಷ್ಕ ಜಿಲ್ಲೆಗಳ ಮುಂಗಾರು ಮತ್ತು ಉಳಿಕೆ ತೇವಾಂಶದ ಹಿಂಗಾರು ಕೃಷಿಗೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Telangana", "Andhra Pradesh"],
+    "supportedDistricts": [
+      "Vijayapura",
+      "Kalaburagi",
+      "Bagalkot",
+      "Belagavi",
+      "Dharwad",
+      "Gadag",
+      "Raichur",
+      "Ballari",
+      "Koppal",
+      "Yadgir"
+    ],
+    "advantagesEn": [
+      "High drought recovery ability even after mid-season dry spells",
+      "Dual-purpose grain plus high-quality stover fodder",
+      "Performs reliably in medium-to-deep black soils on Rabi residual moisture"
+    ],
+    "advantagesKn": [
+      "ಮಧ್ಯಂತರ ಒಣ ಹವಾಮಾನದ ನಂತರವೂ ಚೇತರಿಸಿಕೊಳ್ಳುವ ಶಕ್ತಿ ಹೆಚ್ಚು",
+      "ಧಾನ್ಯದೊಂದಿಗೆ ಜಾನುವಾರುಗಳಿಗೆ ಉತ್ತಮ ಕಡಬು (ಮೇವು) ದೊರೆಯುತ್ತದೆ",
+      "ಹಿಂಗಾರಿನಲ್ಲಿ ಕಪ್ಪು ಮಣ್ಣಿನ ತೇವಾಂಶದಲ್ಲಿ ಸ್ಥಿರವಾಗಿ ಬೆಳೆಯುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Shoot fly attack can reduce plant stand in delayed Kharif or Rabi sowing",
+      "Grain mold damages Kharif panicles if late October rains continue",
+      "Bird damage risk near maturity"
+    ],
+    "risksKn": [
+      "ತಡವಾಗಿ ಬಿತ್ತನೆ ಮಾಡಿದರೆ ಸುಳಿ ನೊಣ (Shoot fly) ಹಾನಿ ಹೆಚ್ಚು",
+      "ಮುಂಗಾರು ಕೊಯ್ಲಿನ ವೇಳೆ ಮಳೆ ಮುಂದುವರಿದರೆ ತೆನೆ ಬೂಷ್ಟ ಹಿಡಿಯುವ ಅಪಾಯ",
+      "ಕಾಳು ಪಕ್ವವಾಗುವಾಗ ಪಕ್ಷಿಗಳ ಹಾನಿ ಸಂಭವಿಸಬಹುದು"
+    ],
+    "rotationalBenefitsEn": "Intercrop or rotate with Bengal Gram, Tur Dal, or Safflower to conserve soil structure.",
+    "rotationalBenefitsKn": "ಕಡಲೆ, ತೊಗರಿ ಅಥವಾ ಕುಸುಬೆಯೊಂದಿಗೆ ಅಂತರ ಬೆಳೆ ಅಥವಾ ಬೆಳೆ ಪರಿವರ್ತನೆಗೆ ಉತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Compartmental bunding in Rabi black soils traps monsoon rain before sowing.",
+      "sowingAndSpacing": "45 cm row spacing and 12–15 cm plant spacing; sow timely within the recommended sowing window.",
+      "irrigationSchedule": "Rainfed; 1 protective irrigation at boot-leaf or flowering stage helps grain filling in dry years.",
+      "nutrientPractice": "Apply basal FYM + moderate N and P; avoid excess nitrogen under low-moisture rainfed plots."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಹಿಂಗಾರು ಕಪ್ಪು ಮಣ್ಣಿನಲ್ಲಿ ಮಳೆ ನೀರು ಇಂಗಿಸಲು ಮಡಿಗಳನ್ನು (Compartmental bunding) ಮಾಡಿ.",
+      "sowingAndSpacing": "ಸರಿಯಾದ ಬಿತ್ತನೆ ಅವಧಿಯಲ್ಲಿ 45 ಸೆಂ.ಮೀ ಸಾಲು ಮತ್ತು 12–15 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮಳೆಯಾಶ್ರಿತ; ಬರದ ವರ್ಷಗಳಲ್ಲಿ ಹೊಡೆ ಹಂತದಲ್ಲಿ 1 ರಕ್ಷಣಾತ್ಮಕ ನೀರು ಸಹಕಾರಿ.",
+      "nutrientPractice": "ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರದೊಂದಿಗೆ ಮಧ್ಯಮ ಸಾರಜನಕ ಮತ್ತು ರಂಜಕ ಬಳಸಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Sorghum Shoot Fly",
+        "pestNameKn": "ಜೋಳದ ಸುಳಿ ನೊಣ",
+        "symptomsEn": "Withered central shoot in 1–3 week old seedlings.",
+        "symptomsKn": "1–3 ವಾರದ ಎಳೆಯ ಸಸಿಗಳ ಮಧ್ಯದ ಸುಳಿ ಒಣಗುವುದು.",
+        "managementEn": "Timely sowing, slightly higher seed rate followed by thinning affected seedlings, and recommended seed treatment.",
+        "managementKn": "ಸಕಾಲದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ, ಬಾಧಿತ ಸಸಿಗಳನ್ನು ಕಿತ್ತುಹಾಕಿ ಮತ್ತು ಶಿಫಾರಸು ಮಾಡಿದ ಬೀಜೋಪಚಾರ ಮಾಡಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIMR & UAS Dharwad Sorghum Reference"
+  },
+  {
+    "cropCode": "soybean",
+    "nameEn": "Soybean",
+    "nameKn": "ಸೋಯಾಬೀನ್",
+    "scientificName": "Glycine max",
+    "cropCategory": "OILSEED",
+    "suitableSoils": ["BLACK", "RED", "ALLUVIAL"],
+    "seasons": ["KHARIF"],
+    "waterRequirement": "MEDIUM",
+    "waterNotesEn": "Moderate water need (450–600 mm); needs well-distributed Kharif rainfall without waterlogging.",
+    "waterNotesKn": "ಮಧ್ಯಮ ನೀರು (450–600 ಮಿ.ಮೀ); ನೀರು ನಿಲ್ಲದ ಉತ್ತಮ ಹಂಚಿಕೆಯ ಮುಂಗಾರು ಮಳೆ ಸೂಕ್ತ.",
+    "minPh": 6.0,
+    "maxPh": 7.5,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": true,
+    "durationMinDays": 95,
+    "durationMaxDays": 110,
+    "tempMinC": 20,
+    "tempMaxC": 34,
+    "rainfallMinMm": 550,
+    "rainfallMaxMm": 1000,
+    "climateNoteEn": "Warm humid Kharif climate in North & Central Karnataka transition belts.",
+    "climateNoteKn": "ಉತ್ತರ ಮತ್ತು ಮಧ್ಯ ಕರ್ನಾಟಕದ ಮುಂಗಾರು ಬೆಚ್ಚಗಿನ ತೇವಾಂಶ ಪ್ರದೇಶಕ್ಕೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Madhya Pradesh", "Telangana"],
+    "supportedDistricts": ["Bidar", "Belagavi", "Dharwad", "Haveri", "Kalaburagi", "Bagalkot"],
+    "advantagesEn": [
+      "Fixes soil nitrogen and enriches soil for Rabi Wheat or Bengal Gram",
+      "Medium crop duration (95–110 days) supports double cropping in assured moisture areas",
+      "Good canopy cover suppresses mid-season weeds"
+    ],
+    "advantagesKn": [
+      "ಮಣ್ಣಿನಲ್ಲಿ ಸಾರಜನಕ ಸ್ಥಿರೀಕರಿಸಿ ಹಿಂಗಾರು ಕಡಲೆ ಅಥವಾ ಗೋಧಿಗೆ ನೆರವಾಗುತ್ತದೆ",
+      "95–110 ದಿನಗಳ ಅವಧಿಯಿಂದ ಎರಡನೇ ಹಿಂಗಾರು ಬೆಳೆ ತೆಗೆಯಲು ಅವಕಾಶವಿದೆ",
+      "ದಟ್ಟವಾದ ಎಲೆ ಹೊದಿಕೆ ಮಧ್ಯಂತರ ಕಳೆಗಳನ್ನು ತಡೆಯುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Poor germination if seed is sown deep or soil crusts after heavy rain",
+      "Pod shattering if harvest is delayed past physiological maturity",
+      "Soybean rust and girdle beetle can cause heavy defoliation"
+    ],
+    "risksKn": [
+      "ಆಳವಾಗಿ ಬಿತ್ತಿದರೆ ಅಥವಾ ಮಳೆಗೆ ಮಣ್ಣು ಗಟ್ಟಿಯಾದರೆ ಮೊಳಕೆಯೊಡೆಯುವಿಕೆ ಕಡಿಮೆಯಾಗುತ್ತದೆ",
+      "ಕೊಯ್ಲು ತಡವಾದರೆ ಕಾಯಿ ಸಿಡಿಯುವ ಅಪಾಯ",
+      "ತುಕ್ಕು ರೋಗ ಮತ್ತು ಕಾಂಡ ಕೊರಕ ಹಾನಿ ಮಾಡಬಹುದು"
+    ],
+    "rotationalBenefitsEn": "Ideal Kharif precursor to Rabi Bengal Gram or Rabi Jowar.",
+    "rotationalBenefitsKn": "ಹಿಂಗಾರು ಕಡಲೆ ಅಥವಾ ಜೋಳಕ್ಕೆ ಮುಂಚಿನ ಮುಂಗಾರು ಬೆಳೆಯಾಗಿ ಉತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Prepare level seedbed with drainage furrows every 6–8 rows on black soils.",
+      "sowingAndSpacing": "Sow shallow (3–4 cm depth) at 45 x 5–7.5 cm; inoculate seed with Bradyrhizobium japonicum.",
+      "irrigationSchedule": "Rainfed in Kharif; 1 protective irrigation during pod filling if October turns dry.",
+      "nutrientPractice": "Basal phosphorus and sulphur support oil/protein formation; modest starter nitrogen only."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಕಪ್ಪು ಮಣ್ಣಿನಲ್ಲಿ ಪ್ರತಿ 6–8 ಸಾಲುಗಳಿಗೆ ನೀರು ಹರಿಯುವ ಸಾಲು ಬಿಟ್ಟು ಸಮತಟ್ಟಾದ ಭೂಮಿ ಸಿದ್ಧಪಡಿಸಿ.",
+      "sowingAndSpacing": "3–4 ಸೆಂ.ಮೀ ಆಳದಲ್ಲಿ 45 x 5–7.5 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ; ರೈಜೋಬಿಯಂ ಬೀಜೋಪಚಾರ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮುಂಗಾರಿನಲ್ಲಿ ಮಳೆಯಾಶ್ರಿತ; ಅಕ್ಟೋಬರ್ ಒಣಗಿದ್ದರೆ ಕಾಯಿ ತುಂಬುವಾಗ 1 ಲಘು ನೀರು ನೀಡಿ.",
+      "nutrientPractice": "ಬುಡಗೊಬ್ಬರ ರಂಜಕ ಮತ್ತು ಗಂಧಕ (Sulphur) ಬೀಜ ಬೆಳವಣಿಗೆಗೆ ಸಹಕಾರಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Soybean Rust & Leaf Eating Caterpillars",
+        "pestNameKn": "ಸೋಯಾಬೀನ್ ತುಕ್ಕು ರೋಗ ಮತ್ತು ಎಲೆ ತಿನ್ನುವ ಹುಳುಗಳು",
+        "symptomsEn": "Reddish-brown pustules on leaf undersides; ragged defoliated leaves.",
+        "symptomsKn": "ಎಲೆಗಳ ಕೆಳಭಾಗದಲ್ಲಿ ಕಂದು ಚುಕ್ಕೆಗಳು ಮತ್ತು ಎಲೆ ತಿಂದ ಗುರುತುಗಳು.",
+        "managementEn": "Monitor weekly from 35 DAS, keep field weed-free, and apply neem-based or KVK-recommended sprays upon threshold crossing.",
+        "managementKn": "35 ದಿನದಿಂದ ವಾರಕ್ಕೊಮ್ಮೆ ಪರಿಶೀಲಿಸಿ, ಕಳೆ ಮುಕ್ತವಾಗಿಡಿ ಮತ್ತು ತಜ್ಞರ ಸಲಹೆಯಂತೆ ನಿಯಂತ್ರಣ ಕ್ರಮ ಕೈಗೊಳ್ಳಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IISR & UAS Dharwad Soybean Reference"
+  },
+  {
+    "cropCode": "sunflower",
+    "nameEn": "Sunflower",
+    "nameKn": "ಸೂರ್ಯಕಾಂತಿ",
+    "scientificName": "Helianthus annuus",
+    "cropCategory": "OILSEED",
+    "suitableSoils": ["BLACK", "RED", "SANDY_LOAM", "ALLUVIAL"],
+    "seasons": ["KHARIF", "RABI", "ZAID"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low to moderate (350–500 mm); photo-insensitive and drought-tolerant oilseed option.",
+    "waterNotesKn": "ಕಡಿಮೆ ಯಿಂದ ಮಧ್ಯಮ (350–500 ಮಿ.ಮೀ); ಬರ ಸಹಿಷ್ಣು ಮತ್ತು ಮೂರು ಋತುಗಳಲ್ಲೂ ಬೆಳೆಯಬಹುದಾದ ಎಣ್ಣೆಕಾಳು.",
+    "minPh": 6.0,
+    "maxPh": 8.0,
+    "nitrogenDemand": "MEDIUM",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": false,
+    "durationMinDays": 85,
+    "durationMaxDays": 100,
+    "tempMinC": 18,
+    "tempMaxC": 35,
+    "rainfallMinMm": 350,
+    "rainfallMaxMm": 750,
+    "climateNoteEn": "Grows across Kharif, Rabi, and Summer if clear sunny weather occurs during flowering for pollination.",
+    "climateNoteKn": "ಹೂವು ಬಿಡುವ ಸಮಯದಲ್ಲಿ ಪರಾಗಸ್ಪರ್ಶಕ್ಕೆ ಬಿಸಿಲಿನ ವಾತಾವರಣವಿದ್ದರೆ ಮುಂಗಾರು, ಹಿಂಗಾರು, ಬೇಸಿಗೆ ಮೂರರಲ್ಲೂ ಬೆಳೆಯಬಹುದು.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Andhra Pradesh", "Telangana"],
+    "supportedDistricts": [
+      "Bagalkot",
+      "Koppal",
+      "Raichur",
+      "Gadag",
+      "Vijayapura",
+      "Chitradurga",
+      "Davanagere",
+      "Ballari",
+      "Tumakuru"
+    ],
+    "advantagesEn": [
+      "Flexible sowing across all three seasons (photo-insensitive)",
+      "Short duration (85–100 days) and lower water requirement than Maize or Paddy",
+      "Fits well as a contingency crop when monsoon rains arrive late"
+    ],
+    "advantagesKn": [
+      "ಎಲ್ಲಾ ಮೂರು ಋತುಗಳಲ್ಲಿಯೂ ಬಿತ್ತನೆ ಮಾಡಬಹುದಾದ ಬೆಳೆ",
+      "85–100 ದಿನಗಳ ಕಡಿಮೆ ಅವಧಿ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳ/ಭತ್ತಕ್ಕಿಂತ ಕಡಿಮೆ ನೀರು ಸಾಕು",
+      "ಮುಂಗಾರು ತಡವಾದಾಗ ಪರ್ಯಾಯ ತುರ್ತು ಬೆಳೆಯಾಗಿ ಉತ್ತಮ"
+    ],
+    "risksEn": [
+      "Heavy nutrient/boron demand — avoid repeating Sunflower in the same plot every year",
+      "Bird damage during seed filling and Sunflower Necrosis Virus (thrips-borne)",
+      "Poor pollination if heavy rain hits during flowering"
+    ],
+    "risksKn": [
+      "ಒಂದೇ ಜಮೀನಿನಲ್ಲಿ ಪ್ರತಿ ವರ್ಷ ಬೆಳೆದರೆ ಮಣ್ಣಿನ ಪೋಷಕಾಂಶ ಮತ್ತು ಬೋರಾನ್ ಕೊರತೆ ಹೆಚ್ಚುತ್ತದೆ",
+      "ಹಕ್ಕಿಗಳ ಹಾನಿ ಹಾಗೂ ನಂಜು ರೋಗ (ಥ್ರಿಪ್ಸ್ ಮೂಲಕ) ಅಪಾಯ",
+      "ಹೂವು ಬಿಡುವ ಸಮಯದಲ್ಲಿ ನಿರಂತರ ಮಳೆ ಬಂದರೆ ಕಾಳು ಕಟ್ಟುವುದು ಕಡಿಮೆಯಾಗುತ್ತದೆ"
+    ],
+    "rotationalBenefitsEn": "Rotate with Pulses (Groundnut, Green Gram, Bengal Gram) with at least a 2-year gap before repeating Sunflower.",
+    "rotationalBenefitsKn": "ಸೂರ್ಯಕಾಂತಿ ನಂತರ ದ್ವಿದಳ ಬೆಳೆಗಳನ್ನು ಬೆಳೆದು, ಮತ್ತೆ ಸೂರ್ಯಕಾಂತಿ ಹಾಕುವ ಮೊದಲು ಕನಿಷ್ಠ 2 ವರ್ಷ ಅಂತರವಿಡಿ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Prepare fine, weed-free seedbed; avoid stagnant moisture.",
+      "sowingAndSpacing": "60 x 30 cm spacing; supplement hand pollination gently in morning hours or protect honeybees.",
+      "irrigationSchedule": "Irrigate at bud initiation, flowering, and seed-filling stages if soil moisture is low.",
+      "nutrientPractice": "Balanced NPK with Sulphur and Boron (if soil test indicates deficiency); avoid spraying insecticides harmful to bees during flowering."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಕಳೆ ಮುಕ್ತ ಮೃದುವಾದ ಮಣ್ಣು ತಯಾರಿಸಿ; ನೀರು ನಿಲ್ಲದಂತೆ ನೋಡಿಕೊಳ್ಳಿ.",
+      "sowingAndSpacing": "60 x 30 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ; ಹೂವು ಬಿಡುವಾಗ ಜೇನುನೊಣಗಳಿಗೆ ಹಾನಿಯಾಗುವ ಸಿಂಪಡಣೆ ತಪ್ಪಿಸಿ.",
+      "irrigationSchedule": "ಮೊಗ್ಗು, ಹೂವು ಮತ್ತು ಬೀಜ ತುಂಬುವ ಹಂತಗಳಲ್ಲಿ ತೇವಾಂಶ ಕೊರತೆಯಿದ್ದರೆ ನೀರು ನೀಡಿ.",
+      "nutrientPractice": "ಸಮತೋಲಿತ NPK ಜೊತೆ ಗಂಧಕ ಮತ್ತು ಬೋರಾನ್ (ಪರೀಕ್ಷೆಯಲ್ಲಿ ಕೊರತೆ ಕಂಡರೆ) ನೀಡಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Thrips & Sunflower Necrosis Disease",
+        "pestNameKn": "ಥ್ರಿಪ್ಸ್ ನುಸಿ ಮತ್ತು ನೆಕ್ರೋಸಿಸ್ ರೋಗ",
+        "symptomsEn": "Black necrotic streaks on leaves and petioles causing stunted distorted heads.",
+        "symptomsKn": "ಎಲೆ ಮತ್ತು ತೊಟ್ಟುಗಳ ಮೇಲೆ ಕಪ್ಪು ಒಣಗಿದ ಗೆರೆಗಳು ಹಾಗೂ ತೆನೆ ವಿರೂಪಗೊಳ್ಳುವುದು.",
+        "managementEn": "Remove Parthenium weed from field borders (alternate host), plant border rows of Sorghum/Maize, and uproot early infected plants.",
+        "managementKn": "ಬದುಗಳಲ್ಲಿನ ಪಾರ್ಥೇನಿಯಂ ಕಳೆಯನ್ನು ಕಿತ್ತುಹಾಕಿ, ಜಮೀನಿನ ಸುತ್ತ ಜೋಳ/ಮೆಕ್ಕೆಜೋಳದ ತಡೆ ಸಾಲು ಬೆಳೆಯಿರಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIOR & UAS Raichur Sunflower Reference"
+  },
+  {
+    "cropCode": "sugarcane",
+    "nameEn": "Sugarcane",
+    "nameKn": "ಕಬ್ಬು",
+    "scientificName": "Saccharum officinarum",
+    "cropCategory": "CASH_CROP",
+    "suitableSoils": ["ALLUVIAL", "BLACK", "RED"],
+    "seasons": ["PERENNIAL", "KHARIF", "RABI"],
+    "waterRequirement": "HIGH",
+    "waterNotesEn": "Very high water requirement (1,600–2,200 mm over 12 months); requires assured canal, river lift, or drip + borewell.",
+    "waterNotesKn": "ಅತಿ ಹೆಚ್ಚು ನೀರಿನ ಅವಶ್ಯಕತೆ (12 ತಿಂಗಳಲ್ಲಿ 1,600–2,200 ಮಿ.ಮೀ); ಖಚಿತ ಕಾಲುವೆ ಅಥವಾ ಹನಿ ನೀರಾವರಿ + ಕೊಳವೆಬಾವಿ ಅತ್ಯಗತ್ಯ.",
+    "minPh": 6.0,
+    "maxPh": 8.0,
+    "nitrogenDemand": "HIGH",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "HIGH",
+    "nitrogenFixing": false,
+    "durationMinDays": 330,
+    "durationMaxDays": 420,
+    "tempMinC": 20,
+    "tempMaxC": 38,
+    "rainfallMinMm": 1000,
+    "rainfallMaxMm": 2000,
+    "climateNoteEn": "Requires long warm growing season and assured year-round irrigation; avoid rainfed plots.",
+    "climateNoteKn": "ವರ್ಷಪೂರ್ತಿ ಬೆಚ್ಚಗಿನ ಹವಾಮಾನ ಮತ್ತು ನಿರಂತರ ನೀರಾವರಿ ಸೌಲಭ್ಯವಿರುವ ಪ್ರದೇಶಗಳಿಗೆ ಮಾತ್ರ ಸೂಕ್ತ; ಮಳೆಯಾಶ್ರಿತ ಜಮೀನಿಗೆ ಬೇಡ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Tamil Nadu", "Uttar Pradesh"],
+    "supportedDistricts": [
+      "Mandya",
+      "Belagavi",
+      "Bagalkot",
+      "Mysuru",
+      "Bidar",
+      "Davanagere",
+      "Kalaburagi",
+      "Vijayapura"
+    ],
+    "advantagesEn": [
+      "High biomass crop suited to deep soils with assured canal or drip water",
+      "Intercropping with short-duration pulses (Green Gram / Black Gram) in early 70 days uses inter-row space",
+      "Trash mulching improves soil organic matter over time"
+    ],
+    "advantagesKn": [
+      "ಖಚಿತ ಕಾಲುವೆ ಅಥವಾ ಹನಿ ನೀರಾವರಿ ಇರುವ ಆಳವಾದ ಮಣ್ಣುಗಳಿಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ",
+      "ಆರಂಭದ 70 ದಿನಗಳಲ್ಲಿ ಸಾಲುಗಳ ನಡುವೆ ಹೆಸರು/ಉದ್ದು ಅಂತರ ಬೆಳೆ ಬೆಳೆಯಬಹುದು",
+      "ಕಬ್ಬಿನ ತರಗು ಹಾಸಿಗೆ (Trash mulching) ಮಣ್ಣಿನ ಸಾವಯವ ಅಂಶ ಹೆಚ್ಚಿಸುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Not viable for rainfed farms or low-yield borewells; severe groundwater depletion risk",
+      "Long 12–14 month lock-in increases exposure to Red Rot and Early Shoot Borer",
+      "Excessive flood irrigation causes soil salinity and waterlogging over multiple ratoons"
+    ],
+    "risksKn": [
+      "ಮಳೆಯಾಶ್ರಿತ ಅಥವಾ ಕಡಿಮೆ ನೀರಿನ ಬೋರ್‌ವೆಲ್ ಜಮೀನಿಗೆ ಸೂಕ್ತವಲ್ಲ; ಅಂತರ್ಜಲ ಕುಸಿತದ ಅಪಾಯ",
+      "12–14 ತಿಂಗಳ ದೀರ್ಘ ಅವಧಿ ಮತ್ತು ಕೆಂಪು ಕೊಳೆ / ಸುಳಿ ಕೊರಕ ರೋಗದ ಅಪಾಯ",
+      "ಅತಿಯಾದ ಪ್ರವಾಹ ನೀರಾವರಿಯಿಂದ ಮಣ್ಣು ಸವಳಾಗುವ ಸಾಧ್ಯತೆ"
+    ],
+    "rotationalBenefitsEn": "Break sugarcane monoculture after 1 plant + 1 ratoon cycle using Green Manure (Sunhemp) or Pulses.",
+    "rotationalBenefitsKn": "ಒಂದು ಮುಖ್ಯ ಮತ್ತು ಒಂದು ಕುಳೆ ಬೆಳೆಯ ನಂತರ ಸೆಣಬು ಹಸಿರೆಲೆ ಗೊಬ್ಬರ ಅಥವಾ ದ್ವಿದಳ ಬೆಳೆಯೊಂದಿಗೆ ಪರಿವರ್ತನೆ ಮಾಡಿ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Deep subsoiling/ploughing and wide furrow spacing (120–150 cm for SSI/drip systems).",
+      "sowingAndSpacing": "Use healthy 2-budded or single-budded nursery setts treated with hot water/biological protectants.",
+      "irrigationSchedule": "Sub-surface or surface drip irrigation saves 40–50% water over flood irrigation; trash-mulch alternate furrows.",
+      "nutrientPractice": "Apply high organic compost + split N and K doses based on soil test; incorporate green manure between rows."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಆಳವಾದ ಉಳುಮೆ ಮಾಡಿ 120–150 ಸೆಂ.ಮೀ ಅಂತರದ ಅಗಲ ಸಾಲುಗಳನ್ನು (ಹನಿ ನೀರಾವರಿಗೆ ಅನುಕೂಲವಾಗುವಂತೆ) ನಿರ್ಮಿಸಿ.",
+      "sowingAndSpacing": "ಆರೋಗ್ಯಕರ ಒಂದು ಅಥವಾ ಎರಡು ಕಣ್ಣಿನ ಬೀಜದ ತುಂಡುಗಳನ್ನು ಸಂಸ್ಕರಿಸಿ ನಾಟಿ ಮಾಡಿ.",
+      "irrigationSchedule": "ಪ್ರವಾಹ ನೀರಾವರಿಗಿಂತ ಹನಿ ನೀರಾವರಿ ಮತ್ತು ತರಗು ಹೊದಿಕೆ ಶೇ.40–50 ನೀರು ಉಳಿಸುತ್ತದೆ.",
+      "nutrientPractice": "ಮಣ್ಣು ಪರೀಕ್ಷೆಯಂತೆ ಹೆಚ್ಚು ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ ಹಾಗೂ ಹಂತವಾರು ಸಾರಜನಕ ಮತ್ತು ಪೊಟ್ಯಾಶ್ ನೀಡಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Early Shoot Borer & Red Rot",
+        "pestNameKn": "ಆರಂಭಿಕ ಸುಳಿ ಕೊರಕ ಮತ್ತು ಕೆಂಪು ಕೊಳೆ ರೋಗ",
+        "symptomsEn": "Dead hearts in young shoots (1–3 months); reddened internal cane tissue with sour alcoholic odor in Red Rot.",
+        "symptomsKn": "ಎಳೆಯ ಪೈರಿನಲ್ಲಿ ಸುಳಿ ಒಣಗುವುದು; ಕೆಂಪು ಕೊಳೆಯಲ್ಲಿ ಕಬ್ಬಿನ ಒಳಭಾಗ ಕೆಂಪಾಗಿ ಹುಳಿ ವಾಸನೆ ಬರುತ್ತದೆ.",
+        "managementEn": "Use disease-free nursery setts, trash-mulch furrows, earth up at 45 days, and remove red-rot clumps immediately.",
+        "managementKn": "ರೋಗಮುಕ್ತ ಬೀಜದ ತುಂಡುಗಳನ್ನು ಬಳಸಿ, ತರಗು ಹೊದಿಕೆ ಹಾಕಿ, 45 ದಿನದಲ್ಲಿ ಮಣ್ಣು ಏರಿಸಿ ಮತ್ತು ಬಾಧಿತ ಕಬ್ಬನ್ನು ತಕ್ಷಣ ತೆಗೆದುಹಾಕಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-SBI & UAS Mandya Sugarcane Advisory Reference"
+  },
+  {
+    "cropCode": "cotton",
+    "nameEn": "Cotton",
+    "nameKn": "ಹತ್ತಿ",
+    "scientificName": "Gossypium hirsutum",
+    "cropCategory": "CASH_CROP",
+    "suitableSoils": ["BLACK", "RED"],
+    "seasons": ["KHARIF"],
+    "waterRequirement": "MEDIUM",
+    "waterNotesEn": "Moderate water need (600–850 mm); thrives in moisture-retentive deep black soils.",
+    "waterNotesKn": "ಮಧ್ಯಮ ನೀರು (600–850 ಮಿ.ಮೀ); ತೇವಾಂಶ ಹಿಡಿದಿಡುವ ಆಳವಾದ ಕಪ್ಪು ಮಣ್ಣಿಗೆ ಉತ್ತಮ.",
+    "minPh": 6.0,
+    "maxPh": 8.2,
+    "nitrogenDemand": "MEDIUM",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "HIGH",
+    "nitrogenFixing": false,
+    "durationMinDays": 150,
+    "durationMaxDays": 175,
+    "tempMinC": 21,
+    "tempMaxC": 38,
+    "rainfallMinMm": 550,
+    "rainfallMaxMm": 1000,
+    "climateNoteEn": "Requires warm growing months and bright dry sunshine at boll bursting.",
+    "climateNoteKn": "ಬೆಳವಣಿಗೆಗೆ ಬೆಚ್ಚಗಿನ ವಾತಾವರಣ ಮತ್ತು ಕಾಯಿ ಬಿರಿಯುವಾಗ ಬಿಸಿಲಿನ ಒಣ ಹವೆ ಅಗತ್ಯ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Telangana", "Andhra Pradesh", "Gujarat"],
+    "supportedDistricts": [
+      "Raichur",
+      "Ballari",
+      "Dharwad",
+      "Haveri",
+      "Belagavi",
+      "Kalaburagi",
+      "Yadgir",
+      "Gadag",
+      "Mysuru"
+    ],
+    "advantagesEn": [
+      "Well suited to moisture-retentive black cotton soils",
+      "Deep root system withstands brief dry breaks better than shallow vegetables",
+      "Compatible with Green Gram or Black Gram intercropping in wide rows"
+    ],
+    "advantagesKn": [
+      "ತೇವಾಂಶ ಹಿಡಿದಿಡುವ ಕಪ್ಪು ಮಣ್ಣುಗಳಿಗೆ ಅತ್ಯಂತ ಸೂಕ್ತ",
+      "ಆಳವಾದ ಬೇರಿನ ವ್ಯವಸ್ಥೆ ಲಘು ಒಣ ಅವಧಿಯನ್ನು ತಾಳಿಕೊಳ್ಳುತ್ತದೆ",
+      "ಅಗಲ ಸಾಲುಗಳಲ್ಲಿ ಹೆಸರು ಅಥವಾ ಉದ್ದು ಅಂತರ ಬೆಳೆಯಾಗಿ ಬೆಳೆಯಬಹುದು"
+    ],
+    "risksEn": [
+      "High pest management pressure (Pink Bollworm & sucking pests)",
+      "Waterlogging in early Kharif or heavy rain at boll opening stains lint",
+      "Long crop duration extends into dry post-monsoon period without irrigation"
+    ],
+    "risksKn": [
+      "ಗುಲಾಬಿ ಕಾಯಿ ಹುಳು ಮತ್ತು ರಸ ಹೀರುವ ಕೀಟಗಳ ನಿಯಂತ್ರಣ ಹೆಚ್ಚು ಗಮನ ಬೇಡುತ್ತದೆ",
+      "ಕಾಯಿ ಬಿರಿಯುವಾಗ ಮಳೆ ಬಂದರೆ ಹತ್ತಿ ಬಣ್ಣ ಹಾಳಾಗುತ್ತದೆ",
+      "ದೀರ್ಘ ಅವಧಿಯ ಬೆಳೆಯಾದ್ದರಿಂದ ನೀರಾವರಿ ಇಲ್ಲದಿದ್ದರೆ ಕೊನೆಯ ಹಂತದಲ್ಲಿ ತೇವಾಂಶ ಕೊರತೆ ಆಗಬಹುದು"
+    ],
+    "rotationalBenefitsEn": "Rotate with Jowar, Bengal Gram, or Groundnut to break Pink Bollworm carryover.",
+    "rotationalBenefitsKn": "ಗುಲಾಬಿ ಕಾಯಿ ಹುಳುವಿನ ಜೀವನ ಚಕ್ರ ಮುರಿಯಲು ಜೋಳ, ಕಡಲೆ ಅಥವಾ ಶೇಂಗಾದೊಂದಿಗೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಮಾಡಿ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Deep summer ploughing exposes pupae; prepare ridges and furrows for moisture conservation and drainage.",
+      "sowingAndSpacing": "90 x 60 cm (rainfed) or 120 x 60 cm (irrigated) depending on hybrid vigor.",
+      "irrigationSchedule": "Irrigate at square formation, flowering, and boll development if rain fails; avoid late irrigation after boll opening.",
+      "nutrientPractice": "Balanced NPK with foliar magnesium/potassium check during boll filling; avoid excessive nitrogen."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಬೇಸಿಗೆಯಲ್ಲಿ ಆಳ ಉಳುಮೆ ಮಾಡಿ ಮಣ್ಣಿನೊಳಗಿನ ಕೋಶಗಳನ್ನು ನಾಶಪಡಿಸಿ; ಬೋದು ಸಾಲುಗಳನ್ನು ಮಾಡಿ.",
+      "sowingAndSpacing": "ಮಳೆಯಾಶ್ರಿತದಲ್ಲಿ 90 x 60 ಸೆಂ.ಮೀ ಮತ್ತು ನೀರಾವರಿಯಲ್ಲಿ 120 x 60 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮೊಗ್ಗು, ಹೂವು ಮತ್ತು ಕಾಯಿ ಬೆಳೆಯುವ ಹಂತಗಳಲ್ಲಿ ಮಳೆ ಇಲ್ಲದಿದ್ದರೆ ನೀರು ನೀಡಿ.",
+      "nutrientPractice": "ಸಮತೋಲಿತ NPK ಬಳಸಿ; ಹೆಚ್ಚು ಸಾರಜನಕ ಹಾಕುವುದರಿಂದ ರಸ ಹೀರುವ ಕೀಟಗಳು ಹೆಚ್ಚಾಗುತ್ತವೆ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Pink Bollworm & Sucking Pests (Whitefly/Jassids)",
+        "pestNameKn": "ಗುಲಾಬಿ ಕಾಯಿ ಹುಳು ಮತ್ತು ರಸ ಹೀರುವ ಕೀಟಗಳು",
+        "symptomsEn": "Rosette flowers, bored bolls with stained lint; upward curling yellow leaves from jassids.",
+        "symptomsKn": "ಗುಲಾಬಿ ಹೂವಿನಂತೆ ಮುದುಡಿದ ಹೂವುಗಳು ಮತ್ತು ಕಾಯಿ ಒಳಗೆ ಹುಳು ಬಾಧೆ.",
+        "managementEn": "Avoid extending crop past 180 days (no off-season ratoon cotton), install pheromone traps from 45 DAS, and follow strict refuge/IPM practices.",
+        "managementKn": "180 ದಿನಗಳ ನಂತರ ಬೆಳೆ ಮುಂದುವರಿಸಬೇಡಿ, 45 ದಿನದಿಂದ ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಅಳವಡಿಸಿ ಮತ್ತು ಸಮಗ್ರ ಕೀಟ ನಿರ್ವಹಣೆ ಪಾಲಿಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-CICR & UAS Raichur Cotton Reference"
+  },
+  {
+    "cropCode": "black-gram",
+    "nameEn": "Black Gram (Urad)",
+    "nameKn": "ಉದ್ದು",
+    "scientificName": "Vigna mungo",
+    "cropCategory": "PULSE",
+    "suitableSoils": ["BLACK", "RED", "ALLUVIAL"],
+    "seasons": ["KHARIF", "RABI"],
+    "waterRequirement": "LOW",
+    "waterNotesEn": "Low water need (300–400 mm); well suited to rainfed or rice-fallow residual moisture.",
+    "waterNotesKn": "ಕಡಿಮೆ ನೀರು (300–400 ಮಿ.ಮೀ); ಮಳೆಯಾಶ್ರಿತ ಅಥವಾ ಭತ್ತದ ಗದ್ದೆಯ ಉಳಿಕೆ ತೇವಾಂಶಕ್ಕೆ ಸೂಕ್ತ.",
+    "minPh": 6.0,
+    "maxPh": 7.8,
+    "nitrogenDemand": "LOW",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "LOW",
+    "nitrogenFixing": true,
+    "durationMinDays": 70,
+    "durationMaxDays": 85,
+    "tempMinC": 22,
+    "tempMaxC": 36,
+    "rainfallMinMm": 400,
+    "rainfallMaxMm": 850,
+    "climateNoteEn": "Warm humid growing stage with dry weather at harvest; grows well in Bidar/Kalaburagi and Mysuru belts.",
+    "climateNoteKn": "ಬೆಳವಣಿಗೆಗೆ ತೇವಾಂಶ ಮತ್ತು ಕೊಯ್ಲಿಗೆ ಒಣ ಹವೆ ಸೂಕ್ತ; ಬೀದರ್, ಕಲಬುರಗಿ ಮತ್ತು ಮೈಸೂರು ಭಾಗಗಳಲ್ಲಿ ಉತ್ತಮ.",
+    "supportedStates": ["Karnataka", "Andhra Pradesh", "Tamil Nadu", "Maharashtra", "Telangana"],
+    "supportedDistricts": ["Bidar", "Kalaburagi", "Mysuru", "Chamarajanagar", "Dharwad", "Belagavi"],
+    "advantagesEn": [
+      "Fast 70–85 day duration works as both Kharif crop and post-Paddy Rabi crop",
+      "Fixes atmospheric nitrogen for subsequent cereals",
+      "Requires minimal supplemental irrigation"
+    ],
+    "advantagesKn": [
+      "70–85 ದಿನಗಳ ಅಲ್ಪಾವಧಿಯಿಂದ ಭತ್ತದ ನಂತರ ಹಿಂಗಾರು ಬೆಳೆಯಾಗಿಯೂ ಬೆಳೆಯಬಹುದು",
+      "ಮುಂದಿನ ಧಾನ್ಯ ಬೆಳೆಗಳಿಗೆ ಮಣ್ಣಿನಲ್ಲಿ ಸಾರಜನಕ ಉಳಿಸುತ್ತದೆ",
+      "ಕನಿಷ್ಠ ನೀರಾವರಿ ಸಾಕಾಗುತ್ತದೆ"
+    ],
+    "risksEn": [
+      "Powdery mildew and Yellow Mosaic Virus in humid weather",
+      "Pod damage if continuous rains occur at maturity",
+      "Sensitive to poorly drained saline patches"
+    ],
+    "risksKn": [
+      "ತೇವಾಂಶದ ಹವಾಮಾನದಲ್ಲಿ ಬೂದು ರೋಗ ಮತ್ತು ಹಳದಿ ನಂಜು ರೋಗ ಬರಬಹುದು",
+      "ಪಕ್ವವಾಗುವ ಸಮಯದಲ್ಲಿ ನಿರಂತರ ಮಳೆ ಬಂದರೆ ಕಾಯಿ ಹಾಳಾಗುತ್ತದೆ",
+      "ಸವಳು ಮತ್ತು ನೀರು ನಿಲ್ಲುವ ಜಮೀನಿಗೆ ಸೂಕ್ತವಲ್ಲ"
+    ],
+    "rotationalBenefitsEn": "Ideal rice-fallow crop after Paddy or intercrop with Tur Dal / Sugarcane.",
+    "rotationalBenefitsKn": "ಭತ್ತದ ನಂತರ ಗದ್ದೆ ಉಳಿಕೆ ತೇವಾಂಶದಲ್ಲಿ ಅಥವಾ ತೊಗರಿ/ಕಬ್ಬಿನೊಂದಿಗೆ ಅಂತರ ಬೆಳೆಯಾಗಿ ಉತ್ತಮ.",
+    "growingGuidanceEn": {
+      "landPreparation": "1–2 light harrowings; in rice-fallows, broadcast/dibbling cleanly into moist stubbles.",
+      "sowingAndSpacing": "30 x 10 cm line sowing; Rhizobium and PSB seed inoculation.",
+      "irrigationSchedule": "Rainfed in Kharif; 1 light irrigation at pod initiation in dry Rabi plots.",
+      "nutrientPractice": "Basal phosphorus + organic compost; minimal starter nitrogen."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "1–2 ಲಘು ಕುಂಟೆ ಹೊಡೆದು ಮಣ್ಣು ಸಿದ್ಧಪಡಿಸಿ.",
+      "sowingAndSpacing": "30 x 10 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ; ರೈಜೋಬಿಯಂ ಮತ್ತು PSB ಬೀಜೋಪಚಾರ ಮಾಡಿ.",
+      "irrigationSchedule": "ಮುಂಗಾರಿನಲ್ಲಿ ಮಳೆಯಾಶ್ರಿತ; ಒಣ ಹಿಂಗಾರಿನಲ್ಲಿ ಕಾಯಿ ಕಟ್ಟುವಾಗ 1 ಲಘು ನೀರು ಸಾಕು.",
+      "nutrientPractice": "ಬುಡಗೊಬ್ಬರ ರಂಜಕ ಮತ್ತು ಸಾವಯವ ಗೊಬ್ಬರ ಬಳಸಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Powdery Mildew & Pod Borer",
+        "pestNameKn": "ಬೂದು ರೋಗ ಮತ್ತು ಕಾಯಿ ಕೊರಕ",
+        "symptomsEn": "White powdery fungal growth on upper leaf surfaces; chewed flowers/pods.",
+        "symptomsKn": "ಎಲೆಗಳ ಮೇಲ್ಭಾಗದಲ್ಲಿ ಬಿಳಿ ಪುಡಿಯಂತಹ ಪದರ; ಕಾಯಿಗಳಲ್ಲಿ ತೂತು.",
+        "managementEn": "Grow resistant varieties, remove infected crop debris, and consult local RSK before chemical control.",
+        "managementKn": "ರೋಗ ನಿರೋಧಕ ತಳಿ ಬಳಸಿ, ಬೆಳೆ ತ್ಯಾಜ್ಯ ಸ್ವಚ್ಛಗೊಳಿಸಿ ಮತ್ತು RSK ಸಲಹೆಯಂತೆ ನಿಯಂತ್ರಿಸಿ."
+      }
+    ],
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIPR Black Gram Advisory Reference"
+  },
+  {
+    "cropCode": "tomato",
+    "nameEn": "Tomato (Horticulture)",
+    "nameKn": "ಟೊಮೇಟೊ",
+    "scientificName": "Solanum lycopersicum",
+    "cropCategory": "VEGETABLE",
+    "suitableSoils": ["RED", "SANDY_LOAM", "ALLUVIAL"],
+    "seasons": ["KHARIF", "RABI", "ZAID"],
+    "waterRequirement": "HIGH",
+    "waterNotesEn": "High irrigation precision needed (600–800 mm via regular drip/borewell); cannot tolerate long dry breaks or standing water.",
+    "waterNotesKn": "ನಿಯಮಿತ ಹನಿ ನೀರಾವರಿ ಅಥವಾ ಕೊಳವೆಬಾವಿ ಅಗತ್ಯ (600–800 ಮಿ.ಮೀ); ಒಣಗುವಿಕೆ ಅಥವಾ ನೀರು ನಿಲ್ಲುವಿಕೆ ಎರಡನ್ನೂ ಸಹಿಸುವುದಿಲ್ಲ.",
+    "minPh": 6.0,
+    "maxPh": 7.2,
+    "nitrogenDemand": "HIGH",
+    "phosphorusDemand": "HIGH",
+    "potassiumDemand": "HIGH",
+    "nitrogenFixing": false,
+    "durationMinDays": 110,
+    "durationMaxDays": 130,
+    "tempMinC": 18,
+    "tempMaxC": 32,
+    "rainfallMinMm": 450,
+    "rainfallMaxMm": 900,
+    "climateNoteEn": "Thrives in mild plateau districts with drip irrigation and staking support.",
+    "climateNoteKn": "ಹನಿ ನೀರಾವರಿ ಮತ್ತು ಆಸರೆ ಕಟ್ಟುವ ಸೌಲಭ್ಯವಿರುವ ಮೃದು ಹವಾಮಾನದ ಬಯಲುಸೀಮೆ ಜಿಲ್ಲೆಗಳಿಗೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Andhra Pradesh", "Maharashtra", "Tamil Nadu"],
+    "supportedDistricts": [
+      "Kolar",
+      "Chikkaballapur",
+      "Bengaluru Rural",
+      "Belagavi",
+      "Haveri",
+      "Hassan",
+      "Mandya",
+      "Ramanagara"
+    ],
+    "advantagesEn": [
+      "High responsiveness to drip irrigation and plastic/organic mulching",
+      "Fits small intensive plots (0.5–2 acres) when daily management labor is available",
+      "Multiple pickings spread harvest window across weeks"
+    ],
+    "advantagesKn": [
+      "ಹನಿ ನೀರಾವರಿ ಮತ್ತು ಮಲ್ಚಿಂಗ್ ವ್ಯವಸ್ಥೆಗೆ ಉತ್ತಮವಾಗಿ ಸ್ಪಂದಿಸುತ್ತದೆ",
+      "ದೈನಂದಿನ ನಿರ್ವಹಣೆ ಸಾಧ್ಯವಿದ್ದರೆ 0.5–2 ಎಕರೆ ಸಣ್ಣ ಜಮೀನಿನಲ್ಲಿ ತೀವ್ರ ಕೃಷಿಗೆ ಸೂಕ್ತ",
+      "ಹಲವು ವಾರಗಳ ಕಾಲ ಹಂತ ಹಂತವಾಗಿ ಕೊಯ್ಲು ಮಾಡಬಹುದು"
+    ],
+    "risksEn": [
+      "High market price volatility and perishability if cold chain/mandi access is distant",
+      "Intense pest/virus exposure (Leaf Curl Virus, Late Blight, Tuta absoluta)",
+      "High labor, staking, and nursery seedling cost compared to millets or pulses"
+    ],
+    "risksKn": [
+      "ಬೇಗ ಕೆಡುವ ಬೆಳೆಯಾದ್ದರಿಂದ ಮಾರುಕಟ್ಟೆ ದರ ಏರಿಳಿತದ ಅಪಾಯ ಹೆಚ್ಚು",
+      "ಎಲೆ ಮುರುಟು ವೈರಸ್, ಅಂಗಮಾರಿ ಮತ್ತು ಟುಟಾ ಕೀಟಗಳ ಬಾಧೆ ಹೆಚ್ಚು",
+      "ಸಿರಿಧಾನ್ಯ ಅಥವಾ ದ್ವಿದಳ ಬೆಳೆಗಳಿಗೆ ಹೋಲಿಸಿದರೆ ಕಾರ್ಮಿಕ ಮತ್ತು ಆರೈಕೆ ವೆಚ್ಚ ಹೆಚ್ಚು"
+    ],
+    "rotationalBenefitsEn": "Strictly avoid planting Tomato after Chilli, Brinjal, or Potato; rotate with Maize, Ragi, or Pulses.",
+    "rotationalBenefitsKn": "ಮೆಣಸಿನಕಾಯಿ, ಬದನೆ ಅಥವಾ ಆಲೂಗಡ್ಡೆ ನಂತರ ಟೊಮೇಟೊ ಹಾಕಬೇಡಿ; ಮೆಕ್ಕೆಜೋಳ, ರಾಗಿ ಅಥವಾ ದ್ವಿದಳ ಬೆಳೆಗಳೊಂದಿಗೆ ಬದಲಿಸಿ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Prepare raised beds (90–100 cm wide) with rich compost and drip laterals; mulch reduces weeds and fruit rot.",
+      "sowingAndSpacing": "Transplant healthy 25-day raised-nursery seedlings at 90 x 45 cm; install bamboo/wire staking for indeterminate hybrids.",
+      "irrigationSchedule": "Consistent drip irrigation adjusted by stage; sudden heavy watering after drought cracks fruits.",
+      "nutrientPractice": "Basal FYM + balanced fertigation or split NPK with calcium/boron check to prevent blossom-end rot."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಕಾಂಪೋಸ್ಟ್ ಸೇರಿಸಿ 90–100 ಸೆಂ.ಮೀ ಅಗಲದ ಎತ್ತರದ ಮಡಿಗಳನ್ನು (Raised beds) ಮಾಡಿ ಹನಿ ನೀರಾವರಿ ಪೈಪ್ ಅಳವಡಿಸಿ.",
+      "sowingAndSpacing": "25 ದಿನದ ಆರೋಗ್ಯಕರ ನರ್ಸರಿ ಸಸಿಗಳನ್ನು 90 x 45 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ನಾಟಿ ಮಾಡಿ; ಬಳ್ಳಿ ಕಟ್ಟಲು ಆಸರೆ ನೀಡಿ.",
+      "irrigationSchedule": "ಹನಿ ನೀರಾವರಿ ಮೂಲಕ ನಿಯಮಿತ ತೇವಾಂಶ ಕಾಯ್ದುಕೊಳ್ಳಿ; ಒಣಗಿದ ನಂತರ ಒಮ್ಮೆಲೇ ಹೆಚ್ಚು ನೀರು ಕೊಟ್ಟರೆ ಕಾಯಿ ಸೀಳುತ್ತದೆ.",
+      "nutrientPractice": "ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರದೊಂದಿಗೆ ಹಂತವಾರು NPK ಮತ್ತು ಕ್ಯಾಲ್ಸಿಯಂ/ಬೋರಾನ್ ಸಮತೋಲನ ಕಾಪಾಡಿ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Tomato Leaf Curl Virus & Tuta absoluta",
+        "pestNameKn": "ಎಲೆ ಮುರುಟು ವೈರಸ್ ಮತ್ತು ಟುಟಾ ಎಲೆ ಕೊರಕ",
+        "symptomsEn": "Upward curling crinkled small leaves; papery blotch mines in leaves and bored green fruits.",
+        "symptomsKn": "ಎಲೆಗಳು ಮೇಲ್ಮುಖವಾಗಿ ಮುರುಟುವುದು; ಎಲೆಗಳ ಒಳಗೆ ಬಿಳಿ ಸುರಂಗ ಮತ್ತು ಕಾಯಿಗಳಲ್ಲಿ ರಂಧ್ರ.",
+        "managementEn": "Raise seedlings under 40-mesh insect-proof net, plant 2 border rows of Maize, use yellow sticky + Tuta pheromone traps.",
+        "managementKn": "40-ಮೆಶ್ ಕೀಟ ನಿರೋಧಕ ಬಲೆಯೊಳಗೆ ಸಸಿ ಬೆಳೆಸಿ, ಸುತ್ತ ಮೆಕ್ಕೆಜೋಳ ಸಾಲು ಹಾಕಿ ಮತ್ತು ಹಳದಿ/ಫೆರೋಮೋನ್ ಬಲೆ ಬಳಸಿ."
+      },
+      {
+        "pestNameEn": "Early & Late Blight",
+        "pestNameKn": "ಅಂಗಮಾರಿ ರೋಗ",
+        "symptomsEn": "Concentric brown spots on lower leaves or water-soaked dark patches in cool humid weather.",
+        "symptomsKn": "ಕೆಳಗಿನ ಎಲೆಗಳಲ್ಲಿ ಕಂದು ಉಂಗುರ ಚುಕ್ಕೆಗಳು ಅಥವಾ ತೇವಾಂಶದಲ್ಲಿ ಕಪ್ಪು ಕೊಳೆತ ಕಲೆಗಳು.",
+        "managementEn": "Prune lower leaves touching soil, stake plants for airflow, avoid overhead irrigation, and check KVK spray advisories.",
+        "managementKn": "ಮಣ್ಣಿಗೆ ತಾಗುವ ಕೆಳ ಎಲೆಗಳನ್ನು ಕತ್ತರಿಸಿ, ಗಾಳಿಯಾಡುವಂತೆ ಆಸರೆ ಕಟ್ಟಿ ಮತ್ತು ತುಂತುರು ನೀರು ತಪ್ಪಿಸಿ."
+      }
+    ],
+    "dataReliability": "SAMPLE_REGIONAL_REFERENCE",
+    "sourceReference": "UAS / IIHR Horticulture Reference Summary (Market volatility & micro-climate calibration not connected)"
+  },
+  {
+    "cropCode": "onion",
+    "nameEn": "Onion",
+    "nameKn": "ಈರುಳ್ಳಿ",
+    "scientificName": "Allium cepa",
+    "cropCategory": "VEGETABLE",
+    "suitableSoils": ["RED", "BLACK", "SANDY_LOAM", "ALLUVIAL"],
+    "seasons": ["KHARIF", "RABI", "ZAID"],
+    "waterRequirement": "MEDIUM",
+    "waterNotesEn": "Moderate frequent light irrigations (450–650 mm); shallow roots need regular moisture until bulb maturity, then dry curing.",
+    "waterNotesKn": "ನಿಯಮಿತ ಲಘು ನೀರಾವರಿ (450–650 ಮಿ.ಮೀ); ಆಳವಿಲ್ಲದ ಬೇರುಗಳಿಗೆ ತೇವಾಂಶ ಅಗತ್ಯ, ಆದರೆ ಕೊಯ್ಲಿಗೆ 15 ದಿನ ಮುನ್ನ ನೀರು ನಿಲ್ಲಿಸಬೇಕು.",
+    "minPh": 6.0,
+    "maxPh": 7.5,
+    "nitrogenDemand": "MEDIUM",
+    "phosphorusDemand": "MEDIUM",
+    "potassiumDemand": "MEDIUM",
+    "nitrogenFixing": false,
+    "durationMinDays": 100,
+    "durationMaxDays": 125,
+    "tempMinC": 16,
+    "tempMaxC": 32,
+    "rainfallMinMm": 400,
+    "rainfallMaxMm": 750,
+    "climateNoteEn": "Suited to mild dry zones such as Chitradurga, Gadag, Dharwad, and Vijayapura.",
+    "climateNoteKn": "ಚಿತ್ರದುರ್ಗ, ಗದಗ, ಧಾರವಾಡ ಮತ್ತು ವಿಜಯಪುರದಂತಹ ಮೃದು ಒಣ ಹವಾಮಾನದ ಪ್ರದೇಶಗಳಿಗೆ ಸೂಕ್ತ.",
+    "supportedStates": ["Karnataka", "Maharashtra", "Andhra Pradesh", "Gujarat", "Madhya Pradesh"],
+    "supportedDistricts": ["Chitradurga", "Gadag", "Dharwad", "Vijayapura", "Bagalkot", "Belagavi", "Haveri"],
+    "advantagesEn": [
+      "Rabi-cured onions store significantly better than Kharif harvests",
+      "Good fit for drip or sprinkler irrigation on well-drained sandy loams",
+      "Shallow root zone pairs cleanly after deeper-rooted pulses"
+    ],
+    "advantagesKn": [
+      "ಹಿಂಗಾರಿನಲ್ಲಿ ಬೆಳೆದ ಮತ್ತು ಚೆನ್ನಾಗಿ ಒಣಗಿಸಿದ ಈರುಳ್ಳಿ ಹೆಚ್ಚು ಕಾಲ ಬಾಳಿಕೆ ಬರುತ್ತದೆ",
+      "ಮರಳು ಮಿಶ್ರಿತ ಗೋಡು ಮಣ್ಣಿನಲ್ಲಿ ಹನಿ ಅಥವಾ ತುಂತುರು ನೀರಾವರಿಗೆ ಉತ್ತಮ",
+      "ಆಳವಾದ ಬೇರಿನ ದ್ವಿದಳ ಬೆಳೆಗಳ ನಂತರ ಬೆಳೆಯಲು ಸೂಕ್ತ"
+    ],
+    "risksEn": [
+      "Purple Blotch and Stemphylium blight spread rapidly in rainy Kharif conditions",
+      "Thrips infestation during dry spells reduces bulb size",
+      "Heavy clay soils that crack or stay wet cause bulb rot"
+    ],
+    "risksKn": [
+      "ಮಳೆಗಾಲದಲ್ಲಿ ನೇರಳೆ ಚುಕ್ಕೆ ರೋಗ (Purple Blotch) ವೇಗವಾಗಿ ಹರಡುತ್ತದೆ",
+      "ಒಣ ಹವೆಯಲ್ಲಿ ಥ್ರಿಪ್ಸ್ ನುಸಿ ಗಡ್ಡೆ ಗಾತ್ರವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ",
+      "ನೀರು ನಿಲ್ಲುವ ಭಾರಿ ಜೇಡಿ ಮಣ್ಣಿನಲ್ಲಿ ಗಡ್ಡೆ ಕೊಳೆಯುವ ಅಪಾಯ"
+    ],
+    "rotationalBenefitsEn": "Rotate with Maize, Jowar, or Groundnut to reduce soil-borne basal rot.",
+    "rotationalBenefitsKn": "ಮಣ್ಣಿನಿಂದ ಬರುವ ಬುಡ ಕೊಳೆ ರೋಗ ತಡೆಯಲು ಮೆಕ್ಕೆಜೋಳ, ಜೋಳ ಅಥವಾ ಶೇಂಗಾದೊಂದಿಗೆ ಪರಿವರ್ತನೆ ಮಾಡಿ.",
+    "growingGuidanceEn": {
+      "landPreparation": "Prepare flat or broad-bed furrows with well-rotted FYM; avoid fresh uncomposted manure.",
+      "sowingAndSpacing": "Transplant 40–45 day nursery seedlings at 15 x 10 cm spacing.",
+      "irrigationSchedule": "Light frequent irrigations every 6–10 days; withhold water 12–15 days prior to harvest when tops fall over.",
+      "nutrientPractice": "Balanced NPK with Sulphur (essential for bulb pungency and storage life); avoid late nitrogen after 60 DAT."
+    },
+    "growingGuidanceKn": {
+      "landPreparation": "ಚೆನ್ನಾಗಿ ಕೊಳೆತ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ ಸೇರಿಸಿ ಸಮತಟ್ಟಾದ ಅಥವಾ ಅಗಲ ಮಡಿಗಳನ್ನು ಸಿದ್ಧಪಡಿಸಿ.",
+      "sowingAndSpacing": "40–45 ದಿನದ ಸಸಿಗಳನ್ನು 15 x 10 ಸೆಂ.ಮೀ ಅಂತರದಲ್ಲಿ ನಾಟಿ ಮಾಡಿ.",
+      "irrigationSchedule": "6–10 ದಿನಕ್ಕೊಮ್ಮೆ ಲಘು ನೀರು ನೀಡಿ; ಎಲೆ ಬಾಗಿದ ನಂತರ ಕೊಯ್ಲಿಗೆ 12–15 ದಿನ ಮೊದಲು ನೀರು ನಿಲ್ಲಿಸಿ.",
+      "nutrientPractice": "ಗಡ್ಡೆ ಬಾಳಿಕೆಗಾಗಿ ಗಂಧಕ (Sulphur) ಸಹಿತ ಸಮತೋಲಿತ NPK ಬಳಸಿ; 60 ದಿನದ ನಂತರ ಸಾರಜನಕ ಬೇಡ."
+    },
+    "commonPests": [
+      {
+        "pestNameEn": "Onion Thrips & Purple Blotch",
+        "pestNameKn": "ಈರುಳ್ಳಿ ಥ್ರಿಪ್ಸ್ ಮತ್ತು ನೇರಳೆ ಚುಕ್ಕೆ ರೋಗ",
+        "symptomsEn": "Silvery white streaks on leaves (thrips); sunken purple lesions with yellow margins.",
+        "symptomsKn": "ಎಲೆಗಳ ಮೇಲೆ ಬೆಳ್ಳಿ ಗೆರೆಗಳು (ಥ್ರಿಪ್ಸ್); ಹಳದಿ ಅಂಚಿನ ನೇರಳೆ ಚುಕ್ಕೆಗಳು.",
+        "managementEn": "Plant 2 rows of Maize as barrier crop around plots, use blue sticky traps for thrips, and avoid evening sprinkler irrigation.",
+        "managementKn": "ಜಮೀನಿನ ಸುತ್ತ 2 ಸಾಲು ಮೆಕ್ಕೆಜೋಳ ತಡೆ ಬೆಳೆ ಹಾಕಿ, ನೀಲಿ ಅಂಟು ಬಲೆಗಳನ್ನು ಇಡಿ ಮತ್ತು ಸಂಜೆ ತುಂತುರು ನೀರಾವರಿ ತಪ್ಪಿಸಿ."
+      }
+    ],
+    "dataReliability": "SAMPLE_REGIONAL_REFERENCE",
+    "sourceReference": "ICAR-DOGR Onion Production Reference Summary"
+  }
+]

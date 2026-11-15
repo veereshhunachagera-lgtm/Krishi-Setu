@@ -241,6 +241,17 @@
               "Follow sowing spacing, weed control, and irrigation timing for your selected crop."
             ]
           },
+          "alternative-crops": {
+            "title": "Alternative Crop Advisory",
+            "description": "Compare 2 to 4 crops side-by-side on suitability, water requirement, growing duration, advantages, and risks.",
+            "status": "Side-by-Side Comparison",
+            "integrationNote": "Evaluates alternative lower-water or soil-restoring crops against your saved field profile.",
+            "steps": [
+              "Select 2 to 4 candidate crops to compare side-by-side.",
+              "Review water demand, field duration in days, advantages, and agronomic risks.",
+              "Verify regional suitability before finalizing your seasonal sowing plan."
+            ]
+          },
           "soil-health-analysis": {
             "title": "Soil Health Analysis",
             "description": "Review your saved Soil Health Card readings or field soil baseline in plain language.",
@@ -250,6 +261,17 @@
               "Review recorded soil test readings or basic soil type from your profile.",
               "Note any parameters marked as Unknown for future testing.",
               "Use organic compost and balanced soil care before sowing."
+            ]
+          },
+          "crop-knowledge-bank": {
+            "title": "Crop Knowledge Bank",
+            "description": "Searchable crop reference with growing guidance, soil/pH compatibility, and common pest management.",
+            "status": "Searchable Reference",
+            "integrationNote": "Backed by the PostgreSQL / REST crop and soil knowledge dataset.",
+            "steps": [
+              "Search by crop name, district, season, soil type, or water demand.",
+              "Expand any crop to read land preparation, spacing, irrigation, and pest prevention steps.",
+              "Check data reliability notes on each crop card."
             ]
           },
           "fertilizer-planner": {
@@ -450,7 +472,167 @@
     "hasReportYes": "Yes",
     "hasReportNo": "No",
     "emptyFarmers": "No matching farmer profiles found.",
-    "languageSplit": "Language Preference Distribution"
+    "languageSplit": "Language Preference Distribution",
+    "tabs": {
+      "farmers": "Registered Farmers",
+      "crops": "Crop & Soil Dataset"
+    },
+    "crops": {
+      "heading": "Crop & Soil Knowledge Dataset",
+      "syncSeedBtn": "Re-sync Curated Seed",
+      "addCropBtn": "Add Crop Record",
+      "newCropTitle": "Add New Crop Record to Dataset",
+      "cropCodeLabel": "Crop Code (slug)",
+      "nameEnLabel": "Crop Name (English)",
+      "nameKnLabel": "Crop Name (Kannada)",
+      "categoryLabel": "Category",
+      "minDaysLabel": "Min Duration (Days)",
+      "maxDaysLabel": "Max Duration (Days)",
+      "reliabilityLabel": "Data Reliability",
+      "tableTitle": "Stored Crop Knowledge Records",
+      "colCrop": "Crop",
+      "colSoils": "Suitable Soils",
+      "colSeasons": "Seasons",
+      "colWater": "Water Need",
+      "colDuration": "Duration",
+      "colActions": "Actions",
+      "deleteCrop": "Delete crop record",
+      "syncSuccess": "Synchronized {{count}} curated crop records.",
+      "createSuccess": "New crop knowledge record saved."
+    }
+  },
+  "cropIntelligence": {
+    "waterLabel": "Water Need",
+    "daysUnit": "days",
+    "sampleDataLabel": "Sample Regional Reference",
+    "curatedDataLabel": "Curated Agronomic Reference",
+    "sourceLabel": "Source",
+    "categories": {
+      "MILLET": "Millet",
+      "PULSE": "Pulse",
+      "OILSEED": "Oilseed",
+      "CEREAL": "Cereal",
+      "CASH_CROP": "Cash Crop",
+      "VEGETABLE": "Horticulture / Vegetable"
+    },
+    "waterLevels": {
+      "LOW": "Low Water",
+      "MEDIUM": "Moderate Water",
+      "HIGH": "High Water"
+    },
+    "suitability": {
+      "STRONG_FIT": "Strong Fit for Profile",
+      "MODERATE_FIT": "Moderate Fit",
+      "CONDITIONAL_FIT": "Conditional Fit (Review Cautions)"
+    },
+    "soilParams": {
+      "nitrogen": "Nitrogen (N)",
+      "phosphorus": "Phosphorus (P)",
+      "potassium": "Potassium (K)",
+      "ph": "Soil pH"
+    },
+    "soilStatus": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "ACIDIC": "Acidic",
+      "NEUTRAL": "Optimal Neutral",
+      "ALKALINE": "Alkaline",
+      "UNKNOWN": "Unknown"
+    },
+    "advisory": {
+      "filterTitle": "Explore Conditions (Profile Defaults Applied)",
+      "filterSubtitle": "Using your saved profile values. Adjust temporarily to explore alternative season or water scenarios.",
+      "usingSavedValue": "Saved profile: {{value}}",
+      "resetFilters": "Reset to Saved Profile",
+      "limitationsHeading": "Missing Information & Scope Limitations",
+      "missingFieldsLabel": "Missing Profile Readings",
+      "noMissingFields": "All key farm and soil parameters are filled in your profile.",
+      "scopeLimitsLabel": "Data & Scope Disclosure",
+      "planBuilderTitle": "Build & Save Your Crop Advisory Plan",
+      "planBuilderSubtitle": "Choose 1 primary crop and up to 3 alternative crops below to compare or save to your profile.",
+      "compareSelectedBtn": "Compare Selected ({{count}})",
+      "notesLabel": "Field Notes (Optional)",
+      "notesPlaceholder": "e.g., Planning Kharif intercrop on red soil plot",
+      "savePlanBtn": "Save Advisory Plan",
+      "planSavedMessage": "Advisory plan saved to database.",
+      "emptyTitle": "No crop records loaded",
+      "emptyDesc": "Try resetting filters or updating your farm profile.",
+      "selectedAsPrimary": "Primary Crop",
+      "selectPrimary": "Set Primary",
+      "selectedAsAlt": "Alternative Added",
+      "selectAlt": "Add Alternative",
+      "whyRecommended": "Why Recommended",
+      "risksAndChecks": "Risks & Precautions",
+      "noMajorCautions": "No major soil or irrigation conflicts flagged for your profile.",
+      "savedPlansTitle": "Your Saved Crop Advisory Plans",
+      "noSavedPlans": "No saved crop plans yet. Select a primary crop above and click Save Advisory Plan.",
+      "alternativesSaved": "Alternatives",
+      "openComparison": "Compare",
+      "deletePlan": "Delete saved plan"
+    },
+    "comparison": {
+      "pickerTitle": "Select 2 to 4 Crops to Compare Side-by-Side",
+      "selectedCount": "{{count}} of 4 selected",
+      "tradeoffSummaryTitle": "Key Agronomic Trade-Offs",
+      "matrixTitle": "Side-by-Side Crop Comparison Matrix",
+      "attribute": "Comparison Factor",
+      "suitabilityRow": "Profile Suitability",
+      "waterRow": "Water Requirement",
+      "durationRow": "Growing Duration",
+      "soilPhRow": "Suitable Soil & pH",
+      "advantagesRow": "Advantages",
+      "risksRow": "Risks & Vulnerabilities",
+      "durationChartTitle": "Growing Duration Comparison (Days)",
+      "durationChartSubtitle": "Factual crop maturity range from dataset (min to max days). Yields and profits are intentionally excluded.",
+      "refreshBtn": "Refresh Comparison",
+      "minDaysLegend": "Min Days",
+      "maxDaysLegend": "Max Days"
+    },
+    "soil": {
+      "limitationsTitle": "Soil Assessment Scope & Missing Readings",
+      "referenceBand": "Medium Reference Range",
+      "chartTitle": "Recorded NPK vs. Reference Fertility Thresholds",
+      "chartSubtitle": "Displays your saved soil readings against ICAR medium lower and upper bounds (kg/ha).",
+      "yourValue": "Your Soil Reading",
+      "mediumLower": "Medium Lower Bound",
+      "mediumUpper": "Medium Upper Bound",
+      "noReportCardTitle": "No Lab Soil Report Saved — Field Baseline Active",
+      "noReportCardDesc": "Your profile uses basic field details ({{soilType}}). Add N, P, K, and pH values anytime after testing at your district lab.",
+      "baselineTitle": "Recommended General Soil Care Practices"
+    },
+    "knowledgeBank": {
+      "searchPlaceholder": "Search crops, districts, scientific names...",
+      "allSeasons": "All Seasons",
+      "allSoils": "All Soil Types",
+      "allWater": "All Water Needs",
+      "allCategories": "All Categories",
+      "emptyTitle": "No matching crops found",
+      "emptyDesc": "Try clearing search text or switching season/soil filters.",
+      "supportedRegions": "Supported Districts",
+      "growingGuidanceTitle": "Field Growing Guidance",
+      "landPrep": "Land Preparation",
+      "sowingSpacing": "Sowing & Spacing",
+      "irrigation": "Irrigation Schedule",
+      "nutrition": "Nutrient Practice",
+      "pestsTitle": "Common Pests & Diseases",
+      "symptomsLabel": "Symptoms",
+      "managementLabel": "Safe Management"
+    },
+    "fertilizer": {
+      "disclaimer": "Organic manure and split-application principles shown below are general agronomic guidance—not exact chemical prescriptions. Always verify exact dosages with your Soil Health Card and local Raitha Samparka Kendra (RSK).",
+      "selectCropLabel": "Select Crop for Nutrient Guidance",
+      "nFixingNote": "Nitrogen-fixing legume",
+      "guidanceTitle": "Recommended Nutrient & Land Care Approach"
+    },
+    "rotation": {
+      "currentBaselineTitle": "Current / Previous Crop Baseline",
+      "currentBaselineDesc": "Your profile records \"{{crop}}\" as your current or previous crop. Rotating with pulses or different root-depth crops improves soil nitrogen and interrupts pest buildup.",
+      "fixersTitle": "Nitrogen-Fixing Rotation Options",
+      "fixersSubtitle": "Pulses and legume oilseeds from our dataset that help replenish soil fertility.",
+      "compareFixersBtn": "Compare Top Rotation Pulses",
+      "diversifyTitle": "Additional Rotational Crops"
+    }
   },
   "validation": {
     "fullNameRequired": "Please enter your full name (at least 2 characters).",

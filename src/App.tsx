@@ -240,6 +240,7 @@ function KrishiSetuRouter() {
             profile={profile}
             onBackDashboard={() => navigate('/dashboard')}
             onBackCategory={() => navigate(`/dashboard/${cat.id}`)}
+            onSelectSubFeature={(nextSubId) => navigate(`/dashboard/${cat.id}/${nextSubId}`)}
             onNavigateProfile={() => navigate('/profile')}
             onEditOnboarding={() => navigate('/onboarding/edit')}
             onLogout={handleLogout}

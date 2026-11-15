@@ -21,6 +21,19 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
         ],
       },
       {
+        id: 'alternative-crops',
+        categoryId: 'crop-soil',
+        titleKey: 'dashboard.categories.crop-soil.subFeatures.alternative-crops.title',
+        descriptionKey: 'dashboard.categories.crop-soil.subFeatures.alternative-crops.description',
+        statusTagKey: 'dashboard.categories.crop-soil.subFeatures.alternative-crops.status',
+        integrationNoteKey: 'dashboard.categories.crop-soil.subFeatures.alternative-crops.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.crop-soil.subFeatures.alternative-crops.steps.0',
+          'dashboard.categories.crop-soil.subFeatures.alternative-crops.steps.1',
+          'dashboard.categories.crop-soil.subFeatures.alternative-crops.steps.2',
+        ],
+      },
+      {
         id: 'soil-health-analysis',
         categoryId: 'crop-soil',
         titleKey: 'dashboard.categories.crop-soil.subFeatures.soil-health-analysis.title',
@@ -31,6 +44,19 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
           'dashboard.categories.crop-soil.subFeatures.soil-health-analysis.steps.0',
           'dashboard.categories.crop-soil.subFeatures.soil-health-analysis.steps.1',
           'dashboard.categories.crop-soil.subFeatures.soil-health-analysis.steps.2',
+        ],
+      },
+      {
+        id: 'crop-knowledge-bank',
+        categoryId: 'crop-soil',
+        titleKey: 'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.title',
+        descriptionKey: 'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.description',
+        statusTagKey: 'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.status',
+        integrationNoteKey: 'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.steps.0',
+          'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.steps.1',
+          'dashboard.categories.crop-soil.subFeatures.crop-knowledge-bank.steps.2',
         ],
       },
       {

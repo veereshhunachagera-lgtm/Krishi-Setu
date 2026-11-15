@@ -8,6 +8,7 @@ import com.krishisetu.entity.User;
 import com.krishisetu.repository.FarmerProfileRepository;
 import com.krishisetu.repository.NotificationRepository;
 import com.krishisetu.repository.UserRepository;
+import com.krishisetu.service.CropDatasetImportService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +22,7 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final FarmerProfileRepository farmerProfileRepository;
     private final NotificationRepository notificationRepository;
+    private final CropDatasetImportService cropDatasetImportService;
     private final PasswordEncoder passwordEncoder;
     private final boolean seedEnabled;
 
@@ -28,18 +30,22 @@ public class DataInitializer implements CommandLineRunner {
         UserRepository userRepository,
         FarmerProfileRepository farmerProfileRepository,
         NotificationRepository notificationRepository,
+        CropDatasetImportService cropDatasetImportService,
         PasswordEncoder passwordEncoder,
         @Value("${krishisetu.seed.enabled:true}") boolean seedEnabled
     ) {
         this.userRepository = userRepository;
         this.farmerProfileRepository = farmerProfileRepository;
         this.notificationRepository = notificationRepository;
+        this.cropDatasetImportService = cropDatasetImportService;
         this.passwordEncoder = passwordEncoder;
         this.seedEnabled = seedEnabled;
     }
 
     @Override
     public void run(String... args) {
+        cropDatasetImportService.importSeedDatasetIfEmpty();
+
         if (!seedEnabled) {
             return;
         }

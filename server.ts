@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express, { type NextFunction, type Request, type Response } from 'express';
+import multer from 'multer';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,6 +14,19 @@ import {
   type CropKnowledgeRecord,
   type SavedCropPlanRecord,
 } from './server/cropEngine.ts';
+import {
+  filterActiveAlerts,
+  filterProtectionGuides,
+  getScannerStatus,
+  hasValidImageSignature,
+  invokeDiseaseInference,
+  loadSeedAlerts,
+  loadSeedGuides,
+  translateScanReasonKn,
+  type PestDiseaseAlertRecord,
+  type PlantDiseaseScanRecord,
+  type PlantProtectionGuideRecord,
+} from './server/plantHealthEngine.ts';
 
 interface SoilReportRecord {
   nitrogenKgPerHa: number | null;
@@ -74,6 +88,9 @@ interface DatabaseSchema {
   notifications: NotificationRecord[];
   crops: CropKnowledgeRecord[];
   savedCropPlans: SavedCropPlanRecord[];
+  pestAlerts: PestDiseaseAlertRecord[];
+  protectionGuides: PlantProtectionGuideRecord[];
+  diseaseScans: PlantDiseaseScanRecord[];
 }
 
 interface AuthenticatedRequest extends Request {
@@ -236,6 +253,9 @@ function seedInitialDatabase(): DatabaseSchema {
     ],
     crops: loadSeedCrops(),
     savedCropPlans: [],
+    pestAlerts: loadSeedAlerts(),
+    protectionGuides: loadSeedGuides(),
+    diseaseScans: [],
   };
 }
 
@@ -258,6 +278,18 @@ function readDb(): DatabaseSchema {
     }
     if (!Array.isArray(parsed.savedCropPlans)) {
       parsed.savedCropPlans = [];
+      changed = true;
+    }
+    if (!Array.isArray(parsed.pestAlerts) || parsed.pestAlerts.length === 0) {
+      parsed.pestAlerts = loadSeedAlerts();
+      changed = true;
+    }
+    if (!Array.isArray(parsed.protectionGuides) || parsed.protectionGuides.length === 0) {
+      parsed.protectionGuides = loadSeedGuides();
+      changed = true;
+    }
+    if (!Array.isArray(parsed.diseaseScans)) {
+      parsed.diseaseScans = [];
       changed = true;
     }
     const db = parsed as DatabaseSchema;
@@ -1070,6 +1102,284 @@ async function startServer() {
     }
     writeDb(db);
     res.json({ importedCount });
+  });
+
+  // --- Phase 3: Plant Health & Protection Routes ---
+  const leafUpload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 5 * 1024 * 1024 },
+  });
+
+  app.get('/api/v1/plant-health/scanner/status', requireAuth, async (_req, res) => {
+    const status = await getScannerStatus();
+    res.json(status);
+  });
+
+  app.post('/api/v1/plant-health/scanner/analyze', requireAuth, (req: AuthenticatedRequest, res) => {
+    leafUpload.single('image')(req, res, async (uploadErr) => {
+      if (uploadErr) {
+        if (uploadErr instanceof multer.MulterError && uploadErr.code === 'LIMIT_FILE_SIZE') {
+          sendError(res, 400, 'VALIDATION_ERROR', 'Uploaded image exceeds the 5 MB size limit.');
+          return;
+        }
+        sendError(res, 400, 'VALIDATION_ERROR', 'Invalid multipart image upload.');
+        return;
+      }
+
+      const file = req.file;
+      if (!file || !file.buffer || file.buffer.length === 0) {
+        sendError(res, 400, 'VALIDATION_ERROR', 'A leaf image file (JPEG, PNG, or WebP) is required.', {
+          image: 'A leaf image file is required.',
+        });
+        return;
+      }
+
+      const allowedMimes = new Set(['image/jpeg', 'image/jpg', 'image/png', 'image/webp']);
+      const mimeType = (file.mimetype || '').toLowerCase();
+      if (!allowedMimes.has(mimeType)) {
+        sendError(
+          res,
+          400,
+          'VALIDATION_ERROR',
+          'Unsupported image format. Please upload a JPEG, PNG, or WebP image.',
+          { image: 'Unsupported file format. Allowed: JPEG, PNG, WebP.' },
+        );
+        return;
+      }
+
+      if (!hasValidImageSignature(file.buffer)) {
+        sendError(
+          res,
+          400,
+          'VALIDATION_ERROR',
+          'Uploaded file does not match a valid JPEG, PNG, or WebP image header.',
+          { image: 'File content is not a valid image.' },
+        );
+        return;
+      }
+
+      const rawCrop = typeof req.body?.cropCode === 'string' ? req.body.cropCode.trim().toLowerCase() : '';
+      const cropCode = rawCrop || null;
+      const farmerNotes =
+        typeof req.body?.farmerNotes === 'string' && req.body.farmerNotes.trim()
+          ? req.body.farmerNotes.trim().slice(0, 500)
+          : null;
+
+      const inference = await invokeDiseaseInference({
+        fileBuffer: file.buffer,
+        originalFileName: file.originalname || 'leaf-upload.jpg',
+        mimeType,
+        cropCode,
+      });
+
+      const db = readDb();
+      let preventiveGuidanceEn: string[] | undefined;
+      let preventiveGuidanceKn: string[] | undefined;
+      if (inference.scanStatus === 'PREDICTION_READY' && cropCode) {
+        const matchedGuide = db.protectionGuides.find(
+          (g) => g.cropCode.toLowerCase() === cropCode,
+        );
+        if (matchedGuide) {
+          preventiveGuidanceEn = matchedGuide.preventivePracticesEn;
+          preventiveGuidanceKn = matchedGuide.preventivePracticesKn;
+        }
+      }
+
+      const scanRecord: PlantDiseaseScanRecord = {
+        id: crypto.randomUUID(),
+        userId: req.authUser!.id,
+        cropCode,
+        originalFileName: file.originalname || 'leaf-upload.jpg',
+        mimeType,
+        fileSizeBytes: file.size,
+        scanStatus: inference.scanStatus,
+        modelId: inference.modelId,
+        predictedLabel: inference.predictedLabel,
+        confidence: inference.confidence,
+        reasonEn: inference.reasonEn,
+        reasonKn: translateScanReasonKn(inference.scanStatus, inference.reasonEn),
+        topCandidates: inference.topCandidates,
+        preventiveGuidanceEn,
+        preventiveGuidanceKn,
+        safetyReminderEn:
+          'Verify visual screening results with a local Raitha Samparka Kendra (RSK) or KVK specialist before applying chemical treatments.',
+        safetyReminderKn:
+          'ಯಾವುದೇ ರಾಸಾಯನಿಕ ಚಿಕಿತ್ಸೆ ಬಳಸುವ ಮೊದಲು ಸ್ಥಳೀಯ ರೈತ ಸಂಪರ್ಕ ಕೇಂದ್ರ (RSK) ಅಥವಾ ಕೆವಿಕೆ ತಜ್ಞರಿಂದ ದೃಢೀಕರಿಸಿ.',
+        farmerNotes,
+        createdAt: new Date().toISOString(),
+      };
+
+      db.diseaseScans.unshift(scanRecord);
+      writeDb(db);
+      res.json(scanRecord);
+    });
+  });
+
+  app.get('/api/v1/plant-health/scanner/history', requireAuth, (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    const list = db.diseaseScans
+      .filter((s) => s.userId === req.authUser?.id)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    res.json(list);
+  });
+
+  app.get('/api/v1/plant-health/alerts', requireAuth, (req, res) => {
+    const db = readDb();
+    const list = filterActiveAlerts(db.pestAlerts, {
+      state: typeof req.query.state === 'string' ? req.query.state : undefined,
+      district: typeof req.query.district === 'string' ? req.query.district : undefined,
+      cropCode: typeof req.query.cropCode === 'string' ? req.query.cropCode : undefined,
+      verificationStatus:
+        typeof req.query.verificationStatus === 'string' ? req.query.verificationStatus : undefined,
+    });
+    res.json(list);
+  });
+
+  app.get('/api/v1/plant-health/guidance', requireAuth, (req, res) => {
+    const db = readDb();
+    const list = filterProtectionGuides(db.protectionGuides, {
+      q: typeof req.query.q === 'string' ? req.query.q : undefined,
+      cropCode: typeof req.query.cropCode === 'string' ? req.query.cropCode : undefined,
+      issueType: typeof req.query.issueType === 'string' ? req.query.issueType : undefined,
+    });
+    res.json(list);
+  });
+
+  // --- Admin Plant Health Alerts Management ---
+  app.get('/api/v1/admin/plant-health/alerts', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const sorted = [...db.pestAlerts].sort((a, b) => b.observedDate.localeCompare(a.observedDate));
+    res.json(sorted);
+  });
+
+  app.post('/api/v1/admin/plant-health/alerts', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    if (typeof body.alertCode !== 'string' || !body.alertCode.trim()) {
+      fieldErrors.alertCode = 'Alert code is required.';
+    }
+    if (typeof body.titleEn !== 'string' || !body.titleEn.trim()) {
+      fieldErrors.titleEn = 'English title is required.';
+    }
+    if (typeof body.titleKn !== 'string' || !body.titleKn.trim()) {
+      fieldErrors.titleKn = 'Kannada title is required.';
+    }
+    if (typeof body.cropCode !== 'string' || !body.cropCode.trim()) {
+      fieldErrors.cropCode = 'Crop code is required.';
+    }
+    if (typeof body.sourceName !== 'string' || !body.sourceName.trim()) {
+      fieldErrors.sourceName = 'Verified source name is required.';
+    }
+    if (typeof body.observedDate !== 'string' || !body.observedDate.trim()) {
+      fieldErrors.observedDate = 'Observed date is required.';
+    }
+    if (typeof body.summaryEn !== 'string' || !body.summaryEn.trim()) {
+      fieldErrors.summaryEn = 'English summary is required.';
+    }
+    if (typeof body.summaryKn !== 'string' || !body.summaryKn.trim()) {
+      fieldErrors.summaryKn = 'Kannada summary is required.';
+    }
+    const validStatus = new Set(['CONFIRMED_OUTBREAK', 'REPORTED_CASE', 'SEASONAL_RULE_ADVISORY']);
+    const status = String(body.verificationStatus || '').trim().toUpperCase();
+    if (!validStatus.has(status)) {
+      fieldErrors.verificationStatus =
+        'Verification status must be CONFIRMED_OUTBREAK, REPORTED_CASE, or SEASONAL_RULE_ADVISORY.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const db = readDb();
+    const normalizedCode = body.alertCode.trim().toLowerCase();
+    const existingIdx = db.pestAlerts.findIndex(
+      (a) => a.alertCode.toLowerCase() === normalizedCode,
+    );
+
+    const record: PestDiseaseAlertRecord = {
+      id: existingIdx >= 0 ? db.pestAlerts[existingIdx].id : crypto.randomUUID(),
+      alertCode: normalizedCode,
+      titleEn: body.titleEn.trim(),
+      titleKn: body.titleKn.trim(),
+      cropCode: body.cropCode.trim().toLowerCase(),
+      cropNameEn:
+        typeof body.cropNameEn === 'string' && body.cropNameEn.trim()
+          ? body.cropNameEn.trim()
+          : body.cropCode.trim(),
+      cropNameKn:
+        typeof body.cropNameKn === 'string' && body.cropNameKn.trim()
+          ? body.cropNameKn.trim()
+          : body.cropCode.trim(),
+      state:
+        typeof body.state === 'string' && body.state.trim() ? body.state.trim() : 'Karnataka',
+      district:
+        typeof body.district === 'string' && body.district.trim() ? body.district.trim() : null,
+      verificationStatus: status as PestDiseaseAlertRecord['verificationStatus'],
+      severity:
+        body.severity === 'HIGH' || body.severity === 'LOW' ? body.severity : 'MODERATE',
+      observedDate: body.observedDate.trim(),
+      validUntil:
+        typeof body.validUntil === 'string' && body.validUntil.trim() ? body.validUntil.trim() : null,
+      sourceName: body.sourceName.trim(),
+      sourceUrl:
+        typeof body.sourceUrl === 'string' && body.sourceUrl.trim() ? body.sourceUrl.trim() : null,
+      summaryEn: body.summaryEn.trim(),
+      summaryKn: body.summaryKn.trim(),
+      precautionsEn: Array.isArray(body.precautionsEn) ? body.precautionsEn : [],
+      precautionsKn: Array.isArray(body.precautionsKn) ? body.precautionsKn : [],
+      active: body.active !== false,
+    };
+
+    if (existingIdx >= 0) {
+      db.pestAlerts[existingIdx] = record;
+    } else {
+      db.pestAlerts.unshift(record);
+    }
+    writeDb(db);
+    res.status(201).json(record);
+  });
+
+  app.delete('/api/v1/admin/plant-health/alerts/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.pestAlerts.findIndex((a) => a.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Alert record not found.');
+      return;
+    }
+    db.pestAlerts.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  app.post('/api/v1/admin/plant-health/sync-seed', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const seedAlerts = loadSeedAlerts();
+    const seedGuides = loadSeedGuides();
+    for (const item of seedAlerts) {
+      const idx = db.pestAlerts.findIndex(
+        (a) => a.alertCode.toLowerCase() === item.alertCode.toLowerCase(),
+      );
+      if (idx >= 0) {
+        db.pestAlerts[idx] = { ...item, id: db.pestAlerts[idx].id };
+      } else {
+        db.pestAlerts.push(item);
+      }
+    }
+    for (const item of seedGuides) {
+      const idx = db.protectionGuides.findIndex(
+        (g) => g.guideCode.toLowerCase() === item.guideCode.toLowerCase(),
+      );
+      if (idx >= 0) {
+        db.protectionGuides[idx] = { ...item, id: db.protectionGuides[idx].id };
+      } else {
+        db.protectionGuides.push(item);
+      }
+    }
+    writeDb(db);
+    res.json({
+      alertsImported: seedAlerts.length,
+      guidesImported: seedGuides.length,
+    });
   });
 
   // Catch unmatched /api routes with JSON 404

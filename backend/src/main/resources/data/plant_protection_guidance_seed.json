@@ -1,0 +1,356 @@
+[
+  {
+    "guideCode": "ragi-blast",
+    "cropCode": "ragi",
+    "cropNameEn": "Ragi (Finger Millet)",
+    "cropNameKn": "ರಾಗಿ",
+    "issueNameEn": "Leaf, Neck & Finger Blast",
+    "issueNameKn": "ಎಲೆ, ಕುತ್ತಿಗೆ ಮತ್ತು ತೆನೆ ಬೆಂಕಿ ರೋಗ",
+    "issueType": "FUNGAL_DISEASE",
+    "scientificName": "Magnaporthe grisea (Pyricularia grisea)",
+    "favorableConditionsEn": "High humidity (>85%), cool nights, cloudy skies during earhead emergence, and excessive nitrogen fertilizer.",
+    "favorableConditionsKn": "ಹೆಚ್ಚಿನ ತೇವಾಂಶ (>85%), ತಂಪಾದ ರಾತ್ರಿಗಳು, ತೆನೆ ಬರುವ ಹಂತದಲ್ಲಿ ಮೋಡಕವಿದ ವಾತಾವರಣ ಮತ್ತು ಅತಿಯಾದ ಸಾರಜನಕ ಬಳಕೆ.",
+    "symptomsEn": [
+      "Diamond or spindle-shaped spots with grey-white centers and brown margins on leaves.",
+      "Darkening and shrivelling just below the earhead (neck blast), causing grain chaffiness.",
+      "Affected fingers turn brown to black and fail to fill grains."
+    ],
+    "symptomsKn": [
+      "ಎಲೆಗಳ ಮೇಲೆ ಬೂದು-ಬಿಳಿ ಮಧ್ಯಭಾಗ ಮತ್ತು ಕಂದು ಅಂಚಿನ ವಜ್ರಾಕಾರದ ಚುಕ್ಕೆಗಳು.",
+      "ತೆನೆಯ ಕೆಳಭಾಗ (ಕುತ್ತಿಗೆ) ಕಪ್ಪಾಗಿ ಕುಗ್ಗುವುದು ಮತ್ತು ಕಾಳು ಜೊಳ್ಳಾಗುವುದು.",
+      "ಬಾಧಿತ ಬೆರಳುಗಳು ಕಂದು/ಕಪ್ಪು ಬಣ್ಣಕ್ಕೆ ತಿರುಗಿ ಕಾಳು ತುಂಬದಿರುವುದು."
+    ],
+    "preventivePracticesEn": [
+      "Prefer blast-tolerant varieties recommended by state agricultural universities (such as GPU-28, GPU-48, or KMR-301 where suited).",
+      "Sow within the recommended district sowing window and maintain clean field borders.",
+      "Apply nitrogen in balanced split doses; avoid excessive vegetative lushness."
+    ],
+    "preventivePracticesKn": [
+      "ಕೃಷಿ ವಿಶ್ವವಿದ್ಯಾಲಯಗಳು ಶಿಫಾರಸು ಮಾಡಿದ ರೋಗ ಸಹಿಷ್ಣು ತಳಿಗಳನ್ನು (ಉದಾ: GPU-28, GPU-48, KMR-301) ಆಯ್ಕೆಮಾಡಿ.",
+      "ಜಿಲ್ಲೆಗೆ ಸೂಕ್ತವಾದ ಬಿತ್ತನೆ ಅವಧಿಯಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ ಮತ್ತು ಬದುಗಳನ್ನು ಸ್ವಚ್ಛವಾಗಿಡಿ.",
+      "ಸಾರಜನಕವನ್ನು ಸಮತೋಲಿತ ಹಂತಗಳಲ್ಲಿ ನೀಡಿ; ಅತಿಯಾದ ರಸಭರಿತ ಬೆಳವಣಿಗೆ ತಡೆಯಿರಿ."
+    ],
+    "responsibleManagementEn": [
+      "Rogue out and burn severely diseased plants early in the season.",
+      "If neck-blast incidence begins at flowering, consult your local RSK or KVK for approved bio-control or CIBRC-listed label treatments.",
+      "Follow crop rotation with pulses or oilseeds after harvest."
+    ],
+    "responsibleManagementKn": [
+      "ತೀವ್ರವಾಗಿ ರೋಗಗ್ರಸ್ತವಾದ ಸಸ್ಯಗಳನ್ನು ಆರಂಭಿಕ ಹಂತದಲ್ಲೇ ಕಿತ್ತು ನಾಶಪಡಿಸಿ.",
+      "ಹೂಬಿಡುವ ಹಂತದಲ್ಲಿ ಕುತ್ತಿಗೆ ಬೆಂಕಿ ರೋಗ ಕಂಡುಬಂದರೆ, ಅನುಮೋದಿತ ಜೈವಿಕ ಅಥವಾ ಸಿಐಬಿಆರ್‌ಸಿ-ಮಾನ್ಯ ಚಿಕಿತ್ಸೆಗಾಗಿ ಆರ್‌ಎಸ್‌ಕೆ/ಕೆವಿಕೆ ಸಂಪರ್ಕಿಸಿ.",
+      "ಕೊಯ್ಲಿನ ನಂತರ ದ್ವಿದಳ ಅಥವಾ ಎಣ್ಣೆಕಾಳು ಬೆಳೆಗಳೊಂದಿಗೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಮಾಡಿ."
+    ],
+    "safetyNotesEn": "Do not apply unverified chemical mixtures. Always verify CIBRC label registration, personal protective gear, and waiting periods.",
+    "safetyNotesKn": "ಪರಿಶೀಲಿಸದ ರಾಸಾಯನಿಕ ಮಿಶ್ರಣಗಳನ್ನು ಬಳಸಬೇಡಿ. ಸಿಐಬಿಆರ್‌ಸಿ ಲೇಬಲ್, ಸುರಕ್ಷತಾ ಕವಚ ಮತ್ತು ಕೊಯ್ಲು-ಪೂರ್ವ ಅಂತರವನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಪಾಲಿಸಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIMR & UAS Bengaluru Finger Millet Package of Practices"
+  },
+  {
+    "guideCode": "paddy-blb",
+    "cropCode": "paddy",
+    "cropNameEn": "Paddy (Rice)",
+    "cropNameKn": "ಭತ್ತ",
+    "issueNameEn": "Bacterial Leaf Blight (BLB)",
+    "issueNameKn": "ಬ್ಯಾಕ್ಟೀರಿಯಾ ಎಲೆ ಅಂಗಮಾರಿ ರೋಗ",
+    "issueType": "BACTERIAL_DISEASE",
+    "scientificName": "Xanthomonas oryzae pv. oryzae",
+    "favorableConditionsEn": "Heavy monsoon storms, leaf injuries from high winds, standing water flow between plots, and excess nitrogen.",
+    "favorableConditionsKn": "ಭಾರೀ ಮಳೆ ಮತ್ತು ಗಾಳಿಯಿಂದ ಎಲೆಗಳಿಗೆ ಗಾಯ, ತಾಕಿನಿಂದ ತಾಕಿಗೆ ನೀರು ಹರಿಯುವುದು ಮತ್ತು ಅತಿಯಾದ ಸಾರಜನಕ ಬಳಕೆ.",
+    "symptomsEn": [
+      "Water-soaked yellow-orange stripes starting from leaf tips and margins moving downward.",
+      "Wavy margins between drying pale straw-colored tissue and healthy green leaf.",
+      "Milky bacterial ooze droplets visible on young lesions in humid mornings."
+    ],
+    "symptomsKn": [
+      "ಎಲೆಯ ತುದಿ ಮತ್ತು ಅಂಚುಗಳಿಂದ ಕೆಳಮುಖವಾಗಿ ಹರಡುವ ನೀರು-ನೆನೆದ ಹಳದಿ-ಕಿತ್ತಳೆ ಪಟ್ಟಿಗಳು.",
+      "ಒಣಗುತ್ತಿರುವ ಬಣ್ಣಗೆಟ್ಟ ಭಾಗ ಮತ್ತು ಹಸಿರು ಎಲೆಯ ನಡುವೆ ಅಲೆಅಲೆಯಾದ ಅಂಚು.",
+      "ತೇವಾಂಶವಿರುವ ಬೆಳಿಗ್ಗೆ ಎಳೆಯ ಚುಕ್ಕೆಗಳ ಮೇಲೆ ಹಾಲಿನಂತಹ ಬ್ಯಾಕ್ಟೀರಿಯಾ ಹನಿಗಳು ಕಾಣಿಸುತ್ತವೆ."
+    ],
+    "preventivePracticesEn": [
+      "Use certified clean seed and tolerant varieties recommended for your irrigated zone.",
+      "Avoid clipping seedling leaf tips before transplanting, as cuts spread bacteria.",
+      "Drain excess standing water and prevent field-to-field irrigation runoff from infected plots."
+    ],
+    "preventivePracticesKn": [
+      "ಪ್ರಮಾಣೀಕೃತ ಶುದ್ಧ ಬೀಜ ಮತ್ತು ಪ್ರದೇಶಕ್ಕೆ ಸೂಕ್ತ ಸಹಿಷ್ಣು ತಳಿಗಳನ್ನು ಬಳಸಿ.",
+      "ನಾಟಿ ಮಾಡುವ ಮೊದಲು ಸಸಿಗಳ ಎಲೆ ತುದಿಯನ್ನು ಕತ್ತರಿಸಬೇಡಿ; ಗಾಯಗಳಿಂದ ಬ್ಯಾಕ್ಟೀರಿಯಾ ಹರಡುತ್ತದೆ.",
+      "ಹೆಚ್ಚುವರಿ ನಿಂತ ನೀರನ್ನು ಬಸಿದುಹಾಕಿ ಮತ್ತು ರೋಗಗ್ರಸ್ತ ತಾಕಿನ ನೀರು ಇತರ ತಾಕುಗಳಿಗೆ ಹರಿಯದಂತೆ ತಡೆಯಿರಿ."
+    ],
+    "responsibleManagementEn": [
+      "Suspend nitrogen top-dressing immediately if symptoms appear.",
+      "Ensure adequate potassium balance according to your soil test report.",
+      "Seek verification from your agricultural officer before using any bactericide; fungicide sprays are ineffective against bacteria."
+    ],
+    "responsibleManagementKn": [
+      "ರೋಗ ಲಕ್ಷಣ ಕಂಡುಬಂದ ತಕ್ಷಣ ಸಾರಜನಕ ಮೇಲ್ಗೊಬ್ಬರ ಹಾಕುವುದನ್ನು ನಿಲ್ಲಿಸಿ.",
+      "ಮಣ್ಣು ಪರೀಕ್ಷಾ ವರದಿಯ ಪ್ರಕಾರ ಸಮರ್ಪಕ ಪೊಟ್ಯಾಶ್ ಸಮತೋಲನ ಕಾಪಾಡಿ.",
+      "ಬ್ಯಾಕ್ಟೀರಿಯಾ ರೋಗಕ್ಕೆ ಶಿಲೀಂಧ್ರನಾಶಕಗಳು ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ; ಯಾವುದೇ ಚಿಕಿತ್ಸೆಗೆ ಮುನ್ನ ಕೃಷಿ ಅಧಿಕಾರಿಗಳ ದೃಢೀಕರಣ ಪಡೆಯಿರಿ."
+    ],
+    "safetyNotesEn": "Avoid spraying unregistered antibiotics or mixing multiple bactericides without KVK guidance.",
+    "safetyNotesKn": "ಕೆವಿಕೆ ಮಾರ್ಗದರ್ಶನವಿಲ್ಲದೆ ಅನಧಿಕೃತ ಔಷಧಿಗಳು ಅಥವಾ ಬಹು ರಾಸಾಯನಿಕಗಳ ಮಿಶ್ರಣ ಸಿಂಪಡಿಸಬೇಡಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIRR Rice Protection Bulletin"
+  },
+  {
+    "guideCode": "maize-faw",
+    "cropCode": "maize",
+    "cropNameEn": "Maize (Corn)",
+    "cropNameKn": "ಮೆಕ್ಕೆಜೋಳ",
+    "issueNameEn": "Fall Armyworm (FAW)",
+    "issueNameKn": "ಸೈನಿಕ ಹುಳು (Fall Armyworm)",
+    "issueType": "INSECT_PEST",
+    "scientificName": "Spodoptera frugiperda",
+    "favorableConditionsEn": "Warm dry spells after early monsoon, staggered maize planting dates within a village.",
+    "favorableConditionsKn": "ಮುಂಗಾರು ಆರಂಭದ ನಂತರ ಬೆಚ್ಚಗಿನ ಒಣ ವಾತಾವರಣ ಮತ್ತು ಗ್ರಾಮದಲ್ಲಿ ಬೇರೆ ಬೇರೆ ಸಮಯದ ಮೆಕ್ಕೆಜೋಳ ಬಿತ್ತನೆ.",
+    "symptomsEn": [
+      "Papery translucent 'window-pane' scraping on young leaves.",
+      "Ragged shot-holes across unfurling leaves accompanied by moist sawdust-like frass inside the whorl.",
+      "Caterpillar head bears a distinct inverted 'Y' marking and four dark spots in a square near the tail end."
+    ],
+    "symptomsKn": [
+      "ಎಳೆಯ ಎಲೆಗಳ ಮೇಲೆ ಕಾಗದದಂತಹ ಪಾರದರ್ಶಕ ಗೀರುಗಳು.",
+      "ಬಿಚ್ಚಿಕೊಳ್ಳುವ ಎಲೆಗಳಲ್ಲಿ ದೊಡ್ಡ ರಂಧ್ರಗಳು ಮತ್ತು ಸುಳಿಯ ಒಳಗೆ ಮರದ ಪುಡಿಯಂತಹ ಹಿಕ್ಕೆ.",
+      "ಹುಳುವಿನ ತಲೆಯ ಮೇಲೆ ತಲೆಕೆಳಗಾದ 'Y' ಗುರುತು ಮತ್ತು ದೇಹದ ಹಿಂಭಾಗದಲ್ಲಿ ಚೌಕಾಕಾರದ 4 ಕಪ್ಪು ಚುಕ್ಕೆಗಳು."
+    ],
+    "preventivePracticesEn": [
+      "Deep summer ploughing to expose pupae to sunlight and predatory birds.",
+      "Synchronize sowing within your cluster/village where feasible and intercrop with legumes such as cowpea or black gram.",
+      "Install 4–5 pheromone traps per acre soon after germination for early moth detection."
+    ],
+    "preventivePracticesKn": [
+      "ಕೋಶಗಳನ್ನು ಬಿಸಿಲು ಮತ್ತು ಪಕ್ಷಿಗಳಿಗೆ ಒಡ್ಡಲು ಬೇಸಿಗೆಯಲ್ಲಿ ಆಳವಾಗಿ ಉಳುಮೆ ಮಾಡಿ.",
+      "ಸಾಧ್ಯವಾದರೆ ಗ್ರಾಮದ ಮಟ್ಟದಲ್ಲಿ ಏಕಕಾಲದಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಿ ಮತ್ತು ಅಲಸಂದೆ ಅಥವಾ ಉದ್ದು ಅಂತರಬೆಳೆಯಾಗಿ ಬೆಳೆಯಿರಿ.",
+      "ಮೊಳಕೆಯೊಡೆದ ತಕ್ಷಣ ಪತಂಗ ಪತ್ತೆಗಾಗಿ ಎಕರೆಗೆ 4–5 ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಅಳವಡಿಸಿ."
+    ],
+    "responsibleManagementEn": [
+      "Scout weekly; hand-collect egg masses and young larvae during early whorl stages.",
+      "Encourage natural enemies (earwigs, ladybird beetles, parasitoid wasps) by avoiding unnecessary broad-spectrum sprays.",
+      "Consult ICAR-IIMR / KVK advisories for safe biological controls (such as neem-based formulations or microbial agents) directed cleanly into the whorl."
+    ],
+    "responsibleManagementKn": [
+      "ವಾರಕ್ಕೊಮ್ಮೆ ತಪಾಸಣೆ ನಡೆಸಿ; ಆರಂಭಿಕ ಸುಳಿ ಹಂತದಲ್ಲಿ ಮೊಟ್ಟೆ ಗುಂಪುಗಳು ಮತ್ತು ಸಣ್ಣ ಹುಳುಗಳನ್ನು ಕೈಯಿಂದ ತೆಗೆದುಹಾಕಿ.",
+      "ಉಪಯುಕ್ತ ಪರಭಕ್ಷಕ ಕೀಟಗಳನ್ನು ರಕ್ಷಿಸಲು ಅನಗತ್ಯ ರಾಸಾಯನಿಕ ಸಿಂಪಡಣೆ ತಪ್ಪಿಸಿ.",
+      "ಸುರಕ್ಷಿತ ಬೇವಿನ ಆಧಾರಿತ ಅಥವಾ ಜೈವಿಕ ನಿಯಂತ್ರಣ ವಿಧಾನಗಳಿಗಾಗಿ ಕೆವಿಕೆ/ಆರ್‌ಎಸ್‌ಕೆ ಸಲಹೆ ಪಡೆಯಿರಿ."
+    ],
+    "safetyNotesEn": "Always follow CIBRC label guidance and protective clothing norms if biological or approved whorl applications are advised by local experts.",
+    "safetyNotesKn": "ಸ್ಥಳೀಯ ತಜ್ಞರು ಜೈವಿಕ ಅಥವಾ ಅನುಮೋದಿತ ಸಿಂಪಡಣೆ ಸೂಚಿಸಿದಲ್ಲಿ ಸಿಐಬಿಆರ್‌ಸಿ ಲೇಬಲ್ ಮತ್ತು ಸುರಕ್ಷತಾ ನಿಯಮಗಳನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಪಾಲಿಸಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-NBAIR & ICAR-IIMR Fall Armyworm IPM Advisory"
+  },
+  {
+    "guideCode": "tur-dal-pod-borer",
+    "cropCode": "tur-dal",
+    "cropNameEn": "Tur Dal (Pigeon Pea)",
+    "cropNameKn": "ತೊಗರಿ",
+    "issueNameEn": "Gram Pod Borer & Fusarium Wilt",
+    "issueNameKn": "ಕಾಯಿಕೊರಕ ಹುಳು ಮತ್ತು ಸೊರಗು ರೋಗ",
+    "issueType": "INSECT_PEST",
+    "scientificName": "Helicoverpa armigera / Fusarium udum",
+    "favorableConditionsEn": "Warm post-monsoon flowering weather (pod borer) and continuous pigeon-pea monocropping in poorly drained soils (wilt).",
+    "favorableConditionsKn": "ಬೆಚ್ಚಗಿನ ಹೂವು ಬಿಡುವ ವಾತಾವರಣ (ಕಾಯಿಕೊರಕ) ಮತ್ತು ನೀರು ನಿಲ್ಲುವ ಮಣ್ಣಿನಲ್ಲಿ ನಿರಂತರ ತೊಗರಿ ಏಕಬೆಳೆ (ಸೊರಗು ರೋಗ).",
+    "symptomsEn": [
+      "Circular holes bored into developing pods with caterpillar head often thrust inside while feeding.",
+      "Sudden yellowing, drooping, and drying of whole plants with dark brown vascular streaking inside split main roots (wilt)."
+    ],
+    "symptomsKn": [
+      "ಬೆಳೆಯುತ್ತಿರುವ ಕಾಯಿಗಳಲ್ಲಿ ವೃತ್ತಾಕಾರದ ರಂಧ್ರಗಳು ಮತ್ತು ಅರ್ಧ ದೇಹ ಹೊರಗಿಟ್ಟು ತಿನ್ನುವ ಹಸಿರು/ಕಂದು ಹುಳು.",
+      "ಗಿಡಗಳು ಹಠಾತ್ ಹಳದಿಯಾಗಿ ಬಾಡಿ ಒಣಗುವುದು ಹಾಗೂ ಮುಖ್ಯ ಬೇರನ್ನು ಸೀಳಿದಾಗ ಒಳಗೆ ಕಂದು ಬಣ್ಣದ ಪಟ್ಟಿ ಕಾಣಿಸುವುದು (ಸೊರಗು ರೋಗ)."
+    ],
+    "preventivePracticesEn": [
+      "Select wilt-resistant pigeon pea varieties (e.g., TS-3R, BSMR-736, Maruti / ICP 8863 depending on zone) and rotate with sorghum or millets.",
+      "Intercrop with sorghum or maize rows to act as natural bird perches and microclimate barriers.",
+      "Treat seeds with recommended Trichoderma viride bio-agent prior to sowing."
+    ],
+    "preventivePracticesKn": [
+      "ಪ್ರದೇಶಕ್ಕೆ ಸೂಕ್ತ ಸೊರಗು ರೋಗ ನಿರೋಧಕ ತಳಿಗಳನ್ನು (TS-3R, BSMR-736 ಇತ್ಯಾದಿ) ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಜೋಳ ಅಥವಾ ಸಿರಿಧಾನ್ಯದೊಂದಿಗೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಮಾಡಿ.",
+      "ಪಕ್ಷಿಗಳು ಕುಳಿತುಕೊಳ್ಳಲು ಮತ್ತು ಕೀಟ ತಡೆಗಾಗಿ ಜೋಳ ಅಥವಾ ಮೆಕ್ಕೆಜೋಳದ ಸಾಲುಗಳನ್ನು ಅಂತರಬೆಳೆಯಾಗಿ ಹಾಕಿ.",
+      "ಬಿತ್ತನೆಗೂ ಮುನ್ನ ಶಿಫಾರಸು ಮಾಡಿದ ಟ್ರೈಕೋಡರ್ಮಾ ಜೈವಿಕ ಬೀಜೋಪಚಾರ ಮಾಡಿ."
+    ],
+    "responsibleManagementEn": [
+      "Install 4–5 Helicoverpa pheromone traps and 10–12 T-shaped bird perches per acre.",
+      "Gently shake flowering branches over cloth sheets in early mornings on small plots to scout larval density.",
+      "Only initiate approved biological or label-certified interventions when local ETL thresholds are crossed."
+    ],
+    "responsibleManagementKn": [
+      "ಎಕರೆಗೆ 4–5 ಫೆರೋಮೋನ್ ಬಲೆಗಳು ಮತ್ತು 10–12 'T' ಆಕಾರದ ಪಕ್ಷಿ ಕುಳಿತುಕೊಳ್ಳುವ ಕಂಬಗಳನ್ನು ಅಳವಡಿಸಿ.",
+      "ಹುಳುಗಳ ಸಂಖ್ಯೆ ಪರಿಶೀಲಿಸಲು ಬೆಳಗಿನ ಜಾವ ಹೂವಿನ ಕೊಂಬೆಗಳನ್ನು ಬಟ್ಟೆಯ ಮೇಲೆ ನಿಧಾನವಾಗಿ ಕುಲುಕಿ ತಪಾಸಣೆ ಮಾಡಿ.",
+      "ಆರ್ಥಿಕ ಹಾನಿ ಮಟ್ಟ (ETL) ಮೀರಿದಾಗ ಮಾತ್ರ ಕೆವಿಕೆ ಶಿಫಾರಸಿನಂತೆ ಅನುಮೋದಿತ ಕ್ರಮ ಕೈಗೊಳ್ಳಿ."
+    ],
+    "safetyNotesEn": "Protect honeybees and pollinators during peak flowering; avoid spraying while bees are actively foraging.",
+    "safetyNotesKn": "ಹೂವು ಬಿಡುವ ಅವಧಿಯಲ್ಲಿ ಜೇನುನೊಣಗಳು ಮತ್ತು ಪರಾಗಸ್ಪರ್ಶ ಕೀಟಗಳನ್ನು ರಕ್ಷಿಸಲು ಹಗಲು ವೇಳೆ ಸಿಂಪಡಣೆ ತಪ್ಪಿಸಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-IIPR Kanpur Pigeon Pea IPM Guidelines"
+  },
+  {
+    "guideCode": "groundnut-tikka",
+    "cropCode": "groundnut",
+    "cropNameEn": "Groundnut",
+    "cropNameKn": "ಶೇಂಗಾ (ಕಡಲೆಕಾಯಿ)",
+    "issueNameEn": "Early & Late Tikka Leaf Spot",
+    "issueNameKn": "ತಿಕ್ಕಾ ಎಲೆ ಚುಕ್ಕೆ ರೋಗ",
+    "issueType": "FUNGAL_DISEASE",
+    "scientificName": "Cercospora arachidicola / Phaeoisariopsis personata",
+    "favorableConditionsEn": "High relative humidity, warm temperatures (25–30 C), and dense crop canopy following rains.",
+    "favorableConditionsKn": "ಹೆಚ್ಚಿನ ತೇವಾಂಶ, ಬೆಚ್ಚಗಿನ ತಾಪಮಾನ (25–30°C) ಮತ್ತು ಮಳೆಯ ನಂತರ ದಟ್ಟವಾದ ಎಲೆಗಳ ಬೆಳವಣಿಗೆ.",
+    "symptomsEn": [
+      "Circular brown-to-dark-brown spots with yellow halos on upper leaf surfaces (early leaf spot).",
+      "Dark black velvety spore masses mostly on lower leaf surfaces causing premature defoliation (late leaf spot)."
+    ],
+    "symptomsKn": [
+      "ಎಲೆಯ ಮೇಲ್ಭಾಗದಲ್ಲಿ ಹಳದಿ ವಲಯದೊಂದಿಗೆ ವೃತ್ತಾಕಾರದ ಕಂದು ಚುಕ್ಕೆಗಳು (ಆರಂಭಿಕ ತಿಕ್ಕಾ).",
+      "ಎಲೆಯ ಕೆಳಭಾಗದಲ್ಲಿ ಕಪ್ಪು ಮಖಮಲ್ ರೀತಿಯ ಚುಕ್ಕೆಗಳು ಮತ್ತು ಅಕಾಲಿಕ ಎಲೆ ಉದುರುವಿಕೆ (ತಡ ತಿಕ್ಕಾ)."
+    ],
+    "preventivePracticesEn": [
+      "Remove crop residues and volunteer groundnut plants that carry fungal spores across seasons.",
+      "Follow 2–3 year rotation with cereals or millets like ragi or jowar.",
+      "Intercrop groundnut with pigeon pea or pearl millet to slow spore splash spread."
+    ],
+    "preventivePracticesKn": [
+      "ಶಿಲೀಂಧ್ರ ಬೀಜಕಗಳನ್ನು ಉಳಿಸುವ ಬೆಳೆ ಅವಶೇಷಗಳು ಮತ್ತು ಸ್ವಯಂಸೇವಕ ಗಿಡಗಳನ್ನು ಜಮೀನಿನಿಂದ ತೆಗೆದುಹಾಕಿ.",
+      "ರಾಗಿ ಅಥವಾ ಜೋಳದೊಂದಿಗೆ 2–3 ವರ್ಷಗಳ ಬೆಳೆ ಪರಿವರ್ತನೆ ಅನುಸರಿಸಿ.",
+      "ರೋಗ ಹರಡುವಿಕೆ ನಿಧಾನಗೊಳಿಸಲು ತೊಗರಿ ಅಥವಾ ಸಜ್ಜೆಯೊಂದಿಗೆ ಅಂತರಬೆಳೆ ಮಾಡಿ."
+    ],
+    "responsibleManagementEn": [
+      "Inspect lower canopy leaves regularly from 30–35 days after sowing.",
+      "Consult your nearest KVK or RSK for stage-appropriate preventive guidance if defoliation progresses before pod filling."
+    ],
+    "responsibleManagementKn": [
+      "ಬಿತ್ತನೆಯ 30–35 ದಿನಗಳಿಂದ ಕೆಳಭಾಗದ ಎಲೆಗಳನ್ನು ನಿಯಮಿತವಾಗಿ ಪರಿಶೀಲಿಸಿ.",
+      "ಕಾಯಿ ತುಂಬುವ ಮುನ್ನ ಎಲೆ ಉದುರುವಿಕೆ ಹೆಚ್ಚಾಗುತ್ತಿದ್ದರೆ ಸ್ಥಳೀಯ ಕೆವಿಕೆ ಅಥವಾ ಆರ್‌ಎಸ್‌ಕೆ ತಜ್ಞರನ್ನು ಸಂಪರ್ಕಿಸಿ."
+    ],
+    "safetyNotesEn": "Wait the full label-mandated pre-harvest interval before harvesting haulms for livestock fodder.",
+    "safetyNotesKn": "ಜಾನುವಾರುಗಳಿಗೆ ಮೇವು ಬಳಸುವ ಮೊದಲು ಲೇಬಲ್‌ನಲ್ಲಿ ತಿಳಿಸಿದ ಕಟಾವು-ಪೂರ್ವ ಅಂತರವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-Directorate of Groundnut Research IPM Guide"
+  },
+  {
+    "guideCode": "tomato-early-late-blight",
+    "cropCode": "tomato",
+    "cropNameEn": "Tomato",
+    "cropNameKn": "ಟೊಮೆಟೊ",
+    "issueNameEn": "Early Blight & Late Blight",
+    "issueNameKn": "ಟೊಮೆಟೊ ಆರಂಭಿಕ ಮತ್ತು ತಡ ಅಂಗಮಾರಿ ರೋಗ",
+    "issueType": "FUNGAL_DISEASE",
+    "scientificName": "Alternaria solani / Phytophthora infestans",
+    "favorableConditionsEn": "Cool moist nights, heavy morning dew, rain splash onto lower leaves, and overcrowded foliage.",
+    "favorableConditionsKn": "ತಂಪಾದ ತೇವಾಂಶದ ರಾತ್ರಿಗಳು, ಬೆಳಗಿನ ಇಬ್ಬನಿ, ಮಳೆ ನೀರು ಕೆಳ ಎಲೆಗಳಿಗೆ ಸಿಡಿಯುವುದು ಮತ್ತು ದಟ್ಟ ಎಲೆಗಳ ಗುಂಪು.",
+    "symptomsEn": [
+      "Dark brown concentric 'target-board' rings on older lower leaves (Early Blight).",
+      "Irregular water-soaked greenish-black lesions turning brown with white cottony growth underneath in humid weather (Late Blight)."
+    ],
+    "symptomsKn": [
+      "ಹಳೆಯ ಕೆಳಗಿನ ಎಲೆಗಳ ಮೇಲೆ ಕಂದು ಬಣ್ಣದ ಉಂಗುರ ಆಕಾರದ ಚುಕ್ಕೆಗಳು (ಆರಂಭಿಕ ಅಂಗಮಾರಿ).",
+      "ತೇವಾಂಶದಲ್ಲಿ ಅಸಮ ನೀರು-ನೆನೆದ ಕಪ್ಪು-ಹಸಿರು ಮಚ್ಚೆಗಳು ಹಾಗೂ ಎಲೆ ಕೆಳಗೆ ಬಿಳಿ ಹತ್ತಿಯಂತಹ ಬೆಳವಣಿಗೆ (ತಡ ಅಂಗಮಾರಿ)."
+    ],
+    "preventivePracticesEn": [
+      "Raise healthy seedlings on raised solarized nursery beds using clean water.",
+      "Stake plants properly and mulch soil surface to prevent soil-splash contamination.",
+      "Switch from overhead sprinkler to drip irrigation during wet/cool periods."
+    ],
+    "preventivePracticesKn": [
+      "ಶುದ್ಧ ನೀರು ಮತ್ತು ಸೌರೀಕರಣ ಮಾಡಿದ ಏರುಮಡಿ ನರ್ಸರಿಯಲ್ಲಿ ಆರೋಗ್ಯಕರ ಸಸಿಗಳನ್ನು ಬೆಳೆಸಿ.",
+      "ಮಣ್ಣು ಸಿಡಿಯುವುದನ್ನು ತಡೆಯಲು ಗಿಡಗಳಿಗೆ ಸರಿಯಾದ ಆಧಾರ ಕಂಬ ಮತ್ತು ಹೊದಿಕೆ (ಮಲ್ಚಿಂಗ್) ಬಳಸಿ.",
+      "ತಂಪಾದ/ತೇವಾಂಶದ ದಿನಗಳಲ್ಲಿ ಸ್ಪ್ರಿಂಕ್ಲರ್ ಬದಲು ಹನಿ ನೀರಾವರಿ ಬಳಸಿ."
+    ],
+    "responsibleManagementEn": [
+      "Prune diseased lower leaves cleanly and dispose of them outside the plot.",
+      "Rotate solanaceous crops (tomato, potato, brinjal, chilli) with non-host cereals or pulses.",
+      "Confirm approved protective sprays and harvest intervals with your local Horticulture Officer or KVK."
+    ],
+    "responsibleManagementKn": [
+      "ರೋಗಗ್ರಸ್ತ ಕೆಳ ಎಲೆಗಳನ್ನು ಕತ್ತರಿಸಿ ತಾಕಿನ ಹೊರಗೆ ಸುರಕ್ಷಿತವಾಗಿ ವಿಲೇವಾರಿ ಮಾಡಿ.",
+      "ಟೊಮೆಟೊ, ಆಲೂಗಡ್ಡೆ, ಬದನೆ ಮತ್ತು ಮೆಣಸಿನಕಾಯಿ ಕುಟುಂಬದ ಬೆಳೆಗಳನ್ನು ದ್ವಿದಳ ಅಥವಾ ಧಾನ್ಯ ಬೆಳೆಗಳೊಂದಿಗೆ ಪರಿವರ್ತನೆ ಮಾಡಿ.",
+      "ಅನುಮೋದಿತ ತಡೆಗಟ್ಟುವ ಸಿಂಪಡಣೆ ಮತ್ತು ಕಟಾವು ಅಂತರಕ್ಕಾಗಿ ಸ್ಥಳೀಯ ತೋಟಗಾರಿಕೆ ಅಧಿಕಾರಿಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ."
+    ],
+    "safetyNotesEn": "Strict pre-harvest waiting periods are critical in vegetable crops picked every few days.",
+    "safetyNotesKn": "ಪ್ರತಿ ಕೆಲವು ದಿನಗಳಿಗೊಮ್ಮೆ ಕೊಯ್ಲು ಮಾಡುವ ತರಕಾರಿಗಳಲ್ಲಿ ಕಟಾವು-ಪೂರ್ವ ಕಾಯುವ ಅಂತರವನ್ನು ಕಟ್ಟುನಿಟ್ಟಾಗಿ ಪಾಲಿಸಿ.",
+    "dataReliability": "SAMPLE_REGIONAL_REFERENCE",
+    "sourceReference": "ICAR-IIHR Tomato Disease Prevention Bulletin (Regional Sample Reference)"
+  },
+  {
+    "guideCode": "onion-purple-blotch",
+    "cropCode": "onion",
+    "cropNameEn": "Onion",
+    "cropNameKn": "ಈರುಳ್ಳಿ",
+    "issueNameEn": "Purple Blotch & Thrips Complex",
+    "issueNameKn": "ನೇರಳೆ ಮಚ್ಚೆ ರೋಗ ಮತ್ತು ಥ್ರಿಪ್ಸ್ ನುಸಿ",
+    "issueType": "FUNGAL_DISEASE",
+    "scientificName": "Alternaria porri / Thrips tabaci",
+    "favorableConditionsEn": "Warm humid weather (25–30 C), high thrips feeding injury creating entry wounds for fungal spores.",
+    "favorableConditionsKn": "ಬೆಚ್ಚಗಿನ ತೇವಾಂಶದ ಹವಾಮಾನ (25–30°C) ಮತ್ತು ಥ್ರಿಪ್ಸ್ ನುಸಿ ಗಾಯಗಳಿಂದ ಶಿಲೀಂಧ್ರ ಸೋಂಕು ಹರಡುವಿಕೆ.",
+    "symptomsEn": [
+      "Small sunken whitish flecks on leaves enlarging into oval purplish-brown blotches.",
+      "Silvery streaking and curling of young leaf blades caused by thrips rasping sap."
+    ],
+    "symptomsKn": [
+      "ಎಲೆಗಳ ಮೇಲೆ ಸಣ್ಣ ಬಿಳಿ ಚುಕ್ಕೆಗಳು ಬೆಳೆದು ಅಂಡಾಕಾರದ ನೇರಳೆ-ಕಂದು ಮಚ್ಚೆಗಳಾಗುವುದು.",
+      "ಥ್ರಿಪ್ಸ್ ರಸ ಹೀರುವುದರಿಂದ ಎಲೆಗಳ ಮೇಲೆ ಬೆಳ್ಳಿ ಬಣ್ಣದ ಗೆರೆಗಳು ಮತ್ತು ಎಲೆ ಸುರುಳಿ."
+    ],
+    "preventivePracticesEn": [
+      "Plant two border rows of maize around onion plots 15 days early to intercept wind-borne thrips.",
+      "Avoid waterlogging by planting on raised beds with well-drained soil.",
+      "Monitor blue sticky traps for early thrips population spikes."
+    ],
+    "preventivePracticesKn": [
+      "ಗಾಳಿಯಿಂದ ಬರುವ ಥ್ರಿಪ್ಸ್ ತಡೆಯಲು 15 ದಿನ ಮುಂಚಿತವಾಗಿ ತಾಕಿನ ಸುತ್ತ ಎರಡು ಸಾಲು ಮೆಕ್ಕೆಜೋಳ ತಡೆಬೆಳೆ ಬೆಳೆಯಿರಿ.",
+      "ನೀರು ನಿಲ್ಲದಂತೆ ಏರುಮಡಿಗಳಲ್ಲಿ ಈರುಳ್ಳಿ ನಾಟಿ ಮಾಡಿ.",
+      "ಥ್ರಿಪ್ಸ್ ಹೆಚ್ಚಳ ಪತ್ತೆಗಾಗಿ ನೀಲಿ ಅಂಟು ಬಲೆಗಳನ್ನು (blue sticky traps) ಬಳಸಿ."
+    ],
+    "responsibleManagementEn": [
+      "Remove badly affected drying leaf tips before bulb maturity.",
+      "Coordinate thrips scouting and approved leaf-care steps with your district horticulture extension center."
+    ],
+    "responsibleManagementKn": [
+      "ಗೆಡ್ಡೆ ಪಕ್ವವಾಗುವ ಮುನ್ನ ತೀವ್ರವಾಗಿ ಒಣಗಿದ ಎಲೆ ತುದಿಗಳನ್ನು ತೆಗೆದುಹಾಕಿ.",
+      "ಥ್ರಿಪ್ಸ್ ತಪಾಸಣೆ ಮತ್ತು ಅನುಮೋದಿತ ನಿರ್ವಹಣೆಗಾಗಿ ಜಿಲ್ಲಾ ತೋಟಗಾರಿಕೆ ವಿಸ್ತರಣಾ ಕೇಂದ್ರದ ಸಲಹೆ ಪಡೆಯಿರಿ."
+    ],
+    "safetyNotesEn": "Avoid spraying near harvest and maintain safe field re-entry intervals.",
+    "safetyNotesKn": "ಕೊಯ್ಲು ಸಮೀಪಿಸಿದಾಗ ಸಿಂಪಡಣೆ ತಪ್ಪಿಸಿ ಮತ್ತು ಸುರಕ್ಷಿತ ಜಮೀನು ಪ್ರವೇಶ ಅಂತರ ಪಾಲಿಸಿ.",
+    "dataReliability": "SAMPLE_REGIONAL_REFERENCE",
+    "sourceReference": "ICAR-DOGR Onion Protection Reference (Regional Sample Reference)"
+  },
+  {
+    "guideCode": "cotton-bollworm-sucking",
+    "cropCode": "cotton",
+    "cropNameEn": "Cotton",
+    "cropNameKn": "ಹತ್ತಿ",
+    "issueNameEn": "Pink Bollworm & Sucking Pest Complex",
+    "issueNameKn": "ಗುಲಾಬಿ ಕಾಯಿಕೊರಕ ಮತ್ತು ರಸ ಹೀರುವ ಕೀಟಗಳು",
+    "issueType": "INSECT_PEST",
+    "scientificName": "Pectinophora gossypiella / Bemisia tabaci",
+    "favorableConditionsEn": "Extended ratooning beyond 160–180 days, uncleaned leftover bolls, and dry-humid transitional weather.",
+    "favorableConditionsKn": "160–180 ದಿನಗಳ ನಂತರವೂ ಬೆಳೆ ಉಳಿಸಿಕೊಳ್ಳುವುದು, ಹಳೆಯ ಕಾಯಿಗಳನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸದಿರುವುದು ಮತ್ತು ಬೆಚ್ಚಗಿನ ಹವಾಮಾನ.",
+    "symptomsEn": [
+      "Rosette-shaped twisted flowers (stuck petals) during square/flowering phase.",
+      "Pinhead entry marks on green bolls with stained lint and cut seeds inside.",
+      "Upward or downward leaf curling and sticky honeydew from whiteflies or leafhoppers."
+    ],
+    "symptomsKn": [
+      "ಹೂವಿನ ದಳಗಳು ಅರಳದೆ ಗುಲಾಬಿ ಮೊಗ್ಗಿನಂತೆ (rosette) ತಿರುಚಿಕೊಳ್ಳುವುದು.",
+      "ಹಸಿರು ಕಾಯಿಗಳ ಮೇಲೆ ಸಣ್ಣ ರಂಧ್ರಗಳು, ಒಳಗಿನ ಹತ್ತಿ ಕಲೆಯಾಗುವುದು ಮತ್ತು ಬೀಜ ಹಾನಿ.",
+      "ಬಿಳಿನೊಣ ಅಥವಾ ಜಿಗಿಹುಳುವಿನಿಂದ ಎಲೆ ಸುರುಳಿ ಮತ್ತು ಅಂಟು ದ್ರವ."
+    ],
+    "preventivePracticesEn": [
+      "Terminate crop cleanly on time; strictly avoid extending/ratooning cotton beyond recommended harvest window.",
+      "Allow grazing or shred cotton stalks immediately after final picking to destroy overwintering bollworm larvae.",
+      "Use yellow sticky traps and pheromone traps from square formation onwards."
+    ],
+    "preventivePracticesKn": [
+      "ಶಿಫಾರಿತ ಕೊಯ್ಲು ಅವಧಿಯ ನಂತರ ಹತ್ತಿ ಬೆಳೆಯನ್ನು ಮುಂದುವರಿಸದೆ (ratooning ತಪ್ಪಿಸಿ) ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಮುಕ್ತಾಯಗೊಳಿಸಿ.",
+      "ಕೊನೆಯ ಬಿಡಿಸುವಿಕೆಯ ನಂತರ ಗಿಡದ ಕಡ್ಡಿಗಳನ್ನು ತಕ್ಷಣ ಕತ್ತರಿಸಿ ನಾಶಪಡಿಸಿ.",
+      "ಮೊಗ್ಗು ಹಂತದಿಂದಲೇ ಹಳದಿ ಅಂಟು ಬಲೆ ಮತ್ತು ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಬಳಸಿ."
+    ],
+    "responsibleManagementEn": [
+      "Crush rosette flowers noticed during early flowering scouting.",
+      "Follow area-wide pink bollworm monitoring bulletins from ICAR-CICR or your district KVK before deciding on interventions."
+    ],
+    "responsibleManagementKn": [
+      "ಆರಂಭಿಕ ಹೂವು ಹಂತದಲ್ಲಿ ಕಾಣಿಸುವ ಗುಲಾಬಿ ಆಕಾರದ ತಿರುಚಿದ ಹೂವುಗಳನ್ನು ಕಿತ್ತು ನಾಶಪಡಿಸಿ.",
+      "ಯಾವುದೇ ನಿಯಂತ್ರಣ ಕ್ರಮಕ್ಕೂ ಮುನ್ನ ಐಸಿಎಆರ್-ಸಿಐಸಿಆರ್ ಅಥವಾ ಜಿಲ್ಲಾ ಕೆವಿಕೆ ಪ್ರದೇಶವಾರು ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ."
+    ],
+    "safetyNotesEn": "Never reuse empty agrochemical containers and avoid tank-mixing incompatible sprays.",
+    "safetyNotesKn": "ಖಾಲಿ ರಾಸಾಯನಿಕ ಡಬ್ಬಿಗಳನ್ನು ಮರುಬಳಕೆ ಮಾಡಬೇಡಿ ಮತ್ತು ಅನುಮೋದಿತವಲ್ಲದ ಟ್ಯಾಂಕ್ ಮಿಶ್ರಣಗಳನ್ನು ತಪ್ಪಿಸಿ.",
+    "dataReliability": "CURATED_REFERENCE",
+    "sourceReference": "ICAR-CICR Pink Bollworm Area-Wide IPM Protocol"
+  }
+]

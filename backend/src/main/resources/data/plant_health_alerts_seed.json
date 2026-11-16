@@ -1,0 +1,155 @@
+[
+  {
+    "alertCode": "ka-mandya-paddy-blast-seasonal",
+    "titleEn": "Seasonal Leaf & Neck Blast Watch in Irrigated Paddy",
+    "titleKn": "ನೀರಾವರಿ ಭತ್ತದಲ್ಲಿ ಕಾಲೋಚಿತ ಎಲೆ ಮತ್ತು ಕುತ್ತಿಗೆ ಬೆಂಕಿ ರೋಗದ ಎಚ್ಚರಿಕೆ",
+    "cropCode": "paddy",
+    "cropNameEn": "Paddy (Rice)",
+    "cropNameKn": "ಭತ್ತ",
+    "state": "Karnataka",
+    "district": "Mandya",
+    "verificationStatus": "SEASONAL_RULE_ADVISORY",
+    "severity": "MODERATE",
+    "observedDate": "2026-10-15",
+    "validUntil": "2026-12-15",
+    "sourceName": "UAS Bengaluru Package of Practices & KVK Seasonal Rule",
+    "sourceUrl": "https://uasbangalore.edu.in",
+    "summaryEn": "Cool nights combined with high morning humidity and excessive nitrogen top-dressing increase susceptibility to leaf and neck blast in canal-irrigated paddy belts. This is a documented seasonal risk rule rather than a confirmed field outbreak.",
+    "summaryKn": "ತಂಪಾದ ರಾತ್ರಿಗಳು, ಬೆಳಗಿನ ಅಧಿಕ ತೇವಾಂಶ ಮತ್ತು ಹೆಚ್ಚಿನ ಸಾರಜನಕ ಮೇಲ್ಗೊಬ್ಬರವು ಕಾಲುವೆ ನೀರಾವರಿ ಭತ್ತದಲ್ಲಿ ಬೆಂಕಿ ರೋಗದ ಅಪಾಯ ಹೆಚ್ಚಿಸುತ್ತದೆ. ಇದು ದೃಢೀಕೃತ ಹರಡುವಿಕೆ ಅಲ್ಲ, ದಾಖಲಾದ ಕಾಲೋಚಿತ ಎಚ್ಚರಿಕೆ ನಿಯಮವಾಗಿದೆ.",
+    "precautionsEn": [
+      "Avoid split nitrogen excesses; maintain balanced potash nutrition.",
+      "Inspect lower leaves weekly for spindle-shaped lesions with grey centers.",
+      "Do not keep stagnant water continuously if vegetative growth is overly lush; drain briefly if recommended by local KVK.",
+      "Remove grassy weed hosts from field bunds."
+    ],
+    "precautionsKn": [
+      "ಅತಿಯಾದ ಸಾರಜನಕ ಮೇಲ್ಗೊಬ್ಬರವನ್ನು ತಪ್ಪಿಸಿ; ಸಮತೋಲಿತ ಪೊಟ್ಯಾಶ್ ಪೋಷಣೆ ನೀಡಿ.",
+      "ಕೆಳಗಿನ ಎಲೆಗಳಲ್ಲಿ ಬೂದು ಮಧ್ಯದ ಕದಿರು ಆಕಾರದ ಚುಕ್ಕೆಗಳಿಗಾಗಿ ವಾರಕ್ಕೊಮ್ಮೆ ಪರಿಶೀಲಿಸಿ.",
+      "ಸಸಿಗಳ ಬೆಳವಣಿಗೆ ಅತಿಯಾಗಿದ್ದರೆ ನಿರಂತರ ನಿಂತ ನೀರನ್ನು ಸ್ಥಳೀಯ ಕೆವಿಕೆ ಸಲಹೆಯಂತೆ ತಾತ್ಕಾಲಿಕವಾಗಿ ಬಸಿದುಹಾಕಿ.",
+      "ಬದುಗಳ ಮೇಲಿನ ಕಳೆ ಹುಲ್ಲು ಸಸ್ಯಗಳನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಿ."
+    ],
+    "active": true
+  },
+  {
+    "alertCode": "ka-davanagere-maize-faw-reported",
+    "titleEn": "Reported Whorl Feeding of Fall Armyworm in Late-Sown Maize",
+    "titleKn": "ತಡವಾಗಿ ಬಿತ್ತಿದ ಮೆಕ್ಕೆಜೋಳದಲ್ಲಿ ಸೈನಿಕ ಹುಳುವಿನ ವರದಿಯಾದ ಪ್ರಕರಣ",
+    "cropCode": "maize",
+    "cropNameEn": "Maize (Corn)",
+    "cropNameKn": "ಮೆಕ್ಕೆಜೋಳ",
+    "state": "Karnataka",
+    "district": "Davanagere",
+    "verificationStatus": "REPORTED_CASE",
+    "severity": "MODERATE",
+    "observedDate": "2026-11-02",
+    "validUntil": "2026-12-20",
+    "sourceName": "ICAR-NBAIR & District Extension Field Report",
+    "sourceUrl": "https://www.nbair.res.in",
+    "summaryEn": "Localized whorl damage consistent with Spodoptera frugiperda has been reported in scattered late-sown maize plots. Widespread epidemic confirmation is pending; farmers should scout whorls early.",
+    "summaryKn": "ತಡವಾಗಿ ಬಿತ್ತಿದ ಕೆಲವು ಮೆಕ್ಕೆಜೋಳದ ತಾಕುಗಳಲ್ಲಿ ಸೈನಿಕ ಹುಳುವಿನ (Spodoptera frugiperda) ಸುಳಿ ಹಾನಿ ವರದಿಯಾಗಿದೆ. ವ್ಯಾಪಕ ಹರಡುವಿಕೆ ಇನ್ನೂ ದೃಢಪಟ್ಟಿಲ್ಲ; ರೈತರು ತಕ್ಷಣ ಸುಳಿ ಪರಿಶೀಲನೆ ಮಾಡಬೇಕು.",
+    "precautionsEn": [
+      "Install FAW pheromone traps (4–5 per acre) to monitor adult moth activity.",
+      "Scout central leaf whorls at early morning for fresh window-pane scraping or sawdust-like frass.",
+      "Hand-crush egg masses found on leaf undersides during early scouting.",
+      "Consult your local RSK or KVK before selecting approved biological or CIBRC-listed whorl treatments."
+    ],
+    "precautionsKn": [
+      "ಪತಂಗ ಚಟುವಟಿಕೆ ಗಮನಿಸಲು ಎಕರೆಗೆ 4–5 ಫೆರೋಮೋನ್ ಬಲೆಗಳನ್ನು ಅಳವಡಿಸಿ.",
+      "ಬೆಳಗಿನ ಜಾವದಲ್ಲಿ ಎಲೆಯ ಸುಳಿಯಲ್ಲಿ ತಾಜಾ ಗೀರುಗಳು ಅಥವಾ ಮರದ ಪುಡಿಯಂತಹ ಹಿಕ್ಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
+      "ಪ್ರಾರಂಭಿಕ ತಪಾಸಣೆಯಲ್ಲಿ ಎಲೆಯ ಕೆಳಭಾಗದ ಮೊಟ್ಟೆ ಗುಂಪುಗಳನ್ನು ಕೈಯಿಂದ ನಾಶಪಡಿಸಿ.",
+      "ಅನುಮೋದಿತ ಜೈವಿಕ ಅಥವಾ ಸಿಐಬಿಆರ್‌ಸಿ-ಮಾನ್ಯ ಸುಳಿ ಚಿಕಿತ್ಸೆ ಆಯ್ಕೆಗೆ ಸ್ಥಳೀಯ ಆರ್‌ಎಸ್‌ಕೆ/ಕೆವಿಕೆ ಸಂಪರ್ಕಿಸಿ."
+    ],
+    "active": true
+  },
+  {
+    "alertCode": "ka-kalaburagi-tur-podborer-confirmed",
+    "titleEn": "Confirmed Helicoverpa Pod Borer Incidence Above ETL in Flowering Tur Dal",
+    "titleKn": "ಹೂವು ಮತ್ತು ಕಾಯಿ ಹಂತದ ತೊಗರಿಯಲ್ಲಿ ದೃಢೀಕೃತ ಕಾಯಿಕೊರಕ ಹುಳು ಬಾಧೆ",
+    "cropCode": "tur-dal",
+    "cropNameEn": "Tur Dal (Pigeon Pea)",
+    "cropNameKn": "ತೊಗರಿ",
+    "state": "Karnataka",
+    "district": "Kalaburagi",
+    "verificationStatus": "CONFIRMED_OUTBREAK",
+    "severity": "HIGH",
+    "observedDate": "2026-11-08",
+    "validUntil": "2026-12-30",
+    "sourceName": "ICAR-IIPR & State Plant Protection Surveillance Bulletin",
+    "sourceUrl": "https://iipr.icar.gov.in",
+    "summaryEn": "Surveillance plots in flowering-to-podding pigeon pea blocks recorded Helicoverpa armigera larvae exceeding economic threshold levels (ETL) following mild dry spells.",
+    "summaryKn": "ಹೂವು ಮತ್ತು ಕಾಯಿ ಕಟ್ಟುವ ಹಂತದ ತೊಗರಿ ತಾಕುಗಳಲ್ಲಿ ಕಾಯಿಕೊರಕ (Helicoverpa armigera) ಹುಳುಗಳ ಸಂಖ್ಯೆ ಆರ್ಥಿಕ ಹಾನಿ ಮಟ್ಟಕ್ಕಿಂತ ಹೆಚ್ಚಿರುವುದು ಸಮೀಕ್ಷೆಯಲ್ಲಿ ದೃಢಪಟ್ಟಿದೆ.",
+    "precautionsEn": [
+      "Place 10–12 T-shaped bird perches per acre in pigeon pea rows to encourage insectivorous birds.",
+      "Monitor 20 random plants across the field for eggs or tiny larvae on flower buds and young pods.",
+      "Avoid indiscriminate broad-spectrum sprays that kill natural predators.",
+      "Follow dosage and pre-harvest interval guidance from Kalaburagi KVK / RSK officers."
+    ],
+    "precautionsKn": [
+      "ಕೀಟಭಕ್ಷಕ ಪಕ್ಷಿಗಳನ್ನು ಆಕರ್ಷಿಸಲು ಎಕರೆಗೆ 10–12 'T' ಆಕಾರದ ಪಕ್ಷಿ ಕುಳಿತುಕೊಳ್ಳುವ ಕಂಬಗಳನ್ನು ನೆಡಿ.",
+      "ಹೂವಿನ ಮೊಗ್ಗು ಮತ್ತು ಎಳೆಯ ಕಾಯಿಗಳಲ್ಲಿ ಮೊಟ್ಟೆ ಅಥವಾ ಸಣ್ಣ ಹುಳುಗಳಿಗಾಗಿ ಜಮೀನಿನ 20 ಗಿಡಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
+      "ಉಪಯುಕ್ತ ಪರಭಕ್ಷಕ ಕೀಟಗಳನ್ನು ನಾಶಮಾಡುವ ಅನಗತ್ಯ ರಾಸಾಯನಿಕ ಸಿಂಪಡಣೆಯನ್ನು ತಪ್ಪಿಸಿ.",
+      "ಪ್ರಮಾಣ ಮತ್ತು ಕಟಾವು-ಪೂರ್ವ ಅಂತರಕ್ಕಾಗಿ ಕಲಬುರಗಿ ಕೆವಿಕೆ ಅಥವಾ ಆರ್‌ಎಸ್‌ಕೆ ಅಧಿಕಾರಿಗಳ ಸಲಹೆ ಅನುಸರಿಸಿ."
+    ],
+    "active": true
+  },
+  {
+    "alertCode": "ka-kolar-tomato-blight-reported",
+    "titleEn": "Reported Early & Late Blight Symptoms in Irrigated Tomato",
+    "titleKn": "ನೀರಾವರಿ ಟೊಮೆಟೊ ಬೆಳೆಯಲ್ಲಿ ವರದಿಯಾದ ಆರಂಭಿಕ ಮತ್ತು ತಡ ಅಂಗಮಾರಿ ರೋಗ",
+    "cropCode": "tomato",
+    "cropNameEn": "Tomato",
+    "cropNameKn": "ಟೊಮೆಟೊ",
+    "state": "Karnataka",
+    "district": "Kolar",
+    "verificationStatus": "REPORTED_CASE",
+    "severity": "MODERATE",
+    "observedDate": "2026-11-10",
+    "validUntil": "2026-12-25",
+    "sourceName": "ICAR-IIHR Regional Horticultural Advisory",
+    "sourceUrl": "https://www.iihr.res.in",
+    "summaryEn": "Concentric brown leaf spots and stem blight lesions reported in staked tomato clusters during morning dew conditions. Early sanitation helps prevent rapid spread.",
+    "summaryKn": "ಬೆಳಗಿನ ಇಬ್ಬನಿ ಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಟೊಮೆಟೊ ತಾಕುಗಳಲ್ಲಿ ಕಂದು ಉಂಗುರ ಚುಕ್ಕೆಗಳು ಮತ್ತು ಕಾಂಡ ಕೊಳೆತ ವರದಿಯಾಗಿದೆ. ಆರಂಭಿಕ ಸ್ವಚ್ಛತೆಯಿಂದ ಹರಡುವಿಕೆ ತಡೆಯಬಹುದು.",
+    "precautionsEn": [
+      "Prune and safely remove severely infected lower leaves away from the field.",
+      "Prefer drip irrigation over overhead watering to keep foliage dry.",
+      "Ensure adequate staking and air circulation between rows.",
+      "Verify approved preventive fungicide options at your nearest horticulture office."
+    ],
+    "precautionsKn": [
+      "ರೋಗಗ್ರಸ್ತ ಕೆಳಗಿನ ಎಲೆಗಳನ್ನು ಕತ್ತರಿಸಿ ಜಮೀನಿನಿಂದ ದೂರ ವಿಲೇವಾರಿ ಮಾಡಿ.",
+      "ಎಲೆಗಳು ಒಣಗಿರಲು ಮೇಲ್ಭಾಗದ ನೀರಾವರಿ ಬದಲು ಹನಿ ನೀರಾವರಿ ಬಳಸಿ.",
+      "ಸಾಲುಗಳ ನಡುವೆ ಗಾಳಿಯಾಡುವಂತೆ ಸರಿಯಾದ ಆಧಾರ ಕಂಬಗಳನ್ನು ಒದಗಿಸಿ.",
+      "ಅನುಮೋದಿತ ತಡೆಗಟ್ಟುವ ಶಿಲೀಂಧ್ರನಾಶಕ ಮಾಹಿತಿಗಾಗಿ ಸ್ಥಳೀಯ ತೋಟಗಾರಿಕೆ ಕಚೇರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ."
+    ],
+    "active": true
+  },
+  {
+    "alertCode": "ka-tumakuru-groundnut-tikka-rule",
+    "titleEn": "Post-Rain Tikka Leaf Spot Vigilance in Groundnut",
+    "titleKn": "ಮಳೆಯ ನಂತರ ಶೇಂಗಾದಲ್ಲಿ ತಿಕ್ಕಾ ಎಲೆ ಚುಕ್ಕೆ ರೋಗದ ಮುನ್ನೆಚ್ಚರಿಕೆ",
+    "cropCode": "groundnut",
+    "cropNameEn": "Groundnut",
+    "cropNameKn": "ಶೇಂಗಾ (ಕಡಲೆಕಾಯಿ)",
+    "state": "Karnataka",
+    "district": "Tumakuru",
+    "verificationStatus": "SEASONAL_RULE_ADVISORY",
+    "severity": "LOW",
+    "observedDate": "2026-10-28",
+    "validUntil": "2026-12-10",
+    "sourceName": "ICAR-DGR & Dryland Agronomy Practice",
+    "sourceUrl": "https://icar.org.in",
+    "summaryEn": "Warm humid afternoons following intermittent showers favor Cercospora leaf spots (Tikka) around 40–65 days after sowing. Documented seasonal preventive notice, not a live outbreak.",
+    "summaryKn": "ಮಳೆಯ ನಂತರದ ಬೆಚ್ಚಗಿನ ತೇವಾಂಶವು ಬಿತ್ತನೆಯ 40–65 ದಿನಗಳಲ್ಲಿ ತಿಕ್ಕಾ ಎಲೆ ಚುಕ್ಕೆ ರೋಗಕ್ಕೆ ಅನುಕೂಲಕರವಾಗುತ್ತದೆ. ಇದು ದಾಖಲಾದ ಕಾಲೋಚಿತ ಮುನ್ನೆಚ್ಚರಿಕೆ ನಿಯಮವಾಗಿದೆ.",
+    "precautionsEn": [
+      "Inspect lower canopy leaves weekly from 35 days after sowing.",
+      "Remove volunteer groundnut plants and crop debris after harvest.",
+      "Maintain wider crop rotation with millets or pulses in the next season."
+    ],
+    "precautionsKn": [
+      "ಬಿತ್ತನೆಯ 35 ದಿನಗಳ ನಂತರ ವಾರಕ್ಕೊಮ್ಮೆ ಕೆಳಭಾಗದ ಎಲೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
+      "ಕೊಯ್ಲಿನ ನಂತರ ಸ್ವಯಂಸೇವಕ ಶೇಂಗಾ ಗಿಡಗಳು ಮತ್ತು ಬೆಳೆ ಅವಶೇಷಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ.",
+      "ಮುಂದಿನ ಋತುವಿನಲ್ಲಿ ಸಿರಿಧಾನ್ಯ ಅಥವಾ ದ್ವಿದಳ ಬೆಳೆಗಳೊಂದಿಗೆ ಬೆಳೆ ಪರಿವರ್ತನೆ ಪಾಲಿಸಿ."
+    ],
+    "active": true
+  }
+]

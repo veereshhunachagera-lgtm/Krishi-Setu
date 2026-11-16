@@ -18,6 +18,11 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
 krishisetu:
   jwt:
     # Provide a 256-bit+ Base64 secret in production via JWT_SECRET_KEY
@@ -27,3 +32,7 @@ krishisetu:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
   seed:
     enabled: ${SEED_DEMO_DATA:true}
+  plant-health:
+    inference-url: ${PLANT_DISEASE_INFERENCE_URL:}
+    inference-api-key: ${PLANT_DISEASE_INFERENCE_API_KEY:}
+

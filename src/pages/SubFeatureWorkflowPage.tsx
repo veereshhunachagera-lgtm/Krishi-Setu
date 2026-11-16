@@ -10,6 +10,9 @@ import { CropKnowledgeBankPanel } from '../features/cropIntelligence/CropKnowled
 import { CropRotationPanel } from '../features/cropIntelligence/CropRotationPanel';
 import { FertilizerPlannerPanel } from '../features/cropIntelligence/FertilizerPlannerPanel';
 import { SoilHealthAnalysisPanel } from '../features/cropIntelligence/SoilHealthAnalysisPanel';
+import { DiseaseAlertsPanel } from '../features/plantHealth/DiseaseAlertsPanel';
+import { DiseaseScannerPanel } from '../features/plantHealth/DiseaseScannerPanel';
+import { PreventionGuidancePanel } from '../features/plantHealth/PreventionGuidancePanel';
 import { FarmerShellLayout } from '../layouts/FarmerShellLayout';
 import type { FeatureCategoryId } from '../types/dashboard';
 import type { FarmerProfile } from '../types/farmer';
@@ -40,6 +43,7 @@ export function SubFeatureWorkflowPage({
 }: SubFeatureWorkflowPageProps) {
   const { t } = useTranslation();
   const [compareCodes, setCompareCodes] = useState<string[] | undefined>(undefined);
+  const [guidanceCropCode, setGuidanceCropCode] = useState<string | undefined>(undefined);
 
   const category = FEATURE_CATEGORIES.find((c) => c.id === categoryId) || FEATURE_CATEGORIES[0];
   const subFeature =
@@ -53,7 +57,12 @@ export function SubFeatureWorkflowPage({
     onSelectSubFeature('alternative-crops');
   };
 
-  const isCropSoilPhase2 = category.id === 'crop-soil';
+  const handleOpenGuidance = (cropCode?: string) => {
+    setGuidanceCropCode(cropCode);
+    onSelectSubFeature('prevention-guidance');
+  };
+
+  const showQuickTabs = category.id === 'crop-soil' || category.id === 'plant-health';
 
   return (
     <FarmerShellLayout
@@ -82,8 +91,8 @@ export function SubFeatureWorkflowPage({
           </Button>
         </div>
 
-        {/* Sub-feature quick navigation tabs inside Crop & Soil Intelligence */}
-        {isCropSoilPhase2 && (
+        {/* Sub-feature quick navigation tabs inside Crop & Soil Intelligence and Plant Health */}
+        {showQuickTabs && (
           <nav
             aria-label={categoryTitle}
             className="flex flex-wrap items-center gap-1.5 border-b border-[#E5E1D8] pb-4"
@@ -126,6 +135,12 @@ export function SubFeatureWorkflowPage({
               <FertilizerPlannerPanel profile={profile} />
             ) : subFeature.id === 'crop-rotation' ? (
               <CropRotationPanel profile={profile} onCompareCrops={handleOpenComparison} />
+            ) : subFeature.id === 'disease-scanner' ? (
+              <DiseaseScannerPanel profile={profile} onOpenGuidance={handleOpenGuidance} />
+            ) : subFeature.id === 'disease-pest-alerts' ? (
+              <DiseaseAlertsPanel profile={profile} />
+            ) : subFeature.id === 'prevention-guidance' ? (
+              <PreventionGuidancePanel initialCropCode={guidanceCropCode} />
             ) : (
               <>
                 <div className="rounded-xl border border-[#E5E1D8] bg-white p-6 space-y-4">

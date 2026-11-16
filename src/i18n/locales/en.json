@@ -300,28 +300,39 @@
       },
       "plant-health": {
         "title": "Plant Health & Protection",
-        "subtitle": "Pest & disease diagnosis and safe crop protection practices.",
+        "subtitle": "Leaf disease scanner, verified pest & disease alerts, and crop protection prevention guidance.",
         "subFeatures": {
-          "pest-disease-diagnosis": {
-            "title": "Pest & Disease Diagnosis",
-            "description": "Check leaf spots, yellowing, wilting, and pest symptoms systematically.",
-            "status": "Symptom Assessment",
-            "integrationNote": "Leaf photo analysis will connect in a future update alongside this structured symptom checklist.",
+          "disease-scanner": {
+            "title": "Disease Scanner",
+            "description": "Capture or upload a leaf photo, preview before submitting, and run checks when a trained model is connected.",
+            "status": "Image Screening",
+            "integrationNote": "Connects via backend to the open-source PlantVillage classification service when configured. Never fabricates results.",
             "steps": [
-              "Inspect affected plant parts (young leaves, older leaves, stems, or roots).",
-              "Check undersides of leaves for aphids, mites, caterpillars, or fungal spots.",
-              "Assess whether damage is uniform across the field or confined to patches."
+              "Capture a sharp leaf close-up or upload a JPEG, PNG, or WebP photo.",
+              "Select your crop and verify the image preview before submitting.",
+              "Review genuine model confidence or uncertain-result guidance."
             ]
           },
-          "crop-protection-guide": {
-            "title": "Crop Protection & Spray Guide",
-            "description": "Integrated pest controls, safe dosage preparation, and spray timing precautions.",
-            "status": "Protection Standard",
-            "integrationNote": "Will link with live wind and rain spray windows in the weather update.",
+          "disease-pest-alerts": {
+            "title": "Disease & Pest Alerts",
+            "description": "Browse verified outbreaks, reported field cases, and seasonal watch rules by district and crop.",
+            "status": "Verified Bulletins",
+            "integrationNote": "Clearly separates confirmed outbreaks from reported field cases and seasonal rules without simulated alerts.",
             "steps": [
-              "Use yellow sticky traps, pheromone traps, and clean field borders first.",
-              "Avoid spraying during peak afternoon heat or ahead of forecasted rainfall.",
-              "Follow label dilution ratios and pre-harvest waiting periods."
+              "Filter alerts by your saved district, crop, or verification status.",
+              "Verify the official source organization and observation date.",
+              "Apply recommended scouting and preventive precautions."
+            ]
+          },
+          "prevention-guidance": {
+            "title": "Prevention Guidance",
+            "description": "Searchable crop pest and disease handbook with preventive practices and responsible IPM steps.",
+            "status": "Agronomic Reference",
+            "integrationNote": "Grounded in ICAR and state agricultural university protection practices without invented dosages.",
+            "steps": [
+              "Search by crop, disease, pest, or visible symptom.",
+              "Review favorable conditions and cultural prevention steps.",
+              "Confirm exact product labels with your local RSK or KVK officer."
             ]
           }
         }
@@ -475,7 +486,8 @@
     "languageSplit": "Language Preference Distribution",
     "tabs": {
       "farmers": "Registered Farmers",
-      "crops": "Crop & Soil Dataset"
+      "crops": "Crop & Soil Dataset",
+      "plantHealth": "Plant Health & Alerts"
     },
     "crops": {
       "heading": "Crop & Soil Knowledge Dataset",
@@ -499,6 +511,25 @@
       "deleteCrop": "Delete crop record",
       "syncSuccess": "Synchronized {{count}} curated crop records.",
       "createSuccess": "New crop knowledge record saved."
+    },
+    "plantHealth": {
+      "heading": "Verified Disease & Pest Alerts",
+      "syncSeedBtn": "Re-sync Alerts & Guides",
+      "addAlertBtn": "Publish Verified Alert",
+      "newAlertTitle": "Publish New Verified Pest or Disease Alert",
+      "alertCodeLabel": "Alert Code (slug)",
+      "titleEnLabel": "Alert Title (English)",
+      "titleKnLabel": "Alert Title (Kannada)",
+      "observedDateLabel": "Observed Date",
+      "summaryEnLabel": "Summary (English)",
+      "summaryKnLabel": "Summary (Kannada)",
+      "colAlert": "Alert & Source",
+      "colRegion": "Region",
+      "colVerification": "Verification Status",
+      "colDate": "Observed Date",
+      "deleteAlert": "Delete alert",
+      "syncSuccess": "Synchronized {{alerts}} verified alerts and {{guides}} prevention guides.",
+      "createSuccess": "Verified pest/disease alert saved."
     }
   },
   "cropIntelligence": {
@@ -632,6 +663,120 @@
       "fixersSubtitle": "Pulses and legume oilseeds from our dataset that help replenish soil fertility.",
       "compareFixersBtn": "Compare Top Rotation Pulses",
       "diversifyTitle": "Additional Rotational Crops"
+    }
+  },
+  "plantHealth": {
+    "crops": {
+      "tomato": "Tomato",
+      "potato": "Potato",
+      "maize": "Maize (Corn)",
+      "soybean": "Soybean",
+      "grape": "Grape",
+      "bellPepper": "Bell Pepper / Capsicum",
+      "ragi": "Ragi (Finger Millet)",
+      "paddy": "Paddy (Rice)",
+      "turDal": "Tur Dal (Pigeon Pea)",
+      "groundnut": "Groundnut",
+      "onion": "Onion",
+      "cotton": "Cotton",
+      "other": "Other / Unlisted Crop"
+    },
+    "scanner": {
+      "modelConnectedHeading": "Trained Leaf Disease Model Connected",
+      "modelUnavailableHeading": "Disease Scanner Model Not Connected (Unavailable)",
+      "recheckModel": "Recheck Model Connection",
+      "configuredModelLabel": "Model",
+      "minThresholdLabel": "Confidence Threshold",
+      "uploadHeading": "Capture or Upload Leaf Image",
+      "uploadSubtitle": "Accepted formats: JPEG, PNG, or WebP up to 5 MB. Preview your photo before submitting.",
+      "selectCropLabel": "Select Crop",
+      "cropOutsideDomainHint": "Note: This crop is outside the PlantVillage 38-class model domain and will trigger an unsupported-crop notice rather than guessing.",
+      "notesLabel": "Symptom Notes (Optional)",
+      "notesPlaceholder": "e.g., Brown spots spotted on lower leaves after rain",
+      "chooseImageBtn": "Upload Photo",
+      "deviceCameraBtn": "Use Device Camera",
+      "openLiveCameraBtn": "Open Live Camera",
+      "closeLiveCameraBtn": "Close Camera",
+      "captureFrameBtn": "Capture Photo",
+      "cameraUnsupported": "Live camera capture is not supported in this browser; please use Upload Photo instead.",
+      "cameraPermissionDenied": "Camera access was denied or unavailable. Please upload an image file instead.",
+      "invalidFileType": "Unsupported file format. Please select a JPEG, PNG, or WebP image.",
+      "fileTooLarge": "Selected file exceeds the 5 MB upload limit.",
+      "clearImageBtn": "Clear Photo",
+      "previewAlt": "Selected plant leaf preview prior to analysis",
+      "previewNote": "Confirm the leaf area is sharp and well-lit before submitting for classification.",
+      "analyzingBtn": "Analyzing...",
+      "submitScanBtn": "Submit Leaf Image",
+      "uncertainNoticeTitle": "No Confident Diagnosis Returned",
+      "openPreventionInstead": "Browse Prevention Guidance for this Crop",
+      "candidatesTitle": "Top Model Candidates",
+      "matchedGuidanceTitle": "Related Prevention Steps",
+      "historyTitle": "Recent Image Submissions",
+      "historyEmpty": "No leaf image submissions recorded yet.",
+      "statuses": {
+        "PREDICTION_READY": "Model Classification Returned",
+        "UNCERTAIN_LOW_CONFIDENCE": "Uncertain — Low Confidence",
+        "UNCERTAIN_POOR_QUALITY": "Uncertain — Poor Image Quality",
+        "UNSUPPORTED_CROP": "Unsupported Crop Domain",
+        "MODEL_UNAVAILABLE": "Model Service Unavailable"
+      },
+      "statusHeadings": {
+        "UNCERTAIN_LOW_CONFIDENCE": "Result Uncertain — Expert Verification Needed",
+        "UNCERTAIN_POOR_QUALITY": "Image Quality Insufficient for Screening",
+        "UNSUPPORTED_CROP": "Crop Outside Connected Model Coverage",
+        "MODEL_UNAVAILABLE": "Automated Screening Currently Unavailable"
+      }
+    },
+    "alerts": {
+      "verificationLegendTitle": "Verified Alert Classification",
+      "verificationLegendBody": "KrishiSetu displays only documented bulletins and rules—never simulated outbreak alerts. Always check whether an item is a confirmed outbreak, a preliminary reported case, or a seasonal preventive rule.",
+      "statuses": {
+        "CONFIRMED_OUTBREAK": "Confirmed Outbreak",
+        "REPORTED_CASE": "Reported Case",
+        "SEASONAL_RULE_ADVISORY": "Seasonal Risk Rule"
+      },
+      "statusDefs": {
+        "CONFIRMED_OUTBREAK": "Verified above threshold by ICAR or state surveillance bulletins.",
+        "REPORTED_CASE": "Localized field incidence reported; widespread confirmation pending.",
+        "SEASONAL_RULE_ADVISORY": "Weather/stage risk watch from university package of practices."
+      },
+      "severities": {
+        "LOW": "Low",
+        "MODERATE": "Moderate",
+        "HIGH": "High"
+      },
+      "districtFilterLabel": "District",
+      "districtPlaceholder": "e.g., Mandya, Kalaburagi",
+      "cropFilterLabel": "Crop",
+      "allCrops": "All Crops",
+      "statusFilterLabel": "Verification Status",
+      "allStatuses": "All Status Types",
+      "myDistrictBtn": "Filter: {{district}}",
+      "resetFilters": "Reset Filters",
+      "resultCount": "{{count}} alerts shown",
+      "emptyTitle": "No verified alerts match these filters",
+      "emptyDesc": "No confirmed outbreaks, reported cases, or seasonal rules are listed for this filter. KrishiSetu does not generate synthetic outbreak notifications.",
+      "severityLabel": "Severity",
+      "precautionsHeading": "Recommended Scouting & Precautions",
+      "sourceLabel": "Source",
+      "viewSourceLink": "Reference Portal"
+    },
+    "guidance": {
+      "safetyBanner": "Prevention and IPM steps below focus on cultural hygiene, resistant varieties, traps, and safe scouting. Exact chemical formulations and dosages are intentionally omitted—verify CIBRC labels with your local RSK or KVK.",
+      "searchPlaceholder": "Search crop, disease, pest, scientific name, or symptom...",
+      "issueTypeLabel": "Issue Category",
+      "allIssueTypes": "All Issue Categories",
+      "emptyTitle": "No matching prevention guides found",
+      "emptyDesc": "Try clearing your search text or selecting All Crops.",
+      "symptomsTitle": "Field Symptoms",
+      "preventiveTitle": "Preventive Practices",
+      "managementTitle": "Responsible IPM Steps",
+      "safetyNoteLabel": "Safety Precaution",
+      "types": {
+        "FUNGAL_DISEASE": "Fungal Disease",
+        "BACTERIAL_DISEASE": "Bacterial Disease",
+        "INSECT_PEST": "Insect Pest"
+      }
     }
   },
   "validation": {

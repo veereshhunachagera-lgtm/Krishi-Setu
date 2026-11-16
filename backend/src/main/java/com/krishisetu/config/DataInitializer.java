@@ -9,6 +9,7 @@ import com.krishisetu.repository.FarmerProfileRepository;
 import com.krishisetu.repository.NotificationRepository;
 import com.krishisetu.repository.UserRepository;
 import com.krishisetu.service.CropDatasetImportService;
+import com.krishisetu.service.PlantHealthDatasetImportService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +24,7 @@ public class DataInitializer implements CommandLineRunner {
     private final FarmerProfileRepository farmerProfileRepository;
     private final NotificationRepository notificationRepository;
     private final CropDatasetImportService cropDatasetImportService;
+    private final PlantHealthDatasetImportService plantHealthDatasetImportService;
     private final PasswordEncoder passwordEncoder;
     private final boolean seedEnabled;
 
@@ -31,6 +33,7 @@ public class DataInitializer implements CommandLineRunner {
         FarmerProfileRepository farmerProfileRepository,
         NotificationRepository notificationRepository,
         CropDatasetImportService cropDatasetImportService,
+        PlantHealthDatasetImportService plantHealthDatasetImportService,
         PasswordEncoder passwordEncoder,
         @Value("${krishisetu.seed.enabled:true}") boolean seedEnabled
     ) {
@@ -38,6 +41,7 @@ public class DataInitializer implements CommandLineRunner {
         this.farmerProfileRepository = farmerProfileRepository;
         this.notificationRepository = notificationRepository;
         this.cropDatasetImportService = cropDatasetImportService;
+        this.plantHealthDatasetImportService = plantHealthDatasetImportService;
         this.passwordEncoder = passwordEncoder;
         this.seedEnabled = seedEnabled;
     }
@@ -45,6 +49,7 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         cropDatasetImportService.importSeedDatasetIfEmpty();
+        plantHealthDatasetImportService.importDatasetsIfEmpty();
 
         if (!seedEnabled) {
             return;

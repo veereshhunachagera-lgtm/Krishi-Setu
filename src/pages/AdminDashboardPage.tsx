@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { inputBaseClass } from '../components/FormField';
 import { EmptyState, ErrorBanner, LoadingSkeleton } from '../components/StatePanels';
 import { AdminCropDatasetPanel } from '../features/cropIntelligence/AdminCropDatasetPanel';
+import { AdminPlantHealthPanel } from '../features/plantHealth/AdminPlantHealthPanel';
 import { AdminShellLayout } from '../layouts/AdminShellLayout';
 import { adminService } from '../services/adminService';
 import type { AdminOverview } from '../types/notification';
@@ -16,7 +17,7 @@ interface AdminDashboardPageProps {
 
 export function AdminDashboardPage({ onLogout }: AdminDashboardPageProps) {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState<'farmers' | 'crops'>('farmers');
+  const [activeTab, setActiveTab] = useState<'farmers' | 'crops' | 'plantHealth'>('farmers');
   const [overview, setOverview] = useState<AdminOverview | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -84,11 +85,24 @@ export function AdminDashboardPage({ onLogout }: AdminDashboardPageProps) {
             >
               {t('admin.tabs.crops')}
             </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('plantHealth')}
+              className={`rounded-md px-3.5 py-1.5 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                activeTab === 'plantHealth'
+                  ? 'bg-white text-[#17221B] shadow-xs'
+                  : 'text-[#4A5A50] hover:text-[#17221B]'
+              }`}
+            >
+              {t('admin.tabs.plantHealth')}
+            </button>
           </div>
         </div>
 
         {activeTab === 'crops' ? (
           <AdminCropDatasetPanel />
+        ) : activeTab === 'plantHealth' ? (
+          <AdminPlantHealthPanel />
         ) : (
           <>
             {error && (

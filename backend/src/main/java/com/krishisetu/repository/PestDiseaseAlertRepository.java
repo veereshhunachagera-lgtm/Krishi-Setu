@@ -1,0 +1,14 @@
+package com.krishisetu.repository;
+
+import com.krishisetu.entity.PestDiseaseAlert;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface PestDiseaseAlertRepository extends JpaRepository<PestDiseaseAlert, UUID> {
+    Optional<PestDiseaseAlert> findByAlertCodeIgnoreCase(String alertCode);
+    List<PestDiseaseAlert> findByActiveTrueOrderByObservedDateDesc();
+    List<PestDiseaseAlert> findAllByOrderByObservedDateDesc();
+}

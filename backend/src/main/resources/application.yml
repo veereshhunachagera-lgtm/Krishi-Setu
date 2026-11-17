@@ -35,4 +35,9 @@ krishisetu:
   plant-health:
     inference-url: ${PLANT_DISEASE_INFERENCE_URL:}
     inference-api-key: ${PLANT_DISEASE_INFERENCE_API_KEY:}
-
+  market-weather:
+    data-gov-api-key: ${DATA_GOV_IN_API_KEY:}
+    mandi-resource-id: ${DATA_GOV_IN_MANDI_RESOURCE_ID:9ef84268-d588-465a-a308-a864a43d0070}
+    history-resource-id: ${DATA_GOV_IN_HISTORY_RESOURCE_ID:35985678-0d79-46b4-9ed6-6f13308a1d24}
+    open-meteo-forecast-url: ${OPEN_METEO_FORECAST_URL:https://api.open-meteo.com/v1/forecast}
+    open-meteo-geocoding-url: ${OPEN_METEO_GEOCODING_URL:https://geocoding-api.open-meteo.com/v1/search}

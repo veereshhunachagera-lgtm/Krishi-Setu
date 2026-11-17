@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Button } from '../components/Button';
 import { FEATURE_CATEGORIES } from '../data/dashboardCatalog';
+import { SmartAlertsPanel } from '../features/marketWeather/SmartAlertsPanel';
 import { FarmerShellLayout } from '../layouts/FarmerShellLayout';
 import type { FeatureCategoryId } from '../types/dashboard';
 
@@ -50,7 +51,7 @@ export function FeatureCategoryPage({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {category.subFeatures.map((sub) => (
             <button
               key={sub.id}
@@ -78,6 +79,8 @@ export function FeatureCategoryPage({
             </button>
           ))}
         </div>
+
+        {category.id === 'market-weather' && <SmartAlertsPanel />}
       </div>
     </FarmerShellLayout>
   );

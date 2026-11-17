@@ -27,6 +27,17 @@ import {
   type PlantDiseaseScanRecord,
   type PlantProtectionGuideRecord,
 } from './server/plantHealthEngine.ts';
+import {
+  UpstreamApiError,
+  buildSmartAlerts,
+  fetchMandiPrices,
+  getPriceTrends,
+  getWeatherForecast,
+  mergeMandiRecords,
+  normalizeAgmarknetDate,
+  searchOpenMeteoLocations,
+  type MandiPriceRecord,
+} from './server/marketWeatherEngine.ts';
 
 interface SoilReportRecord {
   nitrogenKgPerHa: number | null;
@@ -91,6 +102,7 @@ interface DatabaseSchema {
   pestAlerts: PestDiseaseAlertRecord[];
   protectionGuides: PlantProtectionGuideRecord[];
   diseaseScans: PlantDiseaseScanRecord[];
+  mandiPriceRecords: MandiPriceRecord[];
 }
 
 interface AuthenticatedRequest extends Request {
@@ -256,6 +268,7 @@ function seedInitialDatabase(): DatabaseSchema {
     pestAlerts: loadSeedAlerts(),
     protectionGuides: loadSeedGuides(),
     diseaseScans: [],
+    mandiPriceRecords: [],
   };
 }
 
@@ -290,6 +303,10 @@ function readDb(): DatabaseSchema {
     }
     if (!Array.isArray(parsed.diseaseScans)) {
       parsed.diseaseScans = [];
+      changed = true;
+    }
+    if (!Array.isArray(parsed.mandiPriceRecords)) {
+      parsed.mandiPriceRecords = [];
       changed = true;
     }
     const db = parsed as DatabaseSchema;
@@ -1379,6 +1396,259 @@ async function startServer() {
     res.json({
       alertsImported: seedAlerts.length,
       guidesImported: seedGuides.length,
+    });
+  });
+
+  // --- Phase 4: Market & Weather + Smart Alerts Routes ---
+  app.get('/api/v1/market-weather/mandi-prices', requireAuth, async (req, res) => {
+    const db = readDb();
+    const limitRaw = typeof req.query.limit === 'string' ? Number(req.query.limit) : 50;
+    const offsetRaw = typeof req.query.offset === 'string' ? Number(req.query.offset) : 0;
+    const { response, newlyFetched } = await fetchMandiPrices(
+      {
+        commodity: typeof req.query.commodity === 'string' ? req.query.commodity : undefined,
+        state: typeof req.query.state === 'string' ? req.query.state : undefined,
+        district: typeof req.query.district === 'string' ? req.query.district : undefined,
+        market: typeof req.query.market === 'string' ? req.query.market : undefined,
+        q: typeof req.query.q === 'string' ? req.query.q : undefined,
+        limit: Number.isFinite(limitRaw) ? limitRaw : 50,
+        offset: Number.isFinite(offsetRaw) ? offsetRaw : 0,
+      },
+      db.mandiPriceRecords,
+    );
+
+    if (newlyFetched.length > 0) {
+      const { merged } = mergeMandiRecords(db.mandiPriceRecords, newlyFetched);
+      db.mandiPriceRecords = merged;
+      writeDb(db);
+    }
+
+    res.json(response);
+  });
+
+  app.get('/api/v1/market-weather/trends', requireAuth, async (req, res) => {
+    const db = readDb();
+    const daysRaw = typeof req.query.days === 'string' ? Number(req.query.days) : undefined;
+    const { response, newlyFetched } = await getPriceTrends(
+      {
+        commodity: typeof req.query.commodity === 'string' ? req.query.commodity : undefined,
+        market: typeof req.query.market === 'string' ? req.query.market : undefined,
+        district: typeof req.query.district === 'string' ? req.query.district : undefined,
+        state: typeof req.query.state === 'string' ? req.query.state : undefined,
+        days: daysRaw && Number.isFinite(daysRaw) ? daysRaw : undefined,
+      },
+      db.mandiPriceRecords,
+    );
+
+    if (newlyFetched.length > 0) {
+      const { merged } = mergeMandiRecords(db.mandiPriceRecords, newlyFetched);
+      db.mandiPriceRecords = merged;
+      writeDb(db);
+    }
+
+    res.json(response);
+  });
+
+  app.get('/api/v1/market-weather/locations/search', requireAuth, async (req, res) => {
+    const q = typeof req.query.q === 'string' ? req.query.q : '';
+    try {
+      const results = await searchOpenMeteoLocations(q);
+      res.json(results);
+    } catch (err) {
+      if (err instanceof UpstreamApiError) {
+        sendError(res, err.statusCode, err.errorCode, err.message);
+        return;
+      }
+      sendError(res, 503, 'UPSTREAM_ERROR', 'Unable to search locations right now.');
+    }
+  });
+
+  app.get('/api/v1/market-weather/weather', requireAuth, async (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+
+    const hasLat = typeof req.query.lat === 'string' && req.query.lat.trim() !== '';
+    const hasLon = typeof req.query.lon === 'string' && req.query.lon.trim() !== '';
+    const lat = hasLat ? Number(req.query.lat) : null;
+    const lon = hasLon ? Number(req.query.lon) : null;
+
+    if ((hasLat && Number.isNaN(lat)) || (hasLon && Number.isNaN(lon))) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Latitude and longitude must be valid numbers.', {
+        latitude: 'Enter valid numeric coordinates.',
+      });
+      return;
+    }
+
+    const q = typeof req.query.q === 'string' && req.query.q.trim() ? req.query.q.trim() : null;
+    const locationName =
+      typeof req.query.locationName === 'string' && req.query.locationName.trim()
+        ? req.query.locationName.trim()
+        : null;
+
+    try {
+      const forecast = await getWeatherForecast({
+        latitude: lat,
+        longitude: lon,
+        locationName,
+        q,
+        state: profile?.state || null,
+        district: !q && lat === null ? profile?.district || null : null,
+      });
+      res.json(forecast);
+    } catch (err) {
+      if (err instanceof UpstreamApiError) {
+        sendError(res, err.statusCode, err.errorCode, err.message);
+        return;
+      }
+      sendError(res, 503, 'UPSTREAM_ERROR', 'Unable to fetch weather forecast right now.');
+    }
+  });
+
+  app.get('/api/v1/market-weather/smart-alerts', requireAuth, async (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+
+    const latRaw = typeof req.query.lat === 'string' && req.query.lat.trim() !== '' ? Number(req.query.lat) : null;
+    const lonRaw = typeof req.query.lon === 'string' && req.query.lon.trim() !== '' ? Number(req.query.lon) : null;
+    const validLat = latRaw !== null && Number.isFinite(latRaw) && latRaw >= -90 && latRaw <= 90 ? latRaw : null;
+    const validLon = lonRaw !== null && Number.isFinite(lonRaw) && lonRaw >= -180 && lonRaw <= 180 ? lonRaw : null;
+
+    const result = await buildSmartAlerts({
+      state: profile?.state || null,
+      district: profile?.district || null,
+      latitude: validLat,
+      longitude: validLon,
+      pestAlerts: db.pestAlerts,
+    });
+    res.json(result);
+  });
+
+  // --- Admin Market Records Oversight ---
+  app.get('/api/v1/admin/market/prices', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const sorted = [...db.mandiPriceRecords].sort((a, b) =>
+      b.arrivalDate.localeCompare(a.arrivalDate),
+    );
+    res.json(sorted);
+  });
+
+  app.post('/api/v1/admin/market/prices', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    if (typeof body.commodity !== 'string' || !body.commodity.trim()) {
+      fieldErrors.commodity = 'Commodity name is required.';
+    }
+    if (typeof body.market !== 'string' || !body.market.trim()) {
+      fieldErrors.market = 'Market / APMC mandi name is required.';
+    }
+    if (typeof body.state !== 'string' || !body.state.trim()) {
+      fieldErrors.state = 'State is required.';
+    }
+    if (typeof body.district !== 'string' || !body.district.trim()) {
+      fieldErrors.district = 'District is required.';
+    }
+    if (typeof body.arrivalDate !== 'string' || !body.arrivalDate.trim()) {
+      fieldErrors.arrivalDate = 'Arrival date is required.';
+    }
+
+    const modalPrice = Number(body.modalPrice);
+    const minPrice =
+      body.minPrice !== undefined && body.minPrice !== null && body.minPrice !== ''
+        ? Number(body.minPrice)
+        : modalPrice;
+    const maxPrice =
+      body.maxPrice !== undefined && body.maxPrice !== null && body.maxPrice !== ''
+        ? Number(body.maxPrice)
+        : modalPrice;
+
+    if (Number.isNaN(modalPrice) || modalPrice <= 0) {
+      fieldErrors.modalPrice = 'Valid modal price (> 0 INR/Quintal) is required.';
+    }
+    if (Number.isNaN(minPrice) || minPrice <= 0 || Number.isNaN(maxPrice) || maxPrice < minPrice) {
+      fieldErrors.minPrice = 'Min price must be > 0 and <= Max price.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const { iso, rawText } = normalizeAgmarknetDate(body.arrivalDate);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Arrival date must be YYYY-MM-DD or DD/MM/YYYY.', {
+        arrivalDate: 'Use YYYY-MM-DD or DD/MM/YYYY format.',
+      });
+      return;
+    }
+
+    const db = readDb();
+    const record: MandiPriceRecord = {
+      id: crypto.randomUUID(),
+      commodity: body.commodity.trim(),
+      variety: typeof body.variety === 'string' && body.variety.trim() ? body.variety.trim() : 'FAQ',
+      grade: typeof body.grade === 'string' && body.grade.trim() ? body.grade.trim() : 'FAQ',
+      state: body.state.trim(),
+      district: body.district.trim(),
+      market: body.market.trim(),
+      minPrice,
+      maxPrice,
+      modalPrice,
+      unit: 'INR / Quintal',
+      arrivalDate: iso,
+      reportedDateRaw: rawText || iso,
+      sourceName:
+        typeof body.sourceName === 'string' && body.sourceName.trim()
+          ? body.sourceName.trim()
+          : 'Admin Verified Agmarknet Bulletin',
+      resourceId: null,
+      fetchedAt: new Date().toISOString(),
+    };
+
+    const { merged } = mergeMandiRecords(db.mandiPriceRecords, [record]);
+    db.mandiPriceRecords = merged;
+    writeDb(db);
+    res.status(201).json(record);
+  });
+
+  app.delete('/api/v1/admin/market/prices/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.mandiPriceRecords.findIndex((r) => r.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Mandi price record not found.');
+      return;
+    }
+    db.mandiPriceRecords.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  app.post('/api/v1/admin/market/sync-live', requireAuth, requireAdmin, async (req, res) => {
+    const db = readDb();
+    const body = req.body ?? {};
+    const { response, newlyFetched } = await fetchMandiPrices(
+      {
+        state: typeof body.state === 'string' ? body.state : 'Karnataka',
+        commodity: typeof body.commodity === 'string' ? body.commodity : undefined,
+        limit: 100,
+      },
+      db.mandiPriceRecords,
+    );
+    if (newlyFetched.length > 0) {
+      const { merged, addedOrUpdated } = mergeMandiRecords(db.mandiPriceRecords, newlyFetched);
+      db.mandiPriceRecords = merged;
+      writeDb(db);
+      res.json({
+        status: response.status,
+        syncedCount: addedOrUpdated,
+        totalStored: merged.length,
+        messageEn: response.messageEn,
+      });
+      return;
+    }
+    res.json({
+      status: response.status,
+      syncedCount: 0,
+      totalStored: db.mandiPriceRecords.length,
+      messageEn: response.messageEn,
     });
   });
 

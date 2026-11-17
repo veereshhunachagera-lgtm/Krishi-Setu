@@ -339,28 +339,39 @@
       },
       "market-weather": {
         "title": "Market & Weather",
-        "subtitle": "Local weather forecasts and nearby APMC mandi market prices.",
+        "subtitle": "Live mandi market prices, factual historical price trends, and Open-Meteo weather forecasts.",
         "subFeatures": {
-          "weather-forecast": {
-            "title": "Weather Forecast",
-            "description": "Track rain, temperature, humidity, and wind windows for sowing and harvesting.",
-            "status": "Weather Planning",
-            "integrationNote": "Live 7-day forecast from Open-Meteo will connect to your saved village and district.",
-            "steps": [
-              "Check upcoming rainfall before sowing, top-dressing, or spraying.",
-              "Monitor high-humidity periods that favor fungal diseases.",
-              "Plan harvesting and grain drying during clear dry spells."
-            ]
-          },
           "mandi-prices": {
             "title": "Mandi Market Prices",
-            "description": "Compare crop prices across nearby regulated markets before selling.",
-            "status": "Market Intelligence",
-            "integrationNote": "Live Agmarknet mandi prices and nearby market maps will connect in an upcoming update.",
+            "description": "Search regulated APMC mandi crop prices via data.gov.in Agmarknet with state, district, and market filters.",
+            "status": "data.gov.in Agmarknet API",
+            "integrationNote": "Streams official Agmarknet daily arrivals through the backend when DATA_GOV_IN_API_KEY is configured, or states unavailability honestly.",
             "steps": [
-              "Select your harvested crop and review rates in nearby district mandis.",
-              "Factor transport costs when comparing modal prices across markets.",
-              "Grade and dry produce properly before market arrival."
+              "Search or filter by crop, state, district, or mandi.",
+              "Check min, modal, and max prices per quintal alongside reported arrival date.",
+              "Factor transport and grading costs before selecting a mandi."
+            ]
+          },
+          "price-trends": {
+            "title": "Price Trends",
+            "description": "Inspect factual historical price movements plotted strictly from stored mandi records.",
+            "status": "Historical Audit Charts",
+            "integrationNote": "Plots multi-date historical records persisted from data.gov.in or verified bulletins; never fabricates trends or predicts future profits.",
+            "steps": [
+              "Select a recorded commodity and optional APMC mandi.",
+              "Review observed min, modal, and max prices across actual arrival dates.",
+              "Use past ranges strictly as historical context without assuming future returns."
+            ]
+          },
+          "weather-forecast": {
+            "title": "Weather Forecast",
+            "description": "Live 7-day weather forecast from Open-Meteo by location search or coordinates with cautious farming advisories.",
+            "status": "Open-Meteo Forecast",
+            "integrationNote": "Integrates Open-Meteo Geocoding and Forecast APIs with CC BY 4.0 attribution and threshold-based field advisories.",
+            "steps": [
+              "Search your town/village, load your saved farm district, or enter latitude/longitude.",
+              "Review current temperature, humidity, wind speed, and 7-day rain outlooks.",
+              "Plan spraying, irrigation, and harvest operations using weather caution windows."
             ]
           }
         }
@@ -446,12 +457,17 @@
     "reopenWizard": "Edit Setup Details"
   },
   "notifications": {
-    "title": "Notification Centre",
+    "title": "Alerts & Notification Centre",
     "unreadCount": "{{count}} unread",
+    "summaryLine": "{{alerts}} smart alerts · {{unread}} unread updates",
     "markAllRead": "Mark all read",
     "markRead": "Mark read",
     "emptyTitle": "You are all caught up",
     "emptyBody": "Profile updates, seasonal reminders, and alerts will appear here.",
+    "tabs": {
+      "smartAlerts": "Smart Alerts",
+      "accountUpdates": "Account Updates"
+    },
     "items": {
       "accountCreatedTitle": "Welcome to KrishiSetu",
       "accountCreatedMessage": "Your farmer account is active. Complete your farm setup to unlock your dashboard.",
@@ -487,7 +503,8 @@
     "tabs": {
       "farmers": "Registered Farmers",
       "crops": "Crop & Soil Dataset",
-      "plantHealth": "Plant Health & Alerts"
+      "plantHealth": "Plant Health & Alerts",
+      "marketData": "Market Price Records"
     },
     "crops": {
       "heading": "Crop & Soil Knowledge Dataset",
@@ -530,6 +547,19 @@
       "deleteAlert": "Delete alert",
       "syncSuccess": "Synchronized {{alerts}} verified alerts and {{guides}} prevention guides.",
       "createSuccess": "Verified pest/disease alert saved."
+    },
+    "market": {
+      "heading": "Agmarknet & Verified Mandi Price Records",
+      "subtitle": "Sync live data.gov.in daily arrivals or record verified Agmarknet bulletins for historical trend auditing.",
+      "syncLiveBtn": "Sync Live data.gov.in",
+      "addRecordBtn": "Add Verified Record",
+      "formTitle": "Add Verified Mandi Price Record",
+      "varietyLabel": "Variety",
+      "sourceLabel": "Source Bulletin",
+      "createSuccess": "Verified mandi price record saved.",
+      "deleteRecord": "Delete mandi price record",
+      "emptyTitle": "No mandi price records stored yet",
+      "emptyDesc": "Sync from data.gov.in once DATA_GOV_IN_API_KEY is configured, or add verified Agmarknet records manually."
     }
   },
   "cropIntelligence": {
@@ -776,6 +806,129 @@
         "FUNGAL_DISEASE": "Fungal Disease",
         "BACTERIAL_DISEASE": "Bacterial Disease",
         "INSECT_PEST": "Insect Pest"
+      }
+    }
+  },
+  "marketWeather": {
+    "mandi": {
+      "filterTitle": "Filter Regulated Mandi Arrivals",
+      "filterSubtitle": "Queries live data.gov.in Agmarknet records when configured on the backend server.",
+      "myDistrictBtn": "My District: {{district}}",
+      "resetBtn": "Reset Filters",
+      "searchLabel": "Quick Search",
+      "searchPlaceholder": "Crop, variety, mandi...",
+      "cropLabel": "Crop / Commodity",
+      "cropPlaceholder": "e.g., Ragi, Paddy, Onion",
+      "stateLabel": "State",
+      "allStates": "All States",
+      "districtLabel": "District",
+      "districtPlaceholder": "e.g., Mandya, Mysuru",
+      "mandiLabel": "Mandi / Market",
+      "mandiPlaceholder": "e.g., Mandya APMC",
+      "applyBtn": "Fetch Mandi Prices",
+      "resourceIdLabel": "Dataset ID",
+      "updatedLabel": "Updated",
+      "unitLabel": "Unit",
+      "configRequiredHeading": "Required Backend Configuration",
+      "tableTitle": "Mandi Price Records",
+      "rowsShown": "{{count}} rows shown",
+      "viewTrendBtn": "View Trend",
+      "emptyTitle": "No mandi price records available",
+      "emptyUnconfiguredDesc": "Live data.gov.in access requires DATA_GOV_IN_API_KEY on the server. No sample or synthetic prices are displayed.",
+      "emptyFilteredDesc": "No Agmarknet arrivals matched your selected crop, state, district, or mandi filters.",
+      "statuses": {
+        "LIVE_OK": "Live data.gov.in Agmarknet Feed",
+        "API_KEY_MISSING": "Live Market API Key Not Configured (Unavailable)",
+        "RATE_LIMITED": "data.gov.in Rate Limit Reached",
+        "UPSTREAM_TIMEOUT": "data.gov.in Request Timed Out",
+        "UPSTREAM_ERROR": "data.gov.in Feed Unavailable"
+      },
+      "cols": {
+        "commodity": "Commodity & Variety",
+        "market": "Mandi & Location",
+        "minPrice": "Min Price",
+        "modalPrice": "Modal Price",
+        "maxPrice": "Max Price",
+        "arrivalDate": "Reported Date",
+        "trend": "History"
+      }
+    },
+    "trends": {
+      "controlsTitle": "Historical Mandi Price Explorer",
+      "controlsSubtitle": "Select a recorded crop and mandi to inspect real persisted price movements over time.",
+      "refreshBtn": "Refresh History",
+      "commodityLabel": "Commodity",
+      "selectCommodity": "Select a recorded commodity",
+      "marketLabel": "Mandi / Market",
+      "allMarkets": "All Recorded Mandis",
+      "windowLabel": "Date Window",
+      "windowAll": "All Stored Dates",
+      "window30": "Last 30 Days",
+      "window90": "Last 90 Days",
+      "honestyTitle": "Factual Historical Scope",
+      "insufficientTitle": "Insufficient Historical Records to Plot Trend",
+      "insufficientFallback": "At least two distinct dated records are required to display a trend line.",
+      "latestModalLabel": "Latest Observed Modal",
+      "observedRangeLabel": "Observed Min – Max",
+      "periodChangeLabel": "Observed Period Change",
+      "dateSpanLabel": "Date Span",
+      "dataPointsCount": "{{count}} distinct dates",
+      "recordsCol": "Quotes",
+      "singleRecordNotice": "Single dated quote available ({{date}} · Modal {{price}}). Add or sync additional dates to chart a trend."
+    },
+    "weather": {
+      "locationHeading": "Select Farm Location or Coordinates",
+      "locationSubtitle": "Search any village/town via Open-Meteo Geocoding or enter exact latitude and longitude.",
+      "modeSearch": "Location Search",
+      "modeCoords": "Latitude / Longitude",
+      "savedDistrictBtn": "My District: {{district}}",
+      "searchPlaceholder": "Search town, taluk, or district (e.g., Mandya, Maddur)",
+      "fetchWeatherBtn": "Get Forecast",
+      "matchingLocations": "Matching locations found — click to switch:",
+      "latitudeLabel": "Latitude (-90 to 90)",
+      "longitudeLabel": "Longitude (-180 to 180)",
+      "fetchByCoordsBtn": "Load Forecast by Coordinates",
+      "searchMinLength": "Enter at least 2 characters to search for a location.",
+      "noLocationMatch": "No matching coordinates found for \"{{query}}\". Try a nearby town or enter coordinates directly.",
+      "invalidCoordinates": "Enter valid numeric coordinates (Latitude -90 to 90, Longitude -180 to 180).",
+      "forecastPeriodLabel": "Forecast Period",
+      "updatedLabel": "Updated",
+      "currentTempLabel": "Current Temperature",
+      "humidityLabel": "Relative Humidity",
+      "relativeHumidityNote": "2m relative humidity",
+      "windLabel": "Wind Speed",
+      "windHeightNote": "10m surface wind",
+      "precipNowLabel": "Current Precipitation",
+      "observedAt": "Observed",
+      "advisoriesTitle": "Cautious Weather-Based Farming Advisories",
+      "advisoriesSubtitle": "Generated transparently from actual Open-Meteo temperature, wind, humidity, and rainfall thresholds.",
+      "noAdvisories": "No special weather risk advisories triggered for the current 3-day outlook.",
+      "triggerLabel": "Observed Trigger",
+      "chartTitle": "7-Day Temperature & Precipitation Outlook",
+      "chartSubtitle": "Daily min/max air temperatures (°C) and precipitation totals (mm).",
+      "severity": {
+        "HIGH": "High Caution",
+        "MODERATE": "Moderate Watch",
+        "INFO": "Favorable Window"
+      },
+      "cols": {
+        "date": "Date",
+        "condition": "Sky / Weather",
+        "minMaxTemp": "Min / Max Temp",
+        "precip": "Rainfall (mm)",
+        "rainProb": "Rain Prob.",
+        "maxWind": "Max Wind"
+      }
+    },
+    "smartAlerts": {
+      "title": "Smart Weather & Agricultural Alerts",
+      "refreshBtn": "Refresh",
+      "emptyTitle": "No active weather or pest alerts",
+      "emptyDesc": "No severe weather thresholds or regional pest alerts are currently active for your saved district.",
+      "severity": {
+        "HIGH": "High",
+        "MODERATE": "Moderate",
+        "LOW": "Low"
       }
     }
   },

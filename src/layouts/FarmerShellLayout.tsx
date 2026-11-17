@@ -5,6 +5,7 @@ import { LanguageSelector } from '../components/LanguageSelector';
 import { NotificationDrawer } from '../components/NotificationDrawer';
 import { useAuth } from '../hooks/useAuth';
 import { useNotifications } from '../hooks/useNotifications';
+import { useSmartAlerts } from '../hooks/useSmartAlerts';
 
 interface FarmerShellLayoutProps {
   children: React.ReactNode;
@@ -24,9 +25,10 @@ export function FarmerShellLayout({
   const { t } = useTranslation();
   const { user } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { items, unreadCount, loading, markRead, markAllRead } = useNotifications(
-    Boolean(user) && showWorkspaceNav,
-  );
+  const activeNav = Boolean(user) && showWorkspaceNav;
+  const { items, unreadCount, loading, markRead, markAllRead } = useNotifications(activeNav);
+  const { alerts: smartAlerts } = useSmartAlerts(activeNav);
+  const badgeCount = unreadCount + smartAlerts.length;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#17221B]">
@@ -54,9 +56,9 @@ export function FarmerShellLayout({
                 >
                   <Bell className="h-4 w-4 text-[#1B4332]" aria-hidden="true" />
                   <span className="hidden md:inline">{t('common.notifications')}</span>
-                  {unreadCount > 0 && (
+                  {badgeCount > 0 && (
                     <span className="ml-0.5 inline-flex min-w-[18px] items-center justify-center rounded-md bg-[#1B4332] px-1.5 py-0.5 text-[11px] font-semibold text-white tabular-nums">
-                      {unreadCount}
+                      {badgeCount}
                     </span>
                   )}
                 </button>
@@ -97,6 +99,7 @@ export function FarmerShellLayout({
         loading={loading}
         onMarkRead={markRead}
         onMarkAllRead={markAllRead}
+        smartAlertsCount={smartAlerts.length}
       />
     </div>
   );

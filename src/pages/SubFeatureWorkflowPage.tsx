@@ -13,6 +13,10 @@ import { SoilHealthAnalysisPanel } from '../features/cropIntelligence/SoilHealth
 import { DiseaseAlertsPanel } from '../features/plantHealth/DiseaseAlertsPanel';
 import { DiseaseScannerPanel } from '../features/plantHealth/DiseaseScannerPanel';
 import { PreventionGuidancePanel } from '../features/plantHealth/PreventionGuidancePanel';
+import { MandiPricesPanel } from '../features/marketWeather/MandiPricesPanel';
+import { PriceTrendsPanel } from '../features/marketWeather/PriceTrendsPanel';
+import { SmartAlertsPanel } from '../features/marketWeather/SmartAlertsPanel';
+import { WeatherForecastPanel } from '../features/marketWeather/WeatherForecastPanel';
 import { FarmerShellLayout } from '../layouts/FarmerShellLayout';
 import type { FeatureCategoryId } from '../types/dashboard';
 import type { FarmerProfile } from '../types/farmer';
@@ -44,6 +48,8 @@ export function SubFeatureWorkflowPage({
   const { t } = useTranslation();
   const [compareCodes, setCompareCodes] = useState<string[] | undefined>(undefined);
   const [guidanceCropCode, setGuidanceCropCode] = useState<string | undefined>(undefined);
+  const [trendCommodity, setTrendCommodity] = useState<string | undefined>(undefined);
+  const [trendMarket, setTrendMarket] = useState<string | undefined>(undefined);
 
   const category = FEATURE_CATEGORIES.find((c) => c.id === categoryId) || FEATURE_CATEGORIES[0];
   const subFeature =
@@ -62,7 +68,16 @@ export function SubFeatureWorkflowPage({
     onSelectSubFeature('prevention-guidance');
   };
 
-  const showQuickTabs = category.id === 'crop-soil' || category.id === 'plant-health';
+  const handleOpenTrends = (commodity: string, market?: string) => {
+    setTrendCommodity(commodity);
+    setTrendMarket(market);
+    onSelectSubFeature('price-trends');
+  };
+
+  const showQuickTabs =
+    category.id === 'crop-soil' ||
+    category.id === 'plant-health' ||
+    category.id === 'market-weather';
 
   return (
     <FarmerShellLayout
@@ -141,6 +156,15 @@ export function SubFeatureWorkflowPage({
               <DiseaseAlertsPanel profile={profile} />
             ) : subFeature.id === 'prevention-guidance' ? (
               <PreventionGuidancePanel initialCropCode={guidanceCropCode} />
+            ) : subFeature.id === 'mandi-prices' ? (
+              <MandiPricesPanel profile={profile} onOpenTrends={handleOpenTrends} />
+            ) : subFeature.id === 'price-trends' ? (
+              <PriceTrendsPanel
+                initialCommodity={trendCommodity}
+                initialMarket={trendMarket}
+              />
+            ) : subFeature.id === 'weather-forecast' ? (
+              <WeatherForecastPanel profile={profile} />
             ) : (
               <>
                 <div className="rounded-xl border border-[#E5E1D8] bg-white p-6 space-y-4">
@@ -283,6 +307,12 @@ export function SubFeatureWorkflowPage({
                 {t('subFeature.goToProfile')}
               </Button>
             </div>
+
+            {category.id === 'market-weather' && (
+              <div className="mt-6">
+                <SmartAlertsPanel compact />
+              </div>
+            )}
           </aside>
         </div>
       </div>

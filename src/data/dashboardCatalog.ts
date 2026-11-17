@@ -141,19 +141,6 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
     accentHex: '#8C5A2B',
     subFeatures: [
       {
-        id: 'weather-forecast',
-        categoryId: 'market-weather',
-        titleKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.title',
-        descriptionKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.description',
-        statusTagKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.status',
-        integrationNoteKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.integrationNote',
-        workflowStepsKeys: [
-          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.0',
-          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.1',
-          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.2',
-        ],
-      },
-      {
         id: 'mandi-prices',
         categoryId: 'market-weather',
         titleKey: 'dashboard.categories.market-weather.subFeatures.mandi-prices.title',
@@ -164,6 +151,32 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
           'dashboard.categories.market-weather.subFeatures.mandi-prices.steps.0',
           'dashboard.categories.market-weather.subFeatures.mandi-prices.steps.1',
           'dashboard.categories.market-weather.subFeatures.mandi-prices.steps.2',
+        ],
+      },
+      {
+        id: 'price-trends',
+        categoryId: 'market-weather',
+        titleKey: 'dashboard.categories.market-weather.subFeatures.price-trends.title',
+        descriptionKey: 'dashboard.categories.market-weather.subFeatures.price-trends.description',
+        statusTagKey: 'dashboard.categories.market-weather.subFeatures.price-trends.status',
+        integrationNoteKey: 'dashboard.categories.market-weather.subFeatures.price-trends.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.market-weather.subFeatures.price-trends.steps.0',
+          'dashboard.categories.market-weather.subFeatures.price-trends.steps.1',
+          'dashboard.categories.market-weather.subFeatures.price-trends.steps.2',
+        ],
+      },
+      {
+        id: 'weather-forecast',
+        categoryId: 'market-weather',
+        titleKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.title',
+        descriptionKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.description',
+        statusTagKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.status',
+        integrationNoteKey: 'dashboard.categories.market-weather.subFeatures.weather-forecast.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.0',
+          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.1',
+          'dashboard.categories.market-weather.subFeatures.weather-forecast.steps.2',
         ],
       },
     ],

@@ -1,5 +1,7 @@
 import { Bell, Check, CheckCheck, X } from 'lucide-react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { SmartAlertsPanel } from '../features/marketWeather/SmartAlertsPanel';
 import type { NotificationItem } from '../types/notification';
 import { cn } from '../utils/cn';
 import { Button } from './Button';
@@ -12,6 +14,7 @@ interface NotificationDrawerProps {
   loading: boolean;
   onMarkRead: (id: string) => Promise<void>;
   onMarkAllRead: () => Promise<void>;
+  smartAlertsCount?: number;
 }
 
 export function NotificationDrawer({
@@ -21,17 +24,24 @@ export function NotificationDrawer({
   loading,
   onMarkRead,
   onMarkAllRead,
+  smartAlertsCount = 0,
 }: NotificationDrawerProps) {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState<'smartAlerts' | 'notifications'>('smartAlerts');
 
   if (!open) return null;
 
   const unreadCount = items.filter((n) => !n.read).length;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-label={t('notifications.title')}>
+    <div
+      className="fixed inset-0 z-50 flex justify-end"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('notifications.title')}
+    >
       <div className="fixed inset-0 bg-[#0F291E]/30 backdrop-blur-[1px]" onClick={onClose} />
-      <aside className="relative z-10 flex h-full w-full max-w-md flex-col border-l border-[#E5E1D8] bg-[#FAF8F4] shadow-xl">
+      <aside className="relative z-10 flex h-full w-full max-w-lg flex-col border-l border-[#E5E1D8] bg-[#FAF8F4] shadow-xl">
         <div className="flex items-center justify-between gap-4 border-b border-[#E5E1D8] bg-white px-5 py-4">
           <div className="flex items-center gap-2.5 min-w-0">
             <Bell className="h-5 w-5 text-[#1B4332] shrink-0" aria-hidden="true" />
@@ -39,15 +49,16 @@ export function NotificationDrawer({
               <h2 className="font-display text-base font-semibold text-[#17221B] truncate">
                 {t('notifications.title')}
               </h2>
-              {unreadCount > 0 && (
-                <p className="text-xs text-[#4A5A50] tabular-nums">
-                  {t('notifications.unreadCount', { count: unreadCount })}
-                </p>
-              )}
+              <p className="text-xs text-[#4A5A50] tabular-nums">
+                {t('notifications.summaryLine', {
+                  alerts: smartAlertsCount,
+                  unread: unreadCount,
+                })}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            {unreadCount > 0 && (
+            {activeTab === 'notifications' && unreadCount > 0 && (
               <Button variant="ghost" size="sm" onClick={onMarkAllRead}>
                 <CheckCheck className="h-3.5 w-3.5" aria-hidden="true" />
                 {t('notifications.markAllRead')}
@@ -64,8 +75,39 @@ export function NotificationDrawer({
           </div>
         </div>
 
+        <div className="border-b border-[#E5E1D8] bg-white px-5 py-2.5">
+          <div className="flex items-center gap-1 rounded-lg bg-[#EDEAE2] p-1">
+            <button
+              type="button"
+              onClick={() => setActiveTab('smartAlerts')}
+              className={cn(
+                'flex-1 rounded-md px-3 py-1.5 text-xs font-medium cursor-pointer whitespace-nowrap transition-colors',
+                activeTab === 'smartAlerts'
+                  ? 'bg-white text-[#17221B] shadow-xs'
+                  : 'text-[#4A5A50] hover:text-[#17221B]',
+              )}
+            >
+              {t('notifications.tabs.smartAlerts')} ({smartAlertsCount})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('notifications')}
+              className={cn(
+                'flex-1 rounded-md px-3 py-1.5 text-xs font-medium cursor-pointer whitespace-nowrap transition-colors',
+                activeTab === 'notifications'
+                  ? 'bg-white text-[#17221B] shadow-xs'
+                  : 'text-[#4A5A50] hover:text-[#17221B]',
+              )}
+            >
+              {t('notifications.tabs.accountUpdates')} ({items.length})
+            </button>
+          </div>
+        </div>
+
         <div className="flex-1 overflow-y-auto p-5 space-y-3">
-          {loading ? (
+          {activeTab === 'smartAlerts' ? (
+            <SmartAlertsPanel compact />
+          ) : loading ? (
             <LoadingSkeleton rows={3} />
           ) : items.length === 0 ? (
             <EmptyState

@@ -38,6 +38,25 @@ import {
   searchOpenMeteoLocations,
   type MandiPriceRecord,
 } from './server/marketWeatherEngine.ts';
+import {
+  SOIL_TESTING_CHECKLIST,
+  buildBookingRequestRecord,
+  filterEquipmentListings,
+  filterProviders,
+  loadSeedEquipmentListings,
+  loadSeedServiceProviders,
+  type AgriServiceProviderRecord,
+  type BookingRequestStatus,
+  type EquipmentBookingRecord,
+  type EquipmentListingRecord,
+  type ServiceProviderType,
+} from './server/agriServicesEngine.ts';
+import {
+  AiServiceError,
+  generateGroundedAiReply,
+  getAiAssistantStatus,
+  type AiChatMessageRecord,
+} from './server/aiAssistantEngine.ts';
 
 interface SoilReportRecord {
   nitrogenKgPerHa: number | null;
@@ -103,6 +122,10 @@ interface DatabaseSchema {
   protectionGuides: PlantProtectionGuideRecord[];
   diseaseScans: PlantDiseaseScanRecord[];
   mandiPriceRecords: MandiPriceRecord[];
+  serviceProviders: AgriServiceProviderRecord[];
+  equipmentListings: EquipmentListingRecord[];
+  equipmentBookings: EquipmentBookingRecord[];
+  aiChatMessages: AiChatMessageRecord[];
 }
 
 interface AuthenticatedRequest extends Request {
@@ -269,6 +292,10 @@ function seedInitialDatabase(): DatabaseSchema {
     protectionGuides: loadSeedGuides(),
     diseaseScans: [],
     mandiPriceRecords: [],
+    serviceProviders: loadSeedServiceProviders(),
+    equipmentListings: loadSeedEquipmentListings(),
+    equipmentBookings: [],
+    aiChatMessages: [],
   };
 }
 
@@ -307,6 +334,22 @@ function readDb(): DatabaseSchema {
     }
     if (!Array.isArray(parsed.mandiPriceRecords)) {
       parsed.mandiPriceRecords = [];
+      changed = true;
+    }
+    if (!Array.isArray(parsed.serviceProviders) || parsed.serviceProviders.length === 0) {
+      parsed.serviceProviders = loadSeedServiceProviders();
+      changed = true;
+    }
+    if (!Array.isArray(parsed.equipmentListings) || parsed.equipmentListings.length === 0) {
+      parsed.equipmentListings = loadSeedEquipmentListings();
+      changed = true;
+    }
+    if (!Array.isArray(parsed.equipmentBookings)) {
+      parsed.equipmentBookings = [];
+      changed = true;
+    }
+    if (!Array.isArray(parsed.aiChatMessages)) {
+      parsed.aiChatMessages = [];
       changed = true;
     }
     const db = parsed as DatabaseSchema;
@@ -1650,6 +1693,519 @@ async function startServer() {
       totalStored: db.mandiPriceRecords.length,
       messageEn: response.messageEn,
     });
+  });
+
+  // --- Phase 5A: Agricultural Services Directory & Equipment Booking Requests ---
+  app.get('/api/v1/agri-services/soil-labs', requireAuth, (req, res) => {
+    const db = readDb();
+    const labs = filterProviders(db.serviceProviders, {
+      serviceTypes: ['SOIL_LAB_KVK'],
+      state: typeof req.query.state === 'string' ? req.query.state : undefined,
+      district: typeof req.query.district === 'string' ? req.query.district : undefined,
+      q: typeof req.query.q === 'string' ? req.query.q : undefined,
+    });
+    const allStates = Array.from(
+      new Set(
+        db.serviceProviders
+          .filter((p) => p.active && p.serviceType === 'SOIL_LAB_KVK')
+          .map((p) => p.state),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+    const allDistricts = Array.from(
+      new Set(
+        db.serviceProviders
+          .filter((p) => p.active && p.serviceType === 'SOIL_LAB_KVK')
+          .map((p) => p.district),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+
+    res.json({
+      providers: labs,
+      checklist: SOIL_TESTING_CHECKLIST,
+      availableStates: allStates,
+      availableDistricts: allDistricts,
+    });
+  });
+
+  app.get('/api/v1/agri-services/equipment', requireAuth, (req, res) => {
+    const db = readDb();
+    const listings = filterEquipmentListings(db.equipmentListings, {
+      category: typeof req.query.category === 'string' ? req.query.category : undefined,
+      state: typeof req.query.state === 'string' ? req.query.state : undefined,
+      district: typeof req.query.district === 'string' ? req.query.district : undefined,
+      q: typeof req.query.q === 'string' ? req.query.q : undefined,
+    });
+    const availableStates = Array.from(
+      new Set(db.equipmentListings.filter((e) => e.active).map((e) => e.state)),
+    ).sort((a, b) => a.localeCompare(b));
+    const availableDistricts = Array.from(
+      new Set(db.equipmentListings.filter((e) => e.active).map((e) => e.district)),
+    ).sort((a, b) => a.localeCompare(b));
+
+    res.json({
+      listings,
+      availableStates,
+      availableDistricts,
+    });
+  });
+
+  app.get('/api/v1/agri-services/equipment/bookings', requireAuth, (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    const mine = db.equipmentBookings
+      .filter((b) => b.userId === req.authUser?.id)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    res.json(mine);
+  });
+
+  app.post('/api/v1/agri-services/equipment/bookings', requireAuth, (req: AuthenticatedRequest, res) => {
+    if (req.authUser?.role !== 'FARMER') {
+      sendError(res, 403, 'FORBIDDEN', 'Farmer role required to submit equipment booking requests.');
+      return;
+    }
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+
+    const equipmentId = typeof body.equipmentId === 'string' ? body.equipmentId.trim() : '';
+    const requestedDate = typeof body.requestedDate === 'string' ? body.requestedDate.trim() : '';
+    const durationValue = Number(body.durationValue);
+    const durationUnitRaw =
+      typeof body.durationUnit === 'string' ? body.durationUnit.trim().toUpperCase() : 'HOURS';
+    const contactPhone = typeof body.contactPhone === 'string' ? body.contactPhone.trim() : '';
+
+    if (!equipmentId) fieldErrors.equipmentId = 'Select an equipment listing.';
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) {
+      fieldErrors.requestedDate = 'Provide a valid preferred date (YYYY-MM-DD).';
+    }
+    if (!Number.isFinite(durationValue) || durationValue <= 0 || durationValue > 500) {
+      fieldErrors.durationValue = 'Enter a valid duration or area (> 0).';
+    }
+    if (!['HOURS', 'ACRES', 'DAYS'].includes(durationUnitRaw)) {
+      fieldErrors.durationUnit = 'Duration unit must be HOURS, ACRES, or DAYS.';
+    }
+    if (contactPhone.replace(/\D/g, '').length < 10) {
+      fieldErrors.contactPhone = 'Enter a valid 10-digit callback mobile number.';
+    }
+
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const db = readDb();
+    const listing = db.equipmentListings.find((e) => e.id === equipmentId && e.active);
+    if (!listing) {
+      sendError(res, 404, 'NOT_FOUND', 'Selected equipment listing not found.');
+      return;
+    }
+
+    const user = db.users.find((u) => u.id === req.authUser?.id);
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id);
+    const farmerName = profile?.farmerName || user?.fullName || 'Farmer';
+
+    const booking = buildBookingRequestRecord({
+      userId: req.authUser.id,
+      farmerName,
+      listing,
+      requestedDate,
+      durationValue,
+      durationUnit: durationUnitRaw as 'HOURS' | 'ACRES' | 'DAYS',
+      contactPhone: contactPhone.slice(0, 20),
+      notes:
+        typeof body.notes === 'string' && body.notes.trim()
+          ? body.notes.trim().slice(0, 400)
+          : null,
+    });
+
+    db.equipmentBookings.unshift(booking);
+    writeDb(db);
+    res.status(201).json(booking);
+  });
+
+  app.patch(
+    '/api/v1/agri-services/equipment/bookings/:id/cancel',
+    requireAuth,
+    (req: AuthenticatedRequest, res) => {
+      const db = readDb();
+      const idx = db.equipmentBookings.findIndex(
+        (b) => b.id === req.params.id && b.userId === req.authUser?.id,
+      );
+      if (idx === -1) {
+        sendError(res, 404, 'NOT_FOUND', 'Equipment booking request not found.');
+        return;
+      }
+      const existing = db.equipmentBookings[idx];
+      if (existing.status === 'COMPLETED' || existing.status === 'CANCELLED') {
+        sendError(res, 400, 'BAD_REQUEST', 'Completed or cancelled booking requests cannot be cancelled.');
+        return;
+      }
+      existing.status = 'CANCELLED';
+      existing.updatedAt = new Date().toISOString();
+      writeDb(db);
+      res.json(existing);
+    },
+  );
+
+  app.get('/api/v1/agri-services/directory', requireAuth, (req, res) => {
+    const db = readDb();
+    const rawType =
+      typeof req.query.serviceType === 'string' ? req.query.serviceType.trim().toUpperCase() : '';
+    const allowedNonLab: ServiceProviderType[] = [
+      'COLD_STORAGE',
+      'MANDI_APMC',
+      'CUSTOM_HIRING_CENTRE',
+      'INPUT_SEED_CENTRE',
+      'EXTENSION_BANK',
+    ];
+    const filterTypes: ServiceProviderType[] =
+      rawType && rawType !== 'ALL' && allowedNonLab.includes(rawType as ServiceProviderType)
+        ? [rawType as ServiceProviderType]
+        : allowedNonLab;
+
+    const providers = filterProviders(db.serviceProviders, {
+      serviceTypes: filterTypes,
+      state: typeof req.query.state === 'string' ? req.query.state : undefined,
+      district: typeof req.query.district === 'string' ? req.query.district : undefined,
+      q: typeof req.query.q === 'string' ? req.query.q : undefined,
+    });
+    const availableStates = Array.from(
+      new Set(
+        db.serviceProviders
+          .filter((p) => p.active && allowedNonLab.includes(p.serviceType))
+          .map((p) => p.state),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+    const availableDistricts = Array.from(
+      new Set(
+        db.serviceProviders
+          .filter((p) => p.active && allowedNonLab.includes(p.serviceType))
+          .map((p) => p.district),
+      ),
+    ).sort((a, b) => a.localeCompare(b));
+
+    res.json({
+      providers,
+      availableStates,
+      availableDistricts,
+    });
+  });
+
+  // --- Admin Agricultural Services & Equipment Bookings Management ---
+  app.get('/api/v1/admin/services/providers', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    res.json(db.serviceProviders);
+  });
+
+  app.post('/api/v1/admin/services/providers', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    const validTypes = new Set([
+      'SOIL_LAB_KVK',
+      'COLD_STORAGE',
+      'MANDI_APMC',
+      'CUSTOM_HIRING_CENTRE',
+      'INPUT_SEED_CENTRE',
+      'EXTENSION_BANK',
+    ]);
+    const serviceType = String(body.serviceType || '').trim().toUpperCase();
+    if (!validTypes.has(serviceType)) fieldErrors.serviceType = 'Valid service type is required.';
+    if (typeof body.nameEn !== 'string' || !body.nameEn.trim()) {
+      fieldErrors.nameEn = 'English provider name is required.';
+    }
+    if (typeof body.state !== 'string' || !body.state.trim()) {
+      fieldErrors.state = 'State is required.';
+    }
+    if (typeof body.district !== 'string' || !body.district.trim()) {
+      fieldErrors.district = 'District is required.';
+    }
+    if (typeof body.addressEn !== 'string' || !body.addressEn.trim()) {
+      fieldErrors.addressEn = 'Address is required.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const latRaw =
+      body.latitude !== undefined && body.latitude !== null && body.latitude !== ''
+        ? Number(body.latitude)
+        : null;
+    const lonRaw =
+      body.longitude !== undefined && body.longitude !== null && body.longitude !== ''
+        ? Number(body.longitude)
+        : null;
+    const hasCoords =
+      latRaw !== null &&
+      lonRaw !== null &&
+      Number.isFinite(latRaw) &&
+      Number.isFinite(lonRaw) &&
+      latRaw >= -90 &&
+      latRaw <= 90 &&
+      lonRaw >= -180 &&
+      lonRaw <= 180;
+
+    const db = readDb();
+    const record: AgriServiceProviderRecord = {
+      id: crypto.randomUUID(),
+      providerCode:
+        typeof body.providerCode === 'string' && body.providerCode.trim()
+          ? body.providerCode.trim().toLowerCase()
+          : `admin-${crypto.randomUUID().slice(0, 8)}`,
+      serviceType: serviceType as ServiceProviderType,
+      nameEn: body.nameEn.trim(),
+      nameKn:
+        typeof body.nameKn === 'string' && body.nameKn.trim()
+          ? body.nameKn.trim()
+          : body.nameEn.trim(),
+      state: body.state.trim(),
+      district: body.district.trim(),
+      addressEn: body.addressEn.trim(),
+      addressKn:
+        typeof body.addressKn === 'string' && body.addressKn.trim()
+          ? body.addressKn.trim()
+          : body.addressEn.trim(),
+      contactPhone:
+        typeof body.contactPhone === 'string' && body.contactPhone.trim()
+          ? body.contactPhone.trim()
+          : null,
+      contactEmail:
+        typeof body.contactEmail === 'string' && body.contactEmail.trim()
+          ? body.contactEmail.trim()
+          : null,
+      websiteUrl:
+        typeof body.websiteUrl === 'string' && body.websiteUrl.trim()
+          ? body.websiteUrl.trim()
+          : null,
+      servicesOfferedEn: Array.isArray(body.servicesOfferedEn) ? body.servicesOfferedEn : [],
+      servicesOfferedKn: Array.isArray(body.servicesOfferedKn) ? body.servicesOfferedKn : [],
+      capacityNoteEn:
+        typeof body.capacityNoteEn === 'string' && body.capacityNoteEn.trim()
+          ? body.capacityNoteEn.trim()
+          : null,
+      capacityNoteKn:
+        typeof body.capacityNoteKn === 'string' && body.capacityNoteKn.trim()
+          ? body.capacityNoteKn.trim()
+          : null,
+      latitude: hasCoords ? latRaw : null,
+      longitude: hasCoords ? lonRaw : null,
+      coordinatesVerified: hasCoords && Boolean(body.coordinatesVerified),
+      verificationStatus:
+        body.verificationStatus === 'VERIFIED_DIRECTORY'
+          ? 'VERIFIED_DIRECTORY'
+          : 'DEMONSTRATION_SAMPLE',
+      sourceReference:
+        typeof body.sourceReference === 'string' && body.sourceReference.trim()
+          ? body.sourceReference.trim()
+          : 'Admin Directory Entry',
+      active: true,
+    };
+    db.serviceProviders.unshift(record);
+    writeDb(db);
+    res.status(201).json(record);
+  });
+
+  app.delete('/api/v1/admin/services/providers/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.serviceProviders.findIndex((p) => p.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Service provider entry not found.');
+      return;
+    }
+    db.serviceProviders.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  app.get('/api/v1/admin/services/equipment', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    res.json(db.equipmentListings);
+  });
+
+  app.post('/api/v1/admin/services/equipment', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    const category = String(body.category || '').trim().toUpperCase();
+    if (!['TRACTOR', 'HARVESTER', 'OTHER'].includes(category)) {
+      fieldErrors.category = 'Category must be TRACTOR, HARVESTER, or OTHER.';
+    }
+    if (typeof body.equipmentNameEn !== 'string' || !body.equipmentNameEn.trim()) {
+      fieldErrors.equipmentNameEn = 'Equipment name is required.';
+    }
+    if (typeof body.providerNameEn !== 'string' || !body.providerNameEn.trim()) {
+      fieldErrors.providerNameEn = 'Provider name is required.';
+    }
+    if (typeof body.state !== 'string' || !body.state.trim()) fieldErrors.state = 'State is required.';
+    if (typeof body.district !== 'string' || !body.district.trim()) {
+      fieldErrors.district = 'District is required.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const rateVal =
+      body.rateInr !== undefined && body.rateInr !== null && body.rateInr !== ''
+        ? Number(body.rateInr)
+        : null;
+    const rateValid = rateVal !== null && Number.isFinite(rateVal) && rateVal > 0;
+
+    const db = readDb();
+    const record: EquipmentListingRecord = {
+      id: crypto.randomUUID(),
+      listingCode: `eq-${crypto.randomUUID().slice(0, 8)}`,
+      category: category as EquipmentListingRecord['category'],
+      equipmentNameEn: body.equipmentNameEn.trim(),
+      equipmentNameKn:
+        typeof body.equipmentNameKn === 'string' && body.equipmentNameKn.trim()
+          ? body.equipmentNameKn.trim()
+          : body.equipmentNameEn.trim(),
+      modelOrSpecEn:
+        typeof body.modelOrSpecEn === 'string' && body.modelOrSpecEn.trim()
+          ? body.modelOrSpecEn.trim()
+          : 'Standard farm implement',
+      modelOrSpecKn:
+        typeof body.modelOrSpecKn === 'string' && body.modelOrSpecKn.trim()
+          ? body.modelOrSpecKn.trim()
+          : 'ಕೃಷಿ ಯಂತ್ರೋಪಕರಣ',
+      providerNameEn: body.providerNameEn.trim(),
+      providerNameKn:
+        typeof body.providerNameKn === 'string' && body.providerNameKn.trim()
+          ? body.providerNameKn.trim()
+          : body.providerNameEn.trim(),
+      state: body.state.trim(),
+      district: body.district.trim(),
+      contactPhone:
+        typeof body.contactPhone === 'string' && body.contactPhone.trim()
+          ? body.contactPhone.trim()
+          : null,
+      rateInr: rateValid ? rateVal : null,
+      rateUnit:
+        body.rateUnit === 'ACRE' || body.rateUnit === 'DAY' ? body.rateUnit : 'HOUR',
+      rateVerified: rateValid && Boolean(body.rateVerified),
+      availabilityStatus:
+        body.availabilityStatus === 'AVAILABLE' || body.availabilityStatus === 'SEASONAL_DEMAND'
+          ? body.availabilityStatus
+          : 'UNVERIFIED',
+      verificationStatus:
+        body.verificationStatus === 'VERIFIED_DIRECTORY'
+          ? 'VERIFIED_DIRECTORY'
+          : 'DEMONSTRATION_SAMPLE',
+      sourceReference:
+        typeof body.sourceReference === 'string' && body.sourceReference.trim()
+          ? body.sourceReference.trim()
+          : 'Admin Verified CHC Listing',
+      active: true,
+    };
+
+    db.equipmentListings.unshift(record);
+    writeDb(db);
+    res.status(201).json(record);
+  });
+
+  app.delete('/api/v1/admin/services/equipment/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.equipmentListings.findIndex((e) => e.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Equipment listing not found.');
+      return;
+    }
+    db.equipmentListings.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
+  });
+
+  app.get('/api/v1/admin/services/bookings', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const sorted = [...db.equipmentBookings].sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
+    res.json(sorted);
+  });
+
+  app.patch('/api/v1/admin/services/bookings/:id', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const status = String(body.status || '').trim().toUpperCase();
+    const validStatuses: BookingRequestStatus[] = [
+      'REQUESTED',
+      'REVIEWING',
+      'FORWARDED_TO_PROVIDER',
+      'COMPLETED',
+      'CANCELLED',
+    ];
+    if (!validStatuses.includes(status as BookingRequestStatus)) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Invalid booking request status.');
+      return;
+    }
+    const db = readDb();
+    const item = db.equipmentBookings.find((b) => b.id === req.params.id);
+    if (!item) {
+      sendError(res, 404, 'NOT_FOUND', 'Booking request not found.');
+      return;
+    }
+    item.status = status as BookingRequestStatus;
+    item.adminNote =
+      typeof body.adminNote === 'string' && body.adminNote.trim()
+        ? body.adminNote.trim().slice(0, 300)
+        : item.adminNote;
+    item.updatedAt = new Date().toISOString();
+    writeDb(db);
+    res.json(item);
+  });
+
+  // --- Phase 5B: Gemini AI Farmer Assistant Routes ---
+  app.get('/api/v1/ai-assistant/status', requireAuth, (_req, res) => {
+    res.json(getAiAssistantStatus());
+  });
+
+  app.get('/api/v1/ai-assistant/messages', requireAuth, (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    const history = db.aiChatMessages
+      .filter((m) => m.userId === req.authUser?.id)
+      .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+    res.json(history);
+  });
+
+  app.post('/api/v1/ai-assistant/chat', requireAuth, async (req: AuthenticatedRequest, res) => {
+    const body = req.body ?? {};
+    const message = typeof body.message === 'string' ? body.message : '';
+    const language = body.language === 'kn' ? 'kn' : 'en';
+
+    const db = readDb();
+    const profile = db.profiles.find((p) => p.userId === req.authUser?.id) || null;
+    const recentHistory = db.aiChatMessages
+      .filter((m) => m.userId === req.authUser?.id)
+      .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
+    try {
+      const { userEntry, assistantEntry } = await generateGroundedAiReply({
+        userId: req.authUser!.id,
+        userMessage: message,
+        language,
+        profile,
+        crops: db.crops,
+        guides: db.protectionGuides,
+        recentHistory,
+      });
+
+      db.aiChatMessages.push(userEntry, assistantEntry);
+      writeDb(db);
+      res.status(201).json({
+        userMessage: userEntry,
+        assistantMessage: assistantEntry,
+      });
+    } catch (err) {
+      if (err instanceof AiServiceError) {
+        sendError(res, err.statusCode, err.errorCode, err.message);
+        return;
+      }
+      sendError(res, 502, 'UPSTREAM_ERROR', 'Unable to reach AI Farmer Assistant service right now.');
+    }
+  });
+
+  app.delete('/api/v1/ai-assistant/messages', requireAuth, (req: AuthenticatedRequest, res) => {
+    const db = readDb();
+    db.aiChatMessages = db.aiChatMessages.filter((m) => m.userId !== req.authUser?.id);
+    writeDb(db);
+    res.status(204).send();
   });
 
   // Catch unmatched /api routes with JSON 404

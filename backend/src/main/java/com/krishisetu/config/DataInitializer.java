@@ -8,6 +8,7 @@ import com.krishisetu.entity.User;
 import com.krishisetu.repository.FarmerProfileRepository;
 import com.krishisetu.repository.NotificationRepository;
 import com.krishisetu.repository.UserRepository;
+import com.krishisetu.service.AgriServicesService;
 import com.krishisetu.service.CropDatasetImportService;
 import com.krishisetu.service.PlantHealthDatasetImportService;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,7 @@ public class DataInitializer implements CommandLineRunner {
     private final NotificationRepository notificationRepository;
     private final CropDatasetImportService cropDatasetImportService;
     private final PlantHealthDatasetImportService plantHealthDatasetImportService;
+    private final AgriServicesService agriServicesService;
     private final PasswordEncoder passwordEncoder;
     private final boolean seedEnabled;
 
@@ -34,6 +36,7 @@ public class DataInitializer implements CommandLineRunner {
         NotificationRepository notificationRepository,
         CropDatasetImportService cropDatasetImportService,
         PlantHealthDatasetImportService plantHealthDatasetImportService,
+        AgriServicesService agriServicesService,
         PasswordEncoder passwordEncoder,
         @Value("${krishisetu.seed.enabled:true}") boolean seedEnabled
     ) {
@@ -42,6 +45,7 @@ public class DataInitializer implements CommandLineRunner {
         this.notificationRepository = notificationRepository;
         this.cropDatasetImportService = cropDatasetImportService;
         this.plantHealthDatasetImportService = plantHealthDatasetImportService;
+        this.agriServicesService = agriServicesService;
         this.passwordEncoder = passwordEncoder;
         this.seedEnabled = seedEnabled;
     }
@@ -50,6 +54,7 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) {
         cropDatasetImportService.importSeedDatasetIfEmpty();
         plantHealthDatasetImportService.importDatasetsIfEmpty();
+        agriServicesService.seedDefaultDirectoriesIfEmpty();
 
         if (!seedEnabled) {
             return;

@@ -6,6 +6,7 @@ import { EmptyState, ErrorBanner, LoadingSkeleton } from '../components/StatePan
 import { AdminCropDatasetPanel } from '../features/cropIntelligence/AdminCropDatasetPanel';
 import { AdminMarketDataPanel } from '../features/marketWeather/AdminMarketDataPanel';
 import { AdminPlantHealthPanel } from '../features/plantHealth/AdminPlantHealthPanel';
+import { AdminServicesPanel } from '../features/agriServices/AdminServicesPanel';
 import { AdminShellLayout } from '../layouts/AdminShellLayout';
 import { adminService } from '../services/adminService';
 import type { AdminOverview } from '../types/notification';
@@ -18,9 +19,9 @@ interface AdminDashboardPageProps {
 
 export function AdminDashboardPage({ onLogout }: AdminDashboardPageProps) {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState<'farmers' | 'crops' | 'plantHealth' | 'marketData'>(
-    'farmers',
-  );
+  const [activeTab, setActiveTab] = useState<
+    'farmers' | 'crops' | 'plantHealth' | 'marketData' | 'services'
+  >('farmers');
   const [overview, setOverview] = useState<AdminOverview | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -110,6 +111,17 @@ export function AdminDashboardPage({ onLogout }: AdminDashboardPageProps) {
             >
               {t('admin.tabs.marketData')}
             </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('services')}
+              className={`rounded-md px-3.5 py-1.5 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                activeTab === 'services'
+                  ? 'bg-white text-[#17221B] shadow-xs'
+                  : 'text-[#4A5A50] hover:text-[#17221B]'
+              }`}
+            >
+              {t('admin.tabs.services')}
+            </button>
           </div>
         </div>
 
@@ -119,6 +131,8 @@ export function AdminDashboardPage({ onLogout }: AdminDashboardPageProps) {
           <AdminPlantHealthPanel />
         ) : activeTab === 'marketData' ? (
           <AdminMarketDataPanel />
+        ) : activeTab === 'services' ? (
+          <AdminServicesPanel />
         ) : (
           <>
             {error && (

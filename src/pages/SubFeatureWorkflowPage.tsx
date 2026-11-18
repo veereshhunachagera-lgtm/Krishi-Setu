@@ -17,6 +17,10 @@ import { MandiPricesPanel } from '../features/marketWeather/MandiPricesPanel';
 import { PriceTrendsPanel } from '../features/marketWeather/PriceTrendsPanel';
 import { SmartAlertsPanel } from '../features/marketWeather/SmartAlertsPanel';
 import { WeatherForecastPanel } from '../features/marketWeather/WeatherForecastPanel';
+import { EquipmentRentalPanel } from '../features/agriServices/EquipmentRentalPanel';
+import { ServiceDirectoryMapPanel } from '../features/agriServices/ServiceDirectoryMapPanel';
+import { SoilTestingLabsPanel } from '../features/agriServices/SoilTestingLabsPanel';
+import { AiAssistantChatPanel } from '../features/aiAssistant/AiAssistantChatPanel';
 import { FarmerShellLayout } from '../layouts/FarmerShellLayout';
 import type { FeatureCategoryId } from '../types/dashboard';
 import type { FarmerProfile } from '../types/farmer';
@@ -77,7 +81,9 @@ export function SubFeatureWorkflowPage({
   const showQuickTabs =
     category.id === 'crop-soil' ||
     category.id === 'plant-health' ||
-    category.id === 'market-weather';
+    category.id === 'market-weather' ||
+    category.id === 'agri-services' ||
+    category.id === 'ai-assistant';
 
   return (
     <FarmerShellLayout
@@ -165,6 +171,16 @@ export function SubFeatureWorkflowPage({
               />
             ) : subFeature.id === 'weather-forecast' ? (
               <WeatherForecastPanel profile={profile} />
+            ) : subFeature.id === 'soil-testing-labs' ? (
+              <SoilTestingLabsPanel profile={profile} />
+            ) : subFeature.id === 'equipment-rental' ? (
+              <EquipmentRentalPanel profile={profile} />
+            ) : subFeature.id === 'cold-storage-services' ? (
+              <ServiceDirectoryMapPanel profile={profile} />
+            ) : subFeature.id === 'ai-crop-assistant' ? (
+              <AiAssistantChatPanel profile={profile} initialTopic="general" />
+            ) : subFeature.id === 'soil-report-explainer' ? (
+              <AiAssistantChatPanel profile={profile} initialTopic="soil-report" />
             ) : (
               <>
                 <div className="rounded-xl border border-[#E5E1D8] bg-white p-6 space-y-4">

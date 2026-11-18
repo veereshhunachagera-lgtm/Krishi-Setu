@@ -5,11 +5,18 @@ const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.
 
 export class ApiClientError extends Error {
   status: number;
+  errorCode: string | null;
   fieldErrors: Record<string, string> | null;
 
-  constructor(status: number, message: string, fieldErrors: Record<string, string> | null = null) {
+  constructor(
+    status: number,
+    message: string,
+    fieldErrors: Record<string, string> | null = null,
+    errorCode: string | null = null,
+  ) {
     super(message);
     this.status = status;
+    this.errorCode = errorCode;
     this.fieldErrors = fieldErrors;
   }
 }
@@ -48,6 +55,7 @@ export async function apiRequest<T>(
       response.status,
       err?.message || `Request failed (${response.status})`,
       err?.fieldErrors ?? null,
+      err?.error ?? null,
     );
   }
 

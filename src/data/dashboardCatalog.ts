@@ -188,19 +188,6 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
     accentHex: '#3A7D5E',
     subFeatures: [
       {
-        id: 'govt-schemes',
-        categoryId: 'agri-services',
-        titleKey: 'dashboard.categories.agri-services.subFeatures.govt-schemes.title',
-        descriptionKey: 'dashboard.categories.agri-services.subFeatures.govt-schemes.description',
-        statusTagKey: 'dashboard.categories.agri-services.subFeatures.govt-schemes.status',
-        integrationNoteKey: 'dashboard.categories.agri-services.subFeatures.govt-schemes.integrationNote',
-        workflowStepsKeys: [
-          'dashboard.categories.agri-services.subFeatures.govt-schemes.steps.0',
-          'dashboard.categories.agri-services.subFeatures.govt-schemes.steps.1',
-          'dashboard.categories.agri-services.subFeatures.govt-schemes.steps.2',
-        ],
-      },
-      {
         id: 'soil-testing-labs',
         categoryId: 'agri-services',
         titleKey: 'dashboard.categories.agri-services.subFeatures.soil-testing-labs.title',
@@ -211,6 +198,32 @@ export const FEATURE_CATEGORIES: FeatureCategoryDefinition[] = [
           'dashboard.categories.agri-services.subFeatures.soil-testing-labs.steps.0',
           'dashboard.categories.agri-services.subFeatures.soil-testing-labs.steps.1',
           'dashboard.categories.agri-services.subFeatures.soil-testing-labs.steps.2',
+        ],
+      },
+      {
+        id: 'equipment-rental',
+        categoryId: 'agri-services',
+        titleKey: 'dashboard.categories.agri-services.subFeatures.equipment-rental.title',
+        descriptionKey: 'dashboard.categories.agri-services.subFeatures.equipment-rental.description',
+        statusTagKey: 'dashboard.categories.agri-services.subFeatures.equipment-rental.status',
+        integrationNoteKey: 'dashboard.categories.agri-services.subFeatures.equipment-rental.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.agri-services.subFeatures.equipment-rental.steps.0',
+          'dashboard.categories.agri-services.subFeatures.equipment-rental.steps.1',
+          'dashboard.categories.agri-services.subFeatures.equipment-rental.steps.2',
+        ],
+      },
+      {
+        id: 'cold-storage-services',
+        categoryId: 'agri-services',
+        titleKey: 'dashboard.categories.agri-services.subFeatures.cold-storage-services.title',
+        descriptionKey: 'dashboard.categories.agri-services.subFeatures.cold-storage-services.description',
+        statusTagKey: 'dashboard.categories.agri-services.subFeatures.cold-storage-services.status',
+        integrationNoteKey: 'dashboard.categories.agri-services.subFeatures.cold-storage-services.integrationNote',
+        workflowStepsKeys: [
+          'dashboard.categories.agri-services.subFeatures.cold-storage-services.steps.0',
+          'dashboard.categories.agri-services.subFeatures.cold-storage-services.steps.1',
+          'dashboard.categories.agri-services.subFeatures.cold-storage-services.steps.2',
         ],
       },
     ],

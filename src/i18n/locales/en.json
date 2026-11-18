@@ -378,56 +378,67 @@
       },
       "agri-services": {
         "title": "Agricultural Services",
-        "subtitle": "Government farm schemes, crop insurance, and soil testing laboratories.",
+        "subtitle": "Soil testing labs & KVKs, agricultural equipment rental, and cold storage & APMC directory.",
         "subFeatures": {
-          "govt-schemes": {
-            "title": "Government Schemes & Subsidies",
-            "description": "Check eligibility and required documents for farm support, micro-irrigation, and crop insurance.",
-            "status": "Farmer Services",
-            "integrationNote": "Aligned with your saved state, land area in acres, and irrigation source.",
+          "soil-testing-labs": {
+            "title": "Soil Testing Labs & KVKs",
+            "description": "Search state and district soil testing laboratories & KVKs and review the soil sampling checklist.",
+            "status": "Verified Lab Directory",
+            "integrationNote": "Lists verified ICAR Krishi Vigyan Kendras and agricultural university soil testing units along with composite sampling steps.",
             "steps": [
-              "Keep land records (RTC / Pahani), Aadhaar, and bank passbook updated.",
-              "Verify seasonal crop insurance enrollment deadlines for your taluk.",
-              "Submit applications at your nearest Raitha Samparka Kendra (RSK) or CSC."
+              "Collect composite soil samples from 6 to 8 zig-zag spots at 15 cm root-zone depth.",
+              "Air-dry in shade, mix evenly, and pack ~500 g with farmer and survey details.",
+              "Submit at your district KVK or Soil Testing Lab and update your KrishiSetu soil profile."
             ]
           },
-          "soil-testing-labs": {
-            "title": "Soil Testing Laboratories",
-            "description": "Locate soil testing labs and follow standard sample collection steps.",
-            "status": "Lab Directory",
-            "integrationNote": "Especially useful for farmers who onboarded without a Soil Health Card.",
+          "equipment-rental": {
+            "title": "Agricultural Equipment Rental",
+            "description": "Filter tractors, harvesters, and implements by district and submit equipment booking requests.",
+            "status": "Booking Request Workflow",
+            "integrationNote": "Shows verified rates only where confirmed by Custom Hiring Centres; submissions are recorded as booking requests for callback.",
             "steps": [
-              "Collect composite soil samples from 6 to 8 spots at 15 cm depth.",
-              "Air-dry in shade, mix evenly, and label with plot and farmer details.",
-              "Submit at your district Krishi Vigyan Kendra or soil testing lab and update your profile."
+              "Filter machinery by category (Tractor, Harvester, Other), state, and district.",
+              "Check whether rental rates and seasonal availability are verified or pending confirmation.",
+              "Submit a booking request with preferred date, hours/acres, and callback mobile number."
+            ]
+          },
+          "cold-storage-services": {
+            "title": "Cold Storage & Other Services",
+            "description": "Find cold storages, regulated APMC mandis, CHCs, and farm service providers on an OpenStreetMap view.",
+            "status": "Leaflet Map & Directory",
+            "integrationNote": "Combines verified APMC/KVK locations with clearly labeled demonstration sample cold storage entries managed by Admins.",
+            "steps": [
+              "Filter by service category (Cold Storage, APMC Mandi, CHC, RSK/Input Centre) and district.",
+              "Inspect green verified pins versus amber demonstration sample markers on the map.",
+              "Verify storage space and tariff directly with the facility before transporting produce."
             ]
           }
         }
       },
       "ai-assistant": {
         "title": "AI Farmer Assistant",
-        "subtitle": "Bilingual crop and soil advisory assistant in English and Kannada.",
+        "subtitle": "Multilingual crop, soil, and agronomic guidance powered by Gemini in English and Kannada.",
         "subFeatures": {
           "ai-crop-assistant": {
             "title": "AI Crop & Soil Assistant",
-            "description": "Ask practical questions about crops, soil, pests, and seasons in English or Kannada.",
-            "status": "Bilingual Advisory",
-            "integrationNote": "Will connect to the Gemini API via the backend server using your saved farm profile and chosen language.",
+            "description": "Ask practical questions about crops, soil, irrigation, and growing practices in English or Kannada.",
+            "status": "Gemini AI Chat",
+            "integrationNote": "Connects through the backend to the Gemini API grounded on your saved farm profile and KrishiSetu crop dataset.",
             "steps": [
-              "Your saved district, acres, crop, and language frame every question automatically.",
-              "Responses are explicitly requested in English or Kannada.",
-              "Cross-check chemical recommendations with local agricultural officers."
+              "Choose English or Kannada replies and click a starter question or type your own.",
+              "Review grounded crop sources cited below assistant answers.",
+              "Use KrishiSetu Market & Weather or Disease Scanner for live prices, forecasts, and leaf checks."
             ]
           },
           "soil-report-explainer": {
             "title": "Soil Report Explainer",
-            "description": "Translate technical soil test values into simple field actions.",
-            "status": "Report Guidance",
-            "integrationNote": "Connects your stored soil readings or field baseline to plain-language explanations.",
+            "description": "Translate your saved NPK and pH soil test readings—or field baseline—into clear next steps.",
+            "status": "Soil Grounded Q&A",
+            "integrationNote": "Reads your stored Soil Health Card values or missing soil parameters to tailor Gemini explanations.",
             "steps": [
-              "Review your saved nutrient and pH readings (or field details).",
-              "Request plain-language explanations for low or high values.",
-              "Update your profile whenever new lab test results arrive."
+              "Confirm whether your N, P, K, and pH readings are saved in your farm profile.",
+              "Ask the assistant how each nutrient level affects upcoming Kharif or Rabi crops.",
+              "Arrange KVK soil testing whenever soil test parameters are missing."
             ]
           }
         }
@@ -504,7 +515,8 @@
       "farmers": "Registered Farmers",
       "crops": "Crop & Soil Dataset",
       "plantHealth": "Plant Health & Alerts",
-      "marketData": "Market Price Records"
+      "marketData": "Market Price Records",
+      "services": "Services & Bookings"
     },
     "crops": {
       "heading": "Crop & Soil Knowledge Dataset",
@@ -560,6 +572,52 @@
       "deleteRecord": "Delete mandi price record",
       "emptyTitle": "No mandi price records stored yet",
       "emptyDesc": "Sync from data.gov.in once DATA_GOV_IN_API_KEY is configured, or add verified Agmarknet records manually."
+    },
+    "services": {
+      "heading": "Agricultural Services Directory & Equipment Booking Requests",
+      "subtitle": "Manage soil labs, cold storage/service providers, equipment listings, and review farmer equipment booking requests.",
+      "subTabs": {
+        "providers": "Providers Directory",
+        "equipment": "Equipment Listings",
+        "bookings": "Booking Requests"
+      },
+      "providerSaved": "Service provider record saved.",
+      "equipmentSaved": "Equipment listing saved.",
+      "bookingUpdated": "Equipment booking request status updated.",
+      "addProviderBtn": "Add Service Provider",
+      "providerFormTitle": "Add Agricultural Service Provider",
+      "serviceTypeLabel": "Service Type",
+      "nameEnLabel": "Provider Name (English)",
+      "nameKnLabel": "Provider Name (Kannada)",
+      "phoneLabel": "Contact Phone",
+      "addressLabel": "Full Address",
+      "verificationTierLabel": "Verification Tier",
+      "latitudeLabel": "Latitude",
+      "longitudeLabel": "Longitude",
+      "sourceLabel": "Source Reference",
+      "coordsVerifiedLabel": "Map coordinates verified by official source",
+      "emptyProviders": "No service providers stored yet.",
+      "cols": {
+        "provider": "Provider",
+        "type": "Category",
+        "verification": "Verification",
+        "equipment": "Equipment & Provider",
+        "rate": "Verified Rate"
+      },
+      "addEquipmentBtn": "Add Equipment Listing",
+      "equipmentFormTitle": "Add Agricultural Equipment Rental Listing",
+      "equipmentNameEnLabel": "Equipment Name (English)",
+      "equipmentNameKnLabel": "Equipment Name (Kannada)",
+      "specLabel": "Model / Specification",
+      "providerNameLabel": "CHC / Provider Name",
+      "rateInrLabel": "Rental Rate (INR)",
+      "rateUnitLabel": "Rate Unit",
+      "availabilityLabel": "Availability Status",
+      "rateVerifiedLabel": "Rental rate verified with provider",
+      "emptyEquipment": "No equipment listings stored yet.",
+      "emptyBookings": "No farmer equipment booking requests submitted yet.",
+      "adminNotePlaceholder": "Add coordination or provider callback note...",
+      "statusSelectLabel": "Update booking request status"
     }
   },
   "cropIntelligence": {
@@ -931,6 +989,124 @@
         "LOW": "Low"
       }
     }
+  },
+  "agriServices": {
+    "common": {
+      "useMyDistrict": "My District: {{district}}",
+      "stateFilter": "State",
+      "allStates": "All States",
+      "districtFilter": "District",
+      "allDistricts": "All Districts",
+      "searchLabel": "Search",
+      "resetFilters": "Reset Filters",
+      "contactNotListed": "Phone number not published in directory",
+      "officialPortal": "Official Website",
+      "sourceLabel": "Source"
+    },
+    "verification": {
+      "verifiedDirectory": "Verified Directory Record",
+      "demonstrationSample": "Demonstration Sample Entry (Admin Directory)"
+    },
+    "soilLabs": {
+      "directoryTitle": "Soil Testing Laboratories & Krishi Vigyan Kendras",
+      "directorySubtitle": "Search official district soil testing labs and ICAR KVK centers by state or district.",
+      "searchPlaceholder": "Search lab name, KVK, or soil test...",
+      "emptyTitle": "No soil testing labs matched these filters",
+      "emptyDescription": "Try clearing your district or state filter to view available ICAR KVKs and soil labs.",
+      "servicesLabel": "Tests & Services",
+      "checklistTitle": "What You Need to Arrange Soil Testing",
+      "checklistSubtitle": "Follow these standard composite sampling steps before visiting your district KVK or Soil Health Lab."
+    },
+    "equipment": {
+      "catalogTitle": "Agricultural Equipment Rental Directory",
+      "catalogSubtitle": "Filter tractors, harvesters, and implements. Rental prices are shown only when verified.",
+      "categories": {
+        "ALL": "All Equipment",
+        "TRACTOR": "Tractor",
+        "HARVESTER": "Harvester",
+        "OTHER": "Other Implements"
+      },
+      "searchPlaceholder": "Search tractor, rotavator, harvester, CHC...",
+      "emptyTitle": "No equipment listings matched these filters",
+      "emptyDescription": "Try switching equipment category or clearing your state/district filter.",
+      "rentalRateLabel": "Rental Rate",
+      "units": {
+        "HOUR": "Hour",
+        "ACRE": "Acre",
+        "DAY": "Day"
+      },
+      "rateNotVerified": "Rate not verified — confirm directly",
+      "availability": {
+        "AVAILABLE": "Listed Available",
+        "SEASONAL_DEMAND": "Seasonal Demand — Confirm Slot",
+        "UNVERIFIED": "Availability Unverified"
+      },
+      "requestButton": "Submit Booking Request",
+      "formTitle": "Submit Equipment Booking Request",
+      "requestDisclaimer": "Important: This submits a booking request for coordinator or provider callback—it is NOT an instant confirmed reservation.",
+      "requestedDateLabel": "Preferred Date",
+      "phoneLabel": "Callback Mobile Number",
+      "durationLabel": "Requested Duration / Area",
+      "durationUnitLabel": "Unit",
+      "notesLabel": "Field & Work Notes (Optional)",
+      "notesPlaceholder": "e.g., 2.5 acre deep ploughing on dry red soil plot",
+      "submitRequest": "Save Booking Request",
+      "bookingSavedNotice": "Booking request saved (Status: Requested — not a confirmed reservation until the provider confirms).",
+      "myBookingsTitle": "Your Submitted Booking Requests",
+      "noBookingsYet": "You have not submitted any equipment booking requests yet.",
+      "adminNoteLabel": "Coordinator Note",
+      "bookingStatus": {
+        "REQUESTED": "Request Submitted (Unconfirmed)",
+        "REVIEWING": "Under Coordinator Review",
+        "FORWARDED_TO_PROVIDER": "Forwarded to Provider",
+        "COMPLETED": "Completed",
+        "CANCELLED": "Cancelled"
+      }
+    },
+    "directory": {
+      "title": "Cold Storage, APMC Mandis & Agricultural Services Map",
+      "subtitle": "Locate verified APMC mandis, RSK centres, and admin-managed demonstration service entries.",
+      "types": {
+        "ALL": "All Services",
+        "COLD_STORAGE": "Cold Storage",
+        "MANDI_APMC": "APMC Mandi",
+        "CUSTOM_HIRING_CENTRE": "CHC / Machinery",
+        "INPUT_SEED_CENTRE": "RSK / Input Centre",
+        "EXTENSION_BANK": "Extension / Bank"
+      },
+      "searchPlaceholder": "Search cold storage, mandi, CHC, town...",
+      "mapLegend": "Green pins: Verified directory coordinates · Amber pins: Demonstration sample records",
+      "mapHonestyNote": "Map pins clearly separate verified institutional coordinates from demonstration sample entries. Always verify tariff and availability by phone.",
+      "emptyTitle": "No service providers matched these filters",
+      "emptyDescription": "Try selecting All Services or clearing state and district filters.",
+      "locateOnMap": "Focus on Map"
+    }
+  },
+  "aiAssistant": {
+    "title": "AI Farmer Assistant (Gemini)",
+    "soilModeTitle": "Soil Report Explainer & Farm Q&A",
+    "loadingStatus": "Checking backend Gemini service status...",
+    "replyLanguageLabel": "Reply Language",
+    "groundedContextLabel": "Farm Context Attached",
+    "soilReportAttached": "Soil Health Card readings included",
+    "soilReportMissing": "No lab soil report saved yet",
+    "safetyFallback": "Grounded on your farm profile and KrishiSetu crop database. Does not invent live prices, forecasts, or disease diagnoses.",
+    "unavailableTitle": "AI Farmer Assistant Unavailable (Backend Key Not Configured)",
+    "recheckBtn": "Recheck Status",
+    "unavailableDescription": "No synthetic or mock AI answers are generated when Gemini is unavailable. Configure GEMINI_API_KEY on the backend server to enable live bilingual Q&A.",
+    "setupStepsTitle": "Required Backend Setup Steps",
+    "suggestedTitle": "Suggested Questions",
+    "conversationTitle": "Conversation History",
+    "clearHistoryBtn": "Clear History",
+    "emptyHistoryTitle": "Ask a crop, soil, or irrigation question",
+    "emptyHistoryDesc": "Select a suggested question above or type in English or Kannada below. Your saved farm profile is used automatically.",
+    "youLabel": "You",
+    "assistantLabel": "KrishiSetu Assistant",
+    "sourcesUsedLabel": "Grounded KrishiSetu Crop References",
+    "thinkingStatus": "Preparing grounded reply via Gemini...",
+    "inputPlaceholder": "Ask about crops, soil fertility, irrigation, or preventive practices...",
+    "sendBtn": "Ask Assistant",
+    "sendDisabledHint": "Configure GEMINI_API_KEY on the server and recheck status above to send live questions."
   },
   "validation": {
     "fullNameRequired": "Please enter your full name (at least 2 characters).",

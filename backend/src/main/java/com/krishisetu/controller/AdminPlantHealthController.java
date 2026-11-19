@@ -2,9 +2,13 @@ package com.krishisetu.controller;
 
 import com.krishisetu.dto.PestDiseaseAlertCreateRequest;
 import com.krishisetu.dto.PestDiseaseAlertDto;
+import com.krishisetu.dto.PlantProtectionGuideDto;
+import com.krishisetu.dto.PlantProtectionGuideUpsertRequest;
 import com.krishisetu.entity.PestDiseaseAlert;
+import com.krishisetu.entity.PlantProtectionGuide;
 import com.krishisetu.exception.ResourceNotFoundException;
 import com.krishisetu.repository.PestDiseaseAlertRepository;
+import com.krishisetu.repository.PlantProtectionGuideRepository;
 import com.krishisetu.service.PlantHealthDatasetImportService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -22,13 +26,16 @@ import java.util.UUID;
 public class AdminPlantHealthController {
 
     private final PestDiseaseAlertRepository alertRepository;
+    private final PlantProtectionGuideRepository guideRepository;
     private final PlantHealthDatasetImportService importService;
 
     public AdminPlantHealthController(
         PestDiseaseAlertRepository alertRepository,
+        PlantProtectionGuideRepository guideRepository,
         PlantHealthDatasetImportService importService
     ) {
         this.alertRepository = alertRepository;
+        this.guideRepository = guideRepository;
         this.importService = importService;
     }
 
@@ -51,6 +58,27 @@ public class AdminPlantHealthController {
         PestDiseaseAlert existing = alertRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Alert record not found."));
         alertRepository.delete(existing);
+    }
+
+    @GetMapping("/guides")
+    public List<PlantProtectionGuideDto> listAllGuides() {
+        return guideRepository.findAllByOrderByCropNameEnAsc().stream()
+            .map(importService::toGuideDto)
+            .toList();
+    }
+
+    @PostMapping("/guides")
+    public ResponseEntity<PlantProtectionGuideDto> upsertGuide(@Valid @RequestBody PlantProtectionGuideUpsertRequest req) {
+        PlantProtectionGuide saved = importService.upsertGuide(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(importService.toGuideDto(saved));
+    }
+
+    @DeleteMapping("/guides/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteGuide(@PathVariable UUID id) {
+        PlantProtectionGuide existing = guideRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Protection guide record not found."));
+        guideRepository.delete(existing);
     }
 
     @PostMapping("/sync-seed")

@@ -33,6 +33,9 @@ public class User {
     @Column(nullable = false)
     private boolean onboardingCompleted = false;
 
+    @Column(nullable = false)
+    private boolean active = true;
+
     @Column(nullable = false, updatable = false)
     private Instant createdAt = Instant.now();
 
@@ -64,6 +67,9 @@ public class User {
 
     public boolean isOnboardingCompleted() { return onboardingCompleted; }
     public void setOnboardingCompleted(boolean onboardingCompleted) { this.onboardingCompleted = onboardingCompleted; }
+
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 
     public Instant getCreatedAt() { return createdAt; }
     public Instant getUpdatedAt() { return updatedAt; }

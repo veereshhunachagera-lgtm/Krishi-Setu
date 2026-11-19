@@ -71,6 +71,29 @@ export interface PlantProtectionGuideItem {
   sourceReference: string;
 }
 
+export interface PlantProtectionGuideUpsertPayload {
+  guideCode: string;
+  cropCode: string;
+  cropNameEn?: string;
+  cropNameKn?: string;
+  issueNameEn: string;
+  issueNameKn: string;
+  issueType: 'FUNGAL_DISEASE' | 'BACTERIAL_DISEASE' | 'INSECT_PEST';
+  scientificName?: string;
+  favorableConditionsEn?: string;
+  favorableConditionsKn?: string;
+  symptomsEn?: string[];
+  symptomsKn?: string[];
+  preventivePracticesEn?: string[];
+  preventivePracticesKn?: string[];
+  responsibleManagementEn?: string[];
+  responsibleManagementKn?: string[];
+  safetyNotesEn?: string;
+  safetyNotesKn?: string;
+  dataReliability?: 'CURATED_REFERENCE' | 'SAMPLE_REGIONAL_REFERENCE';
+  sourceReference?: string;
+}
+
 export interface ScannerStatusInfo {
   modelConnected: boolean;
   mode: 'MODEL_ACTIVE' | 'MODEL_UNAVAILABLE';

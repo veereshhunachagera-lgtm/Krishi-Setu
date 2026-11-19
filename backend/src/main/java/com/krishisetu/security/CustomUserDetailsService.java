@@ -34,10 +34,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails toUserDetails(User user) {
-        return new org.springframework.security.core.userdetails.User(
-            user.getId().toString(),
-            user.getPasswordHash(),
-            List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()))
-        );
+        return org.springframework.security.core.userdetails.User
+            .withUsername(user.getId().toString())
+            .password(user.getPasswordHash())
+            .disabled(!user.isActive())
+            .authorities(List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name())))
+            .build();
     }
 }

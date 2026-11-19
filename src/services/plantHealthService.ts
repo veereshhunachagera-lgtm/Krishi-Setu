@@ -88,4 +88,21 @@ export const plantHealthService = {
       { method: 'POST' },
     );
   },
+
+  adminListGuides(): Promise<PlantProtectionGuideItem[]> {
+    return apiRequest<PlantProtectionGuideItem[]>('/api/v1/admin/plant-health/guides');
+  },
+
+  adminCreateGuide(payload: import('../types/plantHealth').PlantProtectionGuideUpsertPayload): Promise<PlantProtectionGuideItem> {
+    return apiRequest<PlantProtectionGuideItem>('/api/v1/admin/plant-health/guides', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  },
+
+  adminDeleteGuide(id: string): Promise<void> {
+    return apiRequest<void>(`/api/v1/admin/plant-health/guides/${id}`, {
+      method: 'DELETE',
+    });
+  },
 };

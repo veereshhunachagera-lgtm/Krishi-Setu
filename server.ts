@@ -57,6 +57,13 @@ import {
   getAiAssistantStatus,
   type AiChatMessageRecord,
 } from './server/aiAssistantEngine.ts';
+import {
+  computeAdminAnalytics,
+  getIntegrationsOverview,
+  maskEmail,
+  probeIntegrationsLive,
+  sanitizePlainText,
+} from './server/adminPhase6Engine.ts';
 
 interface SoilReportRecord {
   nitrogenKgPerHa: number | null;
@@ -79,6 +86,7 @@ interface UserRecord {
   role: 'FARMER' | 'ADMIN';
   preferredLanguage: 'en' | 'kn';
   onboardingCompleted: boolean;
+  active: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -229,6 +237,7 @@ function seedInitialDatabase(): DatabaseSchema {
         role: 'ADMIN',
         preferredLanguage: 'en',
         onboardingCompleted: true,
+        active: true,
         createdAt: now,
         updatedAt: now,
       },
@@ -240,6 +249,7 @@ function seedInitialDatabase(): DatabaseSchema {
         role: 'FARMER',
         preferredLanguage: 'en',
         onboardingCompleted: true,
+        active: true,
         createdAt: now,
         updatedAt: now,
       },
@@ -352,6 +362,14 @@ function readDb(): DatabaseSchema {
       parsed.aiChatMessages = [];
       changed = true;
     }
+    if (Array.isArray(parsed.users)) {
+      for (const u of parsed.users) {
+        if (typeof u.active !== 'boolean') {
+          u.active = true;
+          changed = true;
+        }
+      }
+    }
     const db = parsed as DatabaseSchema;
     if (changed) {
       fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
@@ -419,6 +437,32 @@ function sendError(
   });
 }
 
+const failedLoginAttempts = new Map<string, number[]>();
+const LOGIN_WINDOW_MS = 5 * 60 * 1000;
+const MAX_LOGIN_FAILURES = 20;
+
+function checkLoginRateLimit(key: string): boolean {
+  const now = Date.now();
+  const timestamps = (failedLoginAttempts.get(key) || []).filter(
+    (ts) => now - ts < LOGIN_WINDOW_MS,
+  );
+  failedLoginAttempts.set(key, timestamps);
+  return timestamps.length < MAX_LOGIN_FAILURES;
+}
+
+function recordLoginFailure(key: string): void {
+  const now = Date.now();
+  const timestamps = (failedLoginAttempts.get(key) || []).filter(
+    (ts) => now - ts < LOGIN_WINDOW_MS,
+  );
+  timestamps.push(now);
+  failedLoginAttempts.set(key, timestamps);
+}
+
+function clearLoginFailures(key: string): void {
+  failedLoginAttempts.delete(key);
+}
+
 function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -431,7 +475,17 @@ function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunctio
     sendError(res, 401, 'UNAUTHORIZED', 'Invalid or expired authentication token.');
     return;
   }
-  req.authUser = { id: claims.sub, role: claims.role };
+  const db = readDb();
+  const account = db.users.find((u) => u.id === claims.sub);
+  if (!account) {
+    sendError(res, 401, 'UNAUTHORIZED', 'Account no longer exists.');
+    return;
+  }
+  if (account.active === false) {
+    sendError(res, 403, 'ACCOUNT_DISABLED', 'This account has been deactivated by an administrator.');
+    return;
+  }
+  req.authUser = { id: account.id, role: account.role };
   next();
 }
 
@@ -490,12 +544,13 @@ async function startServer() {
     const now = new Date().toISOString();
     const newUser: UserRecord = {
       id: crypto.randomUUID(),
-      fullName: fullName.trim(),
+      fullName: sanitizePlainText(fullName, 120),
       email: normalizedEmail,
       passwordHash: hashPassword(password),
       role: 'FARMER',
       preferredLanguage: preferredLanguage === 'kn' ? 'kn' : 'en',
       onboardingCompleted: false,
+      active: true,
       createdAt: now,
       updatedAt: now,
     };
@@ -525,16 +580,28 @@ async function startServer() {
       return;
     }
 
+    const rateKey = `farmer:${req.ip || 'local'}:${email.trim().toLowerCase()}`;
+    if (!checkLoginRateLimit(rateKey)) {
+      sendError(res, 429, 'RATE_LIMITED', 'Too many failed login attempts. Please wait a few minutes and retry.');
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.email.toLowerCase() === email.trim().toLowerCase());
     if (!user || !verifyPassword(password, user.passwordHash)) {
+      recordLoginFailure(rateKey);
       sendError(res, 401, 'UNAUTHORIZED', 'Invalid email or password.');
+      return;
+    }
+    if (user.active === false) {
+      sendError(res, 403, 'ACCOUNT_DISABLED', 'This farmer account has been deactivated by an administrator.');
       return;
     }
     if (user.role !== 'FARMER') {
       sendError(res, 403, 'FORBIDDEN', 'Please use the administrator portal for admin accounts.');
       return;
     }
+    clearLoginFailures(rateKey);
 
     res.json({
       token: signJwt(user),
@@ -549,16 +616,29 @@ async function startServer() {
       return;
     }
 
+    const rateKey = `admin:${req.ip || 'local'}:${email.trim().toLowerCase()}`;
+    if (!checkLoginRateLimit(rateKey)) {
+      sendError(res, 429, 'RATE_LIMITED', 'Too many failed admin login attempts. Please wait a few minutes.');
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.email.toLowerCase() === email.trim().toLowerCase());
     if (!user || !verifyPassword(password, user.passwordHash)) {
+      recordLoginFailure(rateKey);
       sendError(res, 401, 'UNAUTHORIZED', 'Invalid email or password.');
       return;
     }
+    if (user.active === false) {
+      sendError(res, 403, 'ACCOUNT_DISABLED', 'This administrator account is disabled.');
+      return;
+    }
     if (user.role !== 'ADMIN') {
+      recordLoginFailure(rateKey);
       sendError(res, 403, 'FORBIDDEN', 'Administrator privileges required.');
       return;
     }
+    clearLoginFailures(rateKey);
 
     res.json({
       token: signJwt(user),
@@ -815,7 +895,7 @@ async function startServer() {
 
     const farmerSummaries = db.profiles.map((p) => {
       const user = db.users.find((u) => u.id === p.userId);
-      return toProfileResponse(p, user?.email || '');
+      return toProfileResponse(p, maskEmail(user?.email || ''));
     });
 
     res.json({
@@ -826,6 +906,90 @@ async function startServer() {
       languageBreakdown,
       farmers: farmerSummaries,
     });
+  });
+
+  app.get('/api/v1/admin/farmers', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const profileMap = new Map(db.profiles.map((p) => [p.userId, p]));
+    const accounts = db.users
+      .filter((u) => u.role === 'FARMER')
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+      .map((u) => {
+        const p = profileMap.get(u.id);
+        return {
+          id: u.id,
+          fullName: u.fullName,
+          maskedEmail: maskEmail(u.email),
+          preferredLanguage: u.preferredLanguage,
+          onboardingCompleted: u.onboardingCompleted,
+          active: u.active !== false,
+          hasSoilReport: p ? p.hasSoilReport : null,
+          state: p?.state || null,
+          district: p?.district || null,
+          landSize: p?.landSize ?? null,
+          landUnit: p?.landUnit || null,
+          growingSeason: p?.growingSeason || null,
+          createdAt: u.createdAt,
+          updatedAt: u.updatedAt,
+        };
+      });
+    res.json(accounts);
+  });
+
+  app.patch('/api/v1/admin/farmers/:id/status', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    if (typeof body.active !== 'boolean') {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Boolean active status is required.', {
+        active: 'Provide active: true or false.',
+      });
+      return;
+    }
+    const db = readDb();
+    const user = db.users.find((u) => u.id === req.params.id);
+    if (!user) {
+      sendError(res, 404, 'NOT_FOUND', 'Farmer account not found.');
+      return;
+    }
+    if (user.role !== 'FARMER') {
+      sendError(res, 400, 'BAD_REQUEST', 'Only farmer accounts can be modified here.');
+      return;
+    }
+    user.active = body.active;
+    user.updatedAt = new Date().toISOString();
+    writeDb(db);
+
+    const p = db.profiles.find((prof) => prof.userId === user.id);
+    res.json({
+      id: user.id,
+      fullName: user.fullName,
+      maskedEmail: maskEmail(user.email),
+      preferredLanguage: user.preferredLanguage,
+      onboardingCompleted: user.onboardingCompleted,
+      active: user.active,
+      hasSoilReport: p ? p.hasSoilReport : null,
+      state: p?.state || null,
+      district: p?.district || null,
+      landSize: p?.landSize ?? null,
+      landUnit: p?.landUnit || null,
+      growingSeason: p?.growingSeason || null,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    });
+  });
+
+  app.get('/api/v1/admin/analytics', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    res.json(computeAdminAnalytics(db));
+  });
+
+  app.get('/api/v1/admin/integrations/status', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    res.json(getIntegrationsOverview(db));
+  });
+
+  app.post('/api/v1/admin/integrations/probe', requireAuth, requireAdmin, async (_req, res) => {
+    const report = await probeIntegrationsLive();
+    res.json(report);
   });
 
   // --- Phase 2: Crop & Soil Intelligence Routes ---
@@ -1440,6 +1604,114 @@ async function startServer() {
       alertsImported: seedAlerts.length,
       guidesImported: seedGuides.length,
     });
+  });
+
+  app.get('/api/v1/admin/plant-health/guides', requireAuth, requireAdmin, (_req, res) => {
+    const db = readDb();
+    const sorted = [...db.protectionGuides].sort((a, b) =>
+      a.cropNameEn.localeCompare(b.cropNameEn),
+    );
+    res.json(sorted);
+  });
+
+  app.post('/api/v1/admin/plant-health/guides', requireAuth, requireAdmin, (req, res) => {
+    const body = req.body ?? {};
+    const fieldErrors: Record<string, string> = {};
+    const guideCode = sanitizePlainText(body.guideCode, 80).toLowerCase();
+    const cropCode = sanitizePlainText(body.cropCode, 60).toLowerCase();
+    const issueNameEn = sanitizePlainText(body.issueNameEn, 160);
+    const issueNameKn = sanitizePlainText(body.issueNameKn, 160);
+    const issueType = sanitizePlainText(body.issueType, 40).toUpperCase();
+
+    if (!guideCode) fieldErrors.guideCode = 'Guide code is required.';
+    if (!cropCode) fieldErrors.cropCode = 'Crop code is required.';
+    if (!issueNameEn) fieldErrors.issueNameEn = 'English issue name is required.';
+    if (!issueNameKn) fieldErrors.issueNameKn = 'Kannada issue name is required.';
+    if (!['FUNGAL_DISEASE', 'BACTERIAL_DISEASE', 'INSECT_PEST'].includes(issueType)) {
+      fieldErrors.issueType =
+        'Issue type must be FUNGAL_DISEASE, BACTERIAL_DISEASE, or INSECT_PEST.';
+    }
+    if (Object.keys(fieldErrors).length > 0) {
+      sendError(res, 400, 'VALIDATION_ERROR', 'Input validation failed.', fieldErrors);
+      return;
+    }
+
+    const toCleanList = (val: unknown): string[] =>
+      Array.isArray(val)
+        ? val
+            .map((item) => sanitizePlainText(item, 240))
+            .filter(Boolean)
+            .slice(0, 12)
+        : [];
+
+    const db = readDb();
+    const existingIdx = db.protectionGuides.findIndex(
+      (g) => g.guideCode.toLowerCase() === guideCode,
+    );
+    const cropNameEn = sanitizePlainText(body.cropNameEn, 120) || cropCode;
+    const cropNameKn = sanitizePlainText(body.cropNameKn, 120) || cropNameEn;
+    const favorableConditionsEn = sanitizePlainText(body.favorableConditionsEn, 400);
+    const favorableConditionsKn =
+      sanitizePlainText(body.favorableConditionsKn, 400) || favorableConditionsEn;
+    const symptomsEn = toCleanList(body.symptomsEn);
+    const symptomsKn = toCleanList(body.symptomsKn);
+    const preventivePracticesEn = toCleanList(body.preventivePracticesEn);
+    const preventivePracticesKn = toCleanList(body.preventivePracticesKn);
+    const responsibleManagementEn = toCleanList(body.responsibleManagementEn);
+    const responsibleManagementKn = toCleanList(body.responsibleManagementKn);
+
+    const record: PlantProtectionGuideRecord = {
+      id: existingIdx >= 0 ? db.protectionGuides[existingIdx].id : crypto.randomUUID(),
+      guideCode,
+      cropCode,
+      cropNameEn,
+      cropNameKn,
+      issueNameEn,
+      issueNameKn,
+      issueType,
+      scientificName: sanitizePlainText(body.scientificName, 160) || null,
+      favorableConditionsEn,
+      favorableConditionsKn,
+      symptomsEn,
+      symptomsKn: symptomsKn.length > 0 ? symptomsKn : symptomsEn,
+      preventivePracticesEn,
+      preventivePracticesKn:
+        preventivePracticesKn.length > 0 ? preventivePracticesKn : preventivePracticesEn,
+      responsibleManagementEn,
+      responsibleManagementKn:
+        responsibleManagementKn.length > 0 ? responsibleManagementKn : responsibleManagementEn,
+      safetyNotesEn:
+        sanitizePlainText(body.safetyNotesEn, 500) ||
+        'Confirm exact CIBRC label recommendations with your local RSK or KVK before any chemical use.',
+      safetyNotesKn:
+        sanitizePlainText(body.safetyNotesKn, 500) ||
+        'ಯಾವುದೇ ರಾಸಾಯನಿಕ ಬಳಸುವ ಮೊದಲು ಸ್ಥಳೀಯ ಆರ್‌ಎಸ್‌ಕೆ ಅಥವಾ ಕೆವಿಕೆಯಿಂದ ಶಿಫಾರಸು ದೃಢೀಕರಿಸಿ.',
+      dataReliability:
+        body.dataReliability === 'SAMPLE_REGIONAL_REFERENCE'
+          ? 'SAMPLE_REGIONAL_REFERENCE'
+          : 'CURATED_REFERENCE',
+      sourceReference: sanitizePlainText(body.sourceReference, 300) || 'Admin Protection Directory',
+    };
+
+    if (existingIdx >= 0) {
+      db.protectionGuides[existingIdx] = record;
+    } else {
+      db.protectionGuides.unshift(record);
+    }
+    writeDb(db);
+    res.status(201).json(record);
+  });
+
+  app.delete('/api/v1/admin/plant-health/guides/:id', requireAuth, requireAdmin, (req, res) => {
+    const db = readDb();
+    const idx = db.protectionGuides.findIndex((g) => g.id === req.params.id);
+    if (idx === -1) {
+      sendError(res, 404, 'NOT_FOUND', 'Protection guide record not found.');
+      return;
+    }
+    db.protectionGuides.splice(idx, 1);
+    writeDb(db);
+    res.status(204).send();
   });
 
   // --- Phase 4: Market & Weather + Smart Alerts Routes ---

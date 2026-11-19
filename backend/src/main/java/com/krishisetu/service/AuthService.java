@@ -102,6 +102,9 @@ public class AuthService {
         if (!passwordEncoder.matches(rawPassword, user.getPasswordHash())) {
             throw new UnauthorizedException("Invalid email or password.");
         }
+        if (!user.isActive()) {
+            throw new AccessDeniedException("This account has been deactivated by an administrator.");
+        }
         return user;
     }
 

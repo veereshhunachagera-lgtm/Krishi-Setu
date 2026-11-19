@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.krishisetu.dto.PestDiseaseAlertCreateRequest;
 import com.krishisetu.dto.PestDiseaseAlertDto;
 import com.krishisetu.dto.PlantProtectionGuideDto;
+import com.krishisetu.dto.PlantProtectionGuideUpsertRequest;
 import com.krishisetu.entity.PestDiseaseAlert;
 import com.krishisetu.entity.PlantProtectionGuide;
 import com.krishisetu.repository.PestDiseaseAlertRepository;
@@ -132,6 +133,38 @@ public class PlantHealthDatasetImportService {
         alert.setPrecautionsKnJson(writeJson(req.getPrecautionsKn()));
         alert.setActive(req.isActive());
         return alertRepository.save(alert);
+    }
+
+    @Transactional
+    public PlantProtectionGuide upsertGuide(PlantProtectionGuideUpsertRequest req) {
+        String code = req.guideCode().trim().toLowerCase();
+        String issueType = req.issueType().trim().toUpperCase();
+        if (!List.of("FUNGAL_DISEASE", "BACTERIAL_DISEASE", "INSECT_PEST").contains(issueType)) {
+            throw new IllegalArgumentException("Issue type must be FUNGAL_DISEASE, BACTERIAL_DISEASE, or INSECT_PEST.");
+        }
+        PlantProtectionGuide entity = guideRepository.findByGuideCodeIgnoreCase(code)
+            .orElseGet(PlantProtectionGuide::new);
+        entity.setGuideCode(code);
+        entity.setCropCode(req.cropCode().trim().toLowerCase());
+        entity.setCropNameEn(req.cropNameEn() != null && !req.cropNameEn().isBlank() ? req.cropNameEn.trim() : req.cropCode().trim());
+        entity.setCropNameKn(req.cropNameKn() != null && !req.cropNameKn().isBlank() ? req.cropNameKn.trim() : entity.getCropNameEn());
+        entity.setIssueNameEn(req.issueNameEn().trim());
+        entity.setIssueNameKn(req.issueNameKn().trim());
+        entity.setIssueType(issueType);
+        entity.setScientificName(req.scientificName() != null && !req.scientificName().isBlank() ? req.scientificName.trim() : null);
+        entity.setFavorableConditionsEn(req.favorableConditionsEn() != null ? req.favorableConditionsEn.trim() : "");
+        entity.setFavorableConditionsKn(req.favorableConditionsKn() != null && !req.favorableConditionsKn().isBlank() ? req.favorableConditionsKn.trim() : entity.getFavorableConditionsEn());
+        entity.setSymptomsEnJson(writeJson(req.symptomsEn()));
+        entity.setSymptomsKnJson(writeJson(req.symptomsKn() != null && !req.symptomsKn().isEmpty() ? req.symptomsKn() : req.symptomsEn()));
+        entity.setPreventivePracticesEnJson(writeJson(req.preventivePracticesEn()));
+        entity.setPreventivePracticesKnJson(writeJson(req.preventivePracticesKn() != null && !req.preventivePracticesKn().isEmpty() ? req.preventivePracticesKn() : req.preventivePracticesEn()));
+        entity.setResponsibleManagementEnJson(writeJson(req.responsibleManagementEn()));
+        entity.setResponsibleManagementKnJson(writeJson(req.responsibleManagementKn() != null && !req.responsibleManagementKn().isEmpty() ? req.responsibleManagementKn() : req.responsibleManagementEn()));
+        entity.setSafetyNotesEn(req.safetyNotesEn() != null ? req.safetyNotesEn.trim() : "Confirm local RSK/KVK recommendations before any chemical intervention.");
+        entity.setSafetyNotesKn(req.safetyNotesKn() != null && !req.safetyNotesKn().isBlank() ? req.safetyNotesKn.trim() : entity.getSafetyNotesEn());
+        entity.setDataReliability("SAMPLE_REGIONAL_REFERENCE".equalsIgnoreCase(req.dataReliability()) ? "SAMPLE_REGIONAL_REFERENCE" : "CURATED_REFERENCE");
+        entity.setSourceReference(req.sourceReference() != null && !req.sourceReference().isBlank() ? req.sourceReference.trim() : "Admin Protection Directory");
+        return guideRepository.save(entity);
     }
 
     public PestDiseaseAlertDto toAlertDto(PestDiseaseAlert entity) {
